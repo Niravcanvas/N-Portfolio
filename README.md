@@ -1,36 +1,164 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Monochrome Portfolio - Implementation Guide
 
-## Getting Started
+## 🎨 Design Concept
 
-First, run the development server:
+A **brutalist-minimal editorial** portfolio with:
+- Pure black & white aesthetic
+- Bold typography with Bebas Neue display font
+- DM Mono for body text
+- Custom cursor with mix-blend-difference effect
+- Grain texture overlay
+- Geometric grid backgrounds
+- Smooth animations and hover effects
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 📁 File Structure
+
+Replace your existing files with these monochrome versions:
+
+```
+src/
+├── app/
+│   ├── page.tsx              → Replace with page-monochrome.tsx
+│   └── globals.css           → Replace with globals-monochrome.css
+└── components/
+    ├── Navbar.tsx            → Replace with Navbar-monochrome.tsx
+    ├── Hero.tsx              → Replace with Hero-monochrome.tsx
+    ├── About.tsx             → Replace with About-monochrome.tsx
+    ├── Projects.tsx          → Replace with Projects-monochrome.tsx
+    ├── Contact.tsx           → Replace with Contact-monochrome.tsx
+    └── Footer.tsx            → Replace with Footer-monochrome.tsx
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Installation Steps
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Replace all files:**
+   ```bash
+   # Copy globals CSS
+   cp globals-monochrome.css src/app/globals.css
+   
+   # Copy page
+   cp page-monochrome.tsx src/app/page.tsx
+   
+   # Copy all components
+   cp Navbar-monochrome.tsx src/components/Navbar.tsx
+   cp Hero-monochrome.tsx src/components/Hero.tsx
+   cp About-monochrome.tsx src/components/About.tsx
+   cp Projects-monochrome.tsx src/components/Projects.tsx
+   cp Contact-monochrome.tsx src/components/Contact.tsx
+   cp Footer-monochrome.tsx src/components/Footer.tsx
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Clear cache and restart:**
+   ```bash
+   rm -rf .next
+   npm run dev
+   ```
 
-## Learn More
+## ✨ Key Features
 
-To learn more about Next.js, take a look at the following resources:
+### Custom Cursor
+- White circular cursor with mix-blend-difference
+- Scales on hover over interactive elements
+- Creates unique contrast effect
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Typography
+- **Bebas Neue**: Display font for headlines (bold, condensed)
+- **DM Mono**: Monospace font for body text and UI elements
+- Large, dramatic headline sizes (10vw - 12vw)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Animations
+- Fade-in-up animations on scroll
+- Staggered animation delays for sequenced reveals
+- Smooth hover transitions on all interactive elements
+- Project list items expand to show descriptions
 
-## Deploy on Vercel
+### Layout
+- Full-bleed sections with proper spacing
+- Grid-based layouts with clear hierarchy
+- Large section numbers as background elements
+- Consistent border usage for separation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Effects
+- Grain texture overlay (3% opacity)
+- Subtle grid background pattern
+- Mix-blend-difference for cursor
+- White scrollbar on black background
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎯 Customization
+
+### Update Personal Info
+
+1. **Navbar.tsx**: Update navigation links
+2. **Hero.tsx**: Edit main title and subtitle descriptions
+3. **About.tsx**: 
+   - Update bio text
+   - Modify skills and expertise
+   - Change experience numbers
+4. **Projects.tsx**: Replace project data in the projects array
+5. **Contact.tsx**: Update email, location, and social links
+6. **Footer.tsx**: Update social links
+
+### Color Adjustments
+
+While the design is monochrome, you can adjust:
+- Border opacity: `border-white` → `border-white/50`
+- Text opacity: `text-gray-400` for muted text
+- Hover states: `hover:opacity-50`
+
+### Typography Changes
+
+In `globals.css`, update font imports:
+```css
+@import url('your-preferred-google-font');
+```
+
+Then update the font-family in the CSS variables.
+
+## 📱 Responsive Design
+
+All components are fully responsive:
+- Mobile-first approach
+- Grid layouts collapse on mobile
+- Font sizes scale with viewport (vw units)
+- Touch-friendly spacing on mobile
+
+## 🎭 Animation Details
+
+Animations use CSS keyframes with delays:
+- `animate-in`: Base fade-in-up animation
+- `animate-delay-100` through `animate-delay-400`: Staggered reveals
+- All animations: 0.8s duration with ease-out timing
+
+## 🔧 Troubleshooting
+
+**Fonts not loading?**
+- Check internet connection (fonts load from Google Fonts)
+- Clear browser cache
+
+**Cursor not showing?**
+- Ensure JavaScript is enabled
+- Check browser compatibility (works best in Chrome/Firefox)
+
+**Animations not playing?**
+- Make sure the opacity-0 classes are applied initially
+- Check that animate-in class is present
+
+## 🌐 Browser Support
+
+- Chrome/Edge: Full support
+- Firefox: Full support  
+- Safari: Full support (cursor blend mode may vary)
+- Mobile browsers: Touch-optimized, cursor hidden on mobile
+
+## 📦 Production Build
+
+For static export:
+```bash
+npm run build
+```
+
+The site will be exported to the `out/` folder.
+
+---
+
+**Design Philosophy**: Less is more. Every element serves a purpose. Bold typography makes a statement. Whitespace creates breathing room. Monochrome creates focus.
