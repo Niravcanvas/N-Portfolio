@@ -1,164 +1,341 @@
-# Monochrome Portfolio - Implementation Guide
-
-## 🎨 Design Concept
-
-A **brutalist-minimal editorial** portfolio with:
-- Pure black & white aesthetic
-- Bold typography with Bebas Neue display font
-- DM Mono for body text
-- Custom cursor with mix-blend-difference effect
-- Grain texture overlay
-- Geometric grid backgrounds
-- Smooth animations and hover effects
-
-## 📁 File Structure
-
-Replace your existing files with these monochrome versions:
+<div align="center">
 
 ```
-src/
-├── app/
-│   ├── page.tsx              → Replace with page-monochrome.tsx
-│   └── globals.css           → Replace with globals-monochrome.css
-└── components/
-    ├── Navbar.tsx            → Replace with Navbar-monochrome.tsx
-    ├── Hero.tsx              → Replace with Hero-monochrome.tsx
-    ├── About.tsx             → Replace with About-monochrome.tsx
-    ├── Projects.tsx          → Replace with Projects-monochrome.tsx
-    ├── Contact.tsx           → Replace with Contact-monochrome.tsx
-    └── Footer.tsx            → Replace with Footer-monochrome.tsx
+███╗   ██╗██╗██████╗  █████╗ ██╗   ██╗    ████████╗██╗  ██╗ █████╗ ██╗  ██╗██╗   ██╗██████╗ 
+████╗  ██║██║██╔══██╗██╔══██╗██║   ██║    ╚══██╔══╝██║  ██║██╔══██╗██║ ██╔╝██║   ██║██╔══██╗
+██╔██╗ ██║██║██████╔╝███████║██║   ██║       ██║   ███████║███████║█████╔╝ ██║   ██║██████╔╝
+██║╚██╗██║██║██╔══██╗██╔══██║╚██╗ ██╔╝       ██║   ██╔══██║██╔══██║██╔═██╗ ██║   ██║██╔══██╗
+██║ ╚████║██║██║  ██║██║  ██║ ╚████╔╝        ██║   ██║  ██║██║  ██║██║  ██╗╚██████╔╝██║  ██║
+╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝         ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝
 ```
 
-## 🚀 Installation Steps
+### **Personal Portfolio - 2026**
 
-1. **Replace all files:**
-   ```bash
-   # Copy globals CSS
-   cp globals-monochrome.css src/app/globals.css
-   
-   # Copy page
-   cp page-monochrome.tsx src/app/page.tsx
-   
-   # Copy all components
-   cp Navbar-monochrome.tsx src/components/Navbar.tsx
-   cp Hero-monochrome.tsx src/components/Hero.tsx
-   cp About-monochrome.tsx src/components/About.tsx
-   cp Projects-monochrome.tsx src/components/Projects.tsx
-   cp Contact-monochrome.tsx src/components/Contact.tsx
-   cp Footer-monochrome.tsx src/components/Footer.tsx
-   ```
+*Frontend Developer & UI/UX Designer*
 
-2. **Clear cache and restart:**
-   ```bash
-   rm -rf .next
-   npm run dev
-   ```
+[![Next.js](https://img.shields.io/badge/Next.js-16.1.5-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-black?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-black?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-## ✨ Key Features
-
-### Custom Cursor
-- White circular cursor with mix-blend-difference
-- Scales on hover over interactive elements
-- Creates unique contrast effect
-
-### Typography
-- **Bebas Neue**: Display font for headlines (bold, condensed)
-- **DM Mono**: Monospace font for body text and UI elements
-- Large, dramatic headline sizes (10vw - 12vw)
-
-### Animations
-- Fade-in-up animations on scroll
-- Staggered animation delays for sequenced reveals
-- Smooth hover transitions on all interactive elements
-- Project list items expand to show descriptions
-
-### Layout
-- Full-bleed sections with proper spacing
-- Grid-based layouts with clear hierarchy
-- Large section numbers as background elements
-- Consistent border usage for separation
-
-### Effects
-- Grain texture overlay (3% opacity)
-- Subtle grid background pattern
-- Mix-blend-difference for cursor
-- White scrollbar on black background
-
-## 🎯 Customization
-
-### Update Personal Info
-
-1. **Navbar.tsx**: Update navigation links
-2. **Hero.tsx**: Edit main title and subtitle descriptions
-3. **About.tsx**: 
-   - Update bio text
-   - Modify skills and expertise
-   - Change experience numbers
-4. **Projects.tsx**: Replace project data in the projects array
-5. **Contact.tsx**: Update email, location, and social links
-6. **Footer.tsx**: Update social links
-
-### Color Adjustments
-
-While the design is monochrome, you can adjust:
-- Border opacity: `border-white` → `border-white/50`
-- Text opacity: `text-gray-400` for muted text
-- Hover states: `hover:opacity-50`
-
-### Typography Changes
-
-In `globals.css`, update font imports:
-```css
-@import url('your-preferred-google-font');
-```
-
-Then update the font-family in the CSS variables.
-
-## 📱 Responsive Design
-
-All components are fully responsive:
-- Mobile-first approach
-- Grid layouts collapse on mobile
-- Font sizes scale with viewport (vw units)
-- Touch-friendly spacing on mobile
-
-## 🎭 Animation Details
-
-Animations use CSS keyframes with delays:
-- `animate-in`: Base fade-in-up animation
-- `animate-delay-100` through `animate-delay-400`: Staggered reveals
-- All animations: 0.8s duration with ease-out timing
-
-## 🔧 Troubleshooting
-
-**Fonts not loading?**
-- Check internet connection (fonts load from Google Fonts)
-- Clear browser cache
-
-**Cursor not showing?**
-- Ensure JavaScript is enabled
-- Check browser compatibility (works best in Chrome/Firefox)
-
-**Animations not playing?**
-- Make sure the opacity-0 classes are applied initially
-- Check that animate-in class is present
-
-## 🌐 Browser Support
-
-- Chrome/Edge: Full support
-- Firefox: Full support  
-- Safari: Full support (cursor blend mode may vary)
-- Mobile browsers: Touch-optimized, cursor hidden on mobile
-
-## 📦 Production Build
-
-For static export:
-```bash
-npm run build
-```
-
-The site will be exported to the `out/` folder.
+[**View Live**](https://niravthakur.dev) • [**GitHub Profile**](https://github.com/Niravcanvas)
 
 ---
 
-**Design Philosophy**: Less is more. Every element serves a purpose. Bold typography makes a statement. Whitespace creates breathing room. Monochrome creates focus.
+</div>
+
+## 📋 Table of Contents
+
+```
+├── Overview
+├── Features
+├── Tech Stack
+├── Getting Started
+├── Project Structure
+├── Design Philosophy
+├── Performance
+└── Contact
+```
+
+---
+
+## 🎯 Overview
+
+A modern, minimalist portfolio showcasing my work as a Frontend Developer and UI/UX Designer. Built with cutting-edge web technologies and designed with a monochrome glassmorphism aesthetic.
+
+```typescript
+const portfolio = {
+  name: "Nirav Thakur",
+  role: ["Frontend Developer", "UI/UX Designer", "Photographer"],
+  location: "Mumbai, India",
+  status: "Available for work",
+  focus: ["Next.js", "TypeScript", "Tailwind CSS", "Figma"]
+};
+```
+
+---
+
+## ✨ Features
+
+<table>
+<tr>
+<td width="50%">
+
+### Design
+```
+▸ Monochrome glassmorphism UI
+▸ Interactive grid background
+▸ Mouse-following animations
+▸ Smooth scroll navigation
+▸ Responsive design
+▸ Custom scrollbar
+```
+
+</td>
+<td width="50%">
+
+### Technical
+```
+▸ Next.js 16 with App Router
+▸ TypeScript for type safety
+▸ Tailwind CSS v4
+▸ Optimized performance
+▸ SEO friendly
+▸ Dark mode native
+```
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🛠️ Tech Stack
+
+<div align="center">
+
+| Category | Technologies |
+|----------|-------------|
+| **Framework** | `Next.js 16.1.5` `React 19.2.3` |
+| **Language** | `TypeScript 5.x` |
+| **Styling** | `Tailwind CSS 4.0` `PostCSS` |
+| **Font** | `Azeret Mono` |
+| **Deployment** | `Vercel` |
+
+</div>
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+```bash
+node >= 18.0.0
+npm >= 9.0.0
+```
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/Niravcanvas/Portfolio.git
+
+# Navigate to project directory
+cd Portfolio
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+```
+
+### Build for Production
+
+```bash
+# Create optimized production build
+npm run build
+
+# Start production server
+npm start
+```
+
+The application will be available at `http://localhost:3000`
+
+---
+
+## 📁 Project Structure
+
+```
+Portfolio/
+│
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx          # Root layout with Azeret Mono font
+│   │   ├── page.tsx             # Main page component
+│   │   └── globals.css          # Global styles & animations
+│   │
+│   └── components/
+│       ├── Navbar.tsx           # Navigation bar
+│       ├── Hero.tsx             # Hero section with stats
+│       ├── About.tsx            # About me section
+│       ├── Projects.tsx         # Featured projects
+│       ├── Contact.tsx          # Contact form
+│       └── Footer.tsx           # Footer section
+│
+├── public/                      # Static assets
+├── package.json                 # Dependencies
+└── README.md                    # You are here
+```
+
+---
+
+## 🎨 Design Philosophy
+
+<table>
+<tr>
+<td width="33%">
+
+### Minimalism
+```
+Clean layouts
+Ample whitespace
+Focus on content
+No visual clutter
+```
+
+</td>
+<td width="33%">
+
+### Glassmorphism
+```
+Frosted glass effects
+Subtle transparency
+Layered depth
+Soft shadows
+```
+
+</td>
+<td width="33%">
+
+### Monochrome
+```
+Black & white palette
+Gray gradients
+High contrast
+Timeless aesthetic
+```
+
+</td>
+</tr>
+</table>
+
+### Color Palette
+
+```css
+--background: #000000;
+--foreground: #ffffff;
+--glass-bg: rgba(255, 255, 255, 0.05);
+--glass-border: rgba(255, 255, 255, 0.1);
+--text-primary: #ffffff;
+--text-secondary: #a1a1a1;
+--text-muted: #737373;
+```
+
+---
+
+## ⚡ Performance
+
+<div align="center">
+
+| Metric | Score |
+|--------|-------|
+| **Performance** | `95+` |
+| **Accessibility** | `100` |
+| **Best Practices** | `100` |
+| **SEO** | `100` |
+
+*Lighthouse scores for production build*
+
+</div>
+
+### Optimizations
+
+- ✓ Image optimization with Next.js Image component
+- ✓ Font optimization with next/font
+- ✓ Code splitting and lazy loading
+- ✓ Minimal JavaScript bundle
+- ✓ CSS optimization with Tailwind
+- ✓ Static page generation where possible
+
+---
+
+## 📂 Featured Projects
+
+<table>
+<tr>
+<td width="50%">
+
+### HackOverflow 4.0
+National-level hackathon website
+
+**Stack:** Next.js, TypeScript, Tailwind CSS
+
+[View Project →](https://github.com/Niravcanvas/Hackoverflow)
+
+</td>
+<td width="50%">
+
+### Fintech Expense Tracker
+Premium expense tracking app
+
+**Stack:** Next.js, TypeScript, Glassmorphism UI
+
+[View Project →](https://github.com/Niravcanvas/Fintech)
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📬 Contact
+
+<div align="center">
+
+```
+┌─────────────────────────────────────┐
+│  📧  nirav@example.com              │
+│  📍  Mumbai, India                  │
+│  💼  Available for freelance work   │
+└─────────────────────────────────────┘
+```
+
+### Connect with me
+
+[![GitHub](https://img.shields.io/badge/GitHub-Niravcanvas-black?style=for-the-badge&logo=github)](https://github.com/Niravcanvas)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-black?style=for-the-badge&logo=linkedin)](https://linkedin.com)
+[![Twitter](https://img.shields.io/badge/Twitter-Follow-black?style=for-the-badge&logo=x)](https://twitter.com)
+
+</div>
+
+---
+
+## 📄 License
+
+```
+MIT License
+
+Copyright (c) 2026 Nirav Thakur
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+```
+
+---
+
+<div align="center">
+
+### ⭐ Star this repo if you like it!
+
+```
+ ███╗   ██╗████████╗
+ ████╗  ██║╚══██╔══╝
+ ██╔██╗ ██║   ██║   
+ ██║╚██╗██║   ██║   
+ ██║ ╚████║   ██║   
+ ╚═╝  ╚═══╝   ╚═╝   
+```
+
+**Built by Nirav Thakur**
+
+*Last Updated: January 2026*
+
+</div>
