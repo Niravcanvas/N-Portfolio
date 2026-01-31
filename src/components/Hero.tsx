@@ -63,7 +63,7 @@ export default function Hero() {
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
                 <span className="block text-white">Hi, I'm</span>
                 <span className="block bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
-                  Nirav Thakur
+                  Nirav
                 </span>
               </h1>
               
@@ -139,52 +139,10 @@ export default function Hero() {
 
           {/* Right side - Visual element */}
           <div className="relative lg:block hidden">
-            {/* Main card */}
-            <div className="relative">
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -left-4 w-72 h-72 bg-white/5 rounded-3xl blur-xl"></div>
-              <div className="absolute -bottom-4 -right-4 w-72 h-72 bg-white/5 rounded-3xl blur-xl"></div>
-              
-              {/* Main content card */}
-              <div className="relative p-8 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 space-y-6">
-                {/* Stats */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-                    <div className="text-3xl font-bold text-white mb-1">60+</div>
-                    <div className="text-sm text-gray-400">Contributions</div>
-                  </div>
-                  <div className="p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-                    <div className="text-3xl font-bold text-white mb-1">9</div>
-                    <div className="text-sm text-gray-400">Repositories</div>
-                  </div>
-                </div>
-
-                {/* Tech stack */}
-                <div className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-                  <h3 className="text-sm text-gray-400 mb-4">Tech Stack</h3>
-                  <div className="grid grid-cols-3 gap-3">
-                    {['Next.js', 'TypeScript', 'Tailwind', 'React', 'Figma', 'Git'].map((tech) => (
-                      <div key={tech} className="p-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 text-center">
-                        <div className="text-xs text-gray-300">{tech}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Recent activity */}
-                <div className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-                  <h3 className="text-sm text-gray-400 mb-4">Latest Project</h3>
-                  <div className="space-y-2">
-                    <div className="text-white font-medium">HackOverflow 4.0</div>
-                    <div className="text-sm text-gray-400">National-level hackathon website</div>
-                    <div className="flex gap-2 pt-2">
-                      <span className="px-2 py-1 rounded bg-white/5 text-xs text-gray-400">Next.js</span>
-                      <span className="px-2 py-1 rounded bg-white/5 text-xs text-gray-400">TypeScript</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Decorative elements */}
+            <div className="absolute -top-8 -left-8 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-8 -right-8 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-2xl"></div>
           </div>
         </div>
       </div>
