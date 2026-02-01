@@ -6,6 +6,7 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import Images from "../components/Images";
 import { GridScan } from "../components/Gridscan";
+import Achievements from "../components/Achivements";
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
         />
       </div>
         <Projects />
+        <Achievements />
         <Contact />
       </main>
       <Footer />
