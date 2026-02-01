@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 export default function About() {
   const [terminalInput, setTerminalInput] = useState('');
@@ -17,13 +18,6 @@ export default function About() {
     { category: 'Frontend', items: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'], icon: '⚛' },
     { category: 'Design', items: ['Figma', 'UI/UX Design', 'Photography', 'Web Design'], icon: '✎' },
     { category: 'Tools', items: ['Git', 'GitHub', 'Vercel', 'VS Code'], icon: '⚙' },
-  ];
-
-  const stats = [
-    { label: 'GitHub Repos', value: '9' },
-    { label: 'Contributions', value: '60+' },
-    { label: 'Followers', value: '1' },
-    { label: 'Following', value: '3' },
   ];
 
   const education = [
@@ -70,7 +64,6 @@ export default function About() {
           <div><span className="text-blue-400">about</span> - Display about information</div>
           <div><span className="text-blue-400">education</span> - Show educational background</div>
           <div><span className="text-blue-400">skills</span> - List technical skills</div>
-          <div><span className="text-blue-400">stats</span> - Show GitHub statistics</div>
           <div><span className="text-blue-400">projects</span> - View recent projects</div>
           <div><span className="text-blue-400">contact</span> - Get contact information</div>
           <div><span className="text-blue-400">clear</span> - Clear terminal</div>
@@ -111,18 +104,6 @@ export default function About() {
             <div key={index}>
               <div className="text-blue-400">{skillGroup.icon} {skillGroup.category}:</div>
               <div className="ml-4 text-sm">{skillGroup.items.join(', ')}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    ),
-    stats: () => (
-      <div className="space-y-2 text-gray-300">
-        <div className="text-green-400 font-semibold">▸ GitHub Statistics</div>
-        <div className="ml-4 grid grid-cols-2 gap-3">
-          {stats.map((stat, index) => (
-            <div key={index}>
-              <span className="text-blue-400">{stat.label}:</span> {stat.value}
             </div>
           ))}
         </div>
@@ -377,8 +358,9 @@ export default function About() {
     switch (activeSection) {
       case 'about':
         return (
-          <>
-            <div className="mb-8">
+          <div className="flex flex-col lg:flex-row gap-8 items-start">
+            {/* Text Content */}
+            <div className="flex-1">
               <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
                 <span className="text-3xl">▸</span> My Story
               </h3>
@@ -389,21 +371,50 @@ export default function About() {
               </div>
             </div>
 
-            <div className="grid grid-cols-4 gap-4">
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:border-white/30 transition-all hover:scale-105 cursor-pointer"
-                  style={{ animationDelay: `${index * 100}ms` }}
+            {/* Photo Booth Stack - Hidden on mobile, visible on lg+ screens */}
+            <div className="hidden lg:block relative w-64 h-80 flex-shrink-0">
+              <div className="absolute inset-0 flex items-center justify-center">
+                {/* Photo 1 - Bottom */}
+                <div 
+                  className="absolute w-56 h-72 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg overflow-hidden shadow-2xl transform rotate-[-3deg] hover:rotate-0 transition-all duration-300 hover:scale-105 hover:z-30"
+                  style={{ zIndex: 1 }}
                 >
-                  <div className="text-3xl font-bold text-white">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs text-gray-400 mt-1">{stat.label}</div>
+                  <Image
+                    src="/images/N1.jpg"
+                    alt="Photo 1"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-              ))}
+
+                {/* Photo 2 - Middle */}
+                <div 
+                  className="absolute w-56 h-72 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg overflow-hidden shadow-2xl transform rotate-[2deg] hover:rotate-0 transition-all duration-300 hover:scale-105 hover:z-30"
+                  style={{ zIndex: 2 }}
+                >
+                  <Image
+                    src="/images/N2.jpg"
+                    alt="Photo 2"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                {/* Photo 3 - Top */}
+                <div 
+                  className="absolute w-56 h-72 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg overflow-hidden shadow-2xl transform rotate-[-1deg] hover:rotate-0 transition-all duration-300 hover:scale-105 hover:z-30"
+                  style={{ zIndex: 3 }}
+                >
+                  <Image
+                    src="/images/N3.jpg"
+                    alt="Photo 3"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
             </div>
-          </>
+          </div>
         );
 
       case 'education':
