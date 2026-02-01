@@ -15,46 +15,124 @@ export default function About() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const skills = [
-    { category: 'Frontend', items: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'], icon: '⚛' },
-    { category: 'Design', items: ['Figma', 'UI/UX Design', 'Photography', 'Web Design'], icon: '✎' },
-    { category: 'Tools', items: ['Git', 'GitHub', 'Vercel', 'VS Code'], icon: '⚙' },
+    { 
+      category: 'Technical Skills', 
+      items: ['Time Management', 'Critical Thinking', 'Hardware Hobbyist', 'Server Configuration'], 
+      icon: '⚙' 
+    },
+    { 
+      category: 'Creative Skills', 
+      items: ['Photography', 'Painting', 'Sketching', 'Modeling', 'Ramp'], 
+      icon: '🎨' 
+    },
+    { 
+      category: 'Soft Skills', 
+      items: ['Teamwork', 'Leadership', 'Communication', 'Problem Solving'], 
+      icon: '🤝' 
+    },
+  ];
+
+  const languages = [
+    { name: 'HTML', color: '#E34F26' },
+    { name: 'CSS', color: '#1572B6' },
+    { name: 'JavaScript', color: '#F7DF1E' },
+    { name: 'TypeScript', color: '#3178C6' },
+    { name: 'Python', color: '#3776AB' },
+    { name: 'Java', color: '#007396' },
+    { name: 'C', color: '#A8B9CC' },
+    { name: 'C++', color: '#00599C' },
+    { name: 'PHP', color: '#777BB4' },
+    { name: 'SQL', color: '#4479A1' },
+  ];
+
+  const libraries = [
+    { name: 'Next.js', color: '#af8080' },
+    { name: 'React', color: '#61DAFB' },
+    { name: 'Node.js', color: '#339933' },
+    { name: 'Flask', color: '#729e76' },
+    { name: 'Tailwind CSS', color: '#06B6D4' },
+    { name: 'MongoDB', color: '#47A248' },
+    { name: 'Docker', color: '#2496ED' },
+    { name: 'Git', color: '#F05032' },
+    { name: 'Nginx', color: '#009639' },
+    { name: 'Ngrok', color: '#4a4971' },
+    { name: 'Coolify', color: '#6B21A8' },
+    { name: 'Express.js', color: '#7e75c3' },
+    { name: 'Bootstrap', color: '#7952B3' },
+    { name: 'jQuery', color: '#0769AD' },
+  ];
+
+  const software = [
+    { name: 'Figma', color: '#F24E1E' },
+    { name: 'Illustrator', color: '#FF9A00' },
+    { name: 'Photoshop', color: '#31A8FF' },
+    { name: 'Lightroom', color: '#31A8FF' },
+    { name: 'After Effects', color: '#9999FF' },
+    { name: 'Blender', color: '#F5792A' },
+    { name: 'Affinity', color: '#1B72BE' },
+    { name: 'Inkscape', color: '#e7caca' },
+    { name: 'VS Code', color: '#007ACC' },
+    { name: 'Xcode', color: '#147EFB' },
   ];
 
   const education = [
-    {
-      degree: "Bachelor's in Computer Science",
-      institution: "University of Technology",
-      period: "2020-2024",
-      description: "Focused on web development, algorithms, and software engineering"
-    },
-    {
-      degree: "Web Development Bootcamp",
-      institution: "Self-taught & Online Courses",
-      period: "2019-Present",
-      description: "Continuous learning in modern web technologies and frameworks"
-    }
-  ];
-
-  const projects = [
-    {
-      name: "HackOverflow 4.0",
-      description: "Hackathon event website with modern design and interactive features",
-      tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-      year: "2024"
-    },
-    {
-      name: "Fintech Dashboard",
-      description: "Financial analytics platform with real-time data visualization",
-      tech: ["React", "Chart.js", "Node.js"],
-      year: "2023"
-    },
-    {
-      name: "Portfolio CMS",
-      description: "Custom content management system for creative professionals",
-      tech: ["Next.js", "Sanity", "TypeScript"],
-      year: "2023"
-    }
-  ];
+  {
+    degree: "Bachelor’s in Computer Science & Engineering",
+    institution: "CSMU (Autonomous)",
+    period: "2024 – Present",
+    description:
+      "Currently pursuing undergraduate studies with a focus on computer science fundamentals, software development, and modern computing practices."
+  },
+  {
+    degree: "Diploma in Computer Engineering",
+    institution: "Pillai HOC College of Engineering & Technology",
+    period: "2021 – 2024",
+    description:
+      "Completed a diploma program covering core computer engineering concepts, programming fundamentals, and practical application development."
+  },
+  {
+    degree: "UI/UX Design Certification",
+    institution: "Google UX Design (Online)",
+    period: "2023",
+    description:
+      "Hands-on training in user research, wireframing, prototyping, and designing user-centered digital experiences."
+  },
+  {
+    degree: "Advanced Visual & Interaction Design",
+    institution: "Coursera / Online Learning",
+    period: "2022",
+    description:
+      "Focused on visual hierarchy, interaction patterns, accessibility, and creating polished digital interfaces."
+  },
+  {
+    degree: "Creative Design & Branding Program",
+    institution: "Udemy / Online Learning",
+    period: "2022",
+    description:
+      "Explored design fundamentals, branding principles, layout systems, and creative problem-solving for digital products."
+  },
+  {
+    degree: "Web Development Bootcamp",
+    institution: "Self-taught & Online Courses",
+    period: "2019 – Present",
+    description:
+      "Continuous hands-on learning in frontend development, modern web workflows, and building real-world web applications."
+  },
+  {
+    degree: "Secondary & Higher Secondary Education (State Board)",
+    institution: "St. Joseph High School",
+    period: "2010 – 2021",
+    description:
+      "Completed schooling under the State Board curriculum, building a strong academic foundation."
+  },
+  {
+    degree: "IELTS Academic",
+    institution: "British Council / IDP",
+    period: "2024",
+    description:
+      "Achieved an overall band score of 7.1, demonstrating strong English language proficiency."
+  }
+];
 
   const commands = {
     help: () => (
@@ -64,7 +142,9 @@ export default function About() {
           <div><span className="text-blue-400">about</span> - Display about information</div>
           <div><span className="text-blue-400">education</span> - Show educational background</div>
           <div><span className="text-blue-400">skills</span> - List technical skills</div>
-          <div><span className="text-blue-400">projects</span> - View recent projects</div>
+          <div><span className="text-blue-400">languages</span> - View programming languages</div>
+          <div><span className="text-blue-400">libraries</span> - View frameworks and libraries</div>
+          <div><span className="text-blue-400">software</span> - View software tools</div>
           <div><span className="text-blue-400">contact</span> - Get contact information</div>
           <div><span className="text-blue-400">clear</span> - Clear terminal</div>
           <div><span className="text-blue-400">ls</span> - List directory contents</div>
@@ -109,17 +189,27 @@ export default function About() {
         </div>
       </div>
     ),
-    projects: () => (
+    languages: () => (
       <div className="space-y-2 text-gray-300">
-        <div className="text-green-400 font-semibold">▸ Recent Projects</div>
-        <div className="ml-4 space-y-3">
-          {projects.map((project, index) => (
-            <div key={index}>
-              <div className="text-blue-400">→ {project.name} ({project.year})</div>
-              <div className="text-sm text-gray-400">{project.description}</div>
-              <div className="text-xs text-gray-500 mt-1">{project.tech.join(' • ')}</div>
-            </div>
-          ))}
+        <div className="text-green-400 font-semibold">▸ Programming Languages</div>
+        <div className="ml-4 text-sm">
+          {languages.map(lang => lang.name).join(', ')}
+        </div>
+      </div>
+    ),
+    libraries: () => (
+      <div className="space-y-2 text-gray-300">
+        <div className="text-green-400 font-semibold">▸ Frameworks & Libraries</div>
+        <div className="ml-4 text-sm">
+          {libraries.map(lib => lib.name).join(', ')}
+        </div>
+      </div>
+    ),
+    software: () => (
+      <div className="space-y-2 text-gray-300">
+        <div className="text-green-400 font-semibold">▸ Software Tools</div>
+        <div className="ml-4 text-sm">
+          {software.map(s => s.name).join(', ')}
         </div>
       </div>
     ),
@@ -138,7 +228,9 @@ export default function About() {
         <div className="text-blue-400">▸ about/</div>
         <div className="text-blue-400">▸ education/</div>
         <div className="text-blue-400">▸ skills/</div>
-        <div className="text-blue-400">▸ projects/</div>
+        <div className="text-blue-400">▸ languages/</div>
+        <div className="text-blue-400">▸ libraries/</div>
+        <div className="text-blue-400">▸ software/</div>
         <div className="text-green-400">▸ README.md</div>
         <div className="text-gray-500 text-xs mt-2">▸ .secret/</div>
       </div>
@@ -365,9 +457,9 @@ export default function About() {
                 <span className="text-3xl">▸</span> My Story
               </h3>
               <div className="space-y-4 text-gray-300 leading-relaxed">
-                <p>I'm a passionate Frontend Developer & UI/UX Designer based in Mumbai, India. I specialize in creating beautiful web experiences with modern technologies like Next.js, TypeScript, and Tailwind CSS.</p>
-                <p>My journey combines web development, design, and photography to craft stunning user interfaces. I've worked on projects like HackOverflow 4.0 and various fintech applications, always pushing the boundaries of web design.</p>
-                <p>When I'm not coding, you can find me exploring new design trends, capturing moments through my lens, or contributing to open-source projects on GitHub.</p>
+                <p>I’m a Frontend Developer & UI/UX Designer based in Mumbai, India, focused on building refined, high-performance web experiences using modern frontend technologies.</p>
+                <p>I work at the intersection of engineering, design, and visual creativity to deliver intuitive, scalable, and visually engaging interfaces. My approach blends clean architecture with thoughtful design to create digital products that support real business goals.</p>
+                <p>Nirav stays inspired by evolving design trends, explores photography as a creative outlet, and actively contributes to open-source projects on GitHub.</p>
               </div>
             </div>
 
@@ -445,7 +537,7 @@ export default function About() {
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
               <span className="text-3xl">▸</span> Skills & Technologies
             </h3>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {skills.map((skillGroup, index) => (
                 <div
                   key={index}
@@ -470,34 +562,94 @@ export default function About() {
           </div>
         );
 
-      case 'projects':
+      case 'languages':
         return (
           <div>
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <span className="text-3xl">▸</span> Recent Projects
+              <span className="text-3xl">▸</span> Programming Languages
             </h3>
-            <div className="space-y-4">
-              {projects.map((project, index) => (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {languages.map((lang, index) => (
                 <div
                   key={index}
-                  className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-white/30 transition-all"
-                  style={{ animationDelay: `${index * 150}ms` }}
+                  className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-white/30 transition-all hover:scale-105 flex flex-col items-center justify-center gap-3 group"
+                  style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <div className="flex items-start justify-between mb-2">
-                    <h4 className="text-xl font-semibold text-white">{project.name}</h4>
-                    <span className="text-sm text-gray-400">{project.year}</span>
+                  <div 
+                    className="w-16 h-16 rounded-lg flex items-center justify-center text-3xl font-bold transition-all group-hover:scale-110"
+                    style={{ 
+                      backgroundColor: `${lang.color}20`, 
+                      color: lang.color,
+                      border: `2px solid ${lang.color}40`
+                    }}
+                  >
+                    {lang.name === 'C++' ? 'C++' : 
+                     lang.name === 'C#' ? 'C#' : 
+                     lang.name.substring(0, 2).toUpperCase()}
                   </div>
-                  <p className="text-gray-300 mb-3">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="text-xs px-3 py-1 bg-white/10 rounded-full text-gray-300"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  <span className="text-sm text-gray-300 text-center font-medium">{lang.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+
+      case 'libraries':
+        return (
+          <div>
+            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+              <span className="text-3xl">▸</span> Frameworks & Libraries
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {libraries.map((lib, index) => (
+                <div
+                  key={index}
+                  className="bg-white/5 backdrop-blur-sm p-5 rounded-xl border border-white/10 hover:border-white/30 transition-all hover:scale-105 flex flex-col items-center justify-center gap-3 group"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  <div 
+                    className="w-16 h-16 rounded-lg flex items-center justify-center text-2xl font-bold transition-all group-hover:scale-110"
+                    style={{ 
+                      backgroundColor: `${lib.color}20`, 
+                      color: lib.color,
+                      border: `2px solid ${lib.color}40`
+                    }}
+                  >
+                    {lib.name.includes('.') ? lib.name.split('.')[0].substring(0, 2).toUpperCase() : 
+                     lib.name.substring(0, 2).toUpperCase()}
                   </div>
+                  <span className="text-sm text-gray-300 text-center font-medium">{lib.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+
+      case 'software':
+        return (
+          <div>
+            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+              <span className="text-3xl">▸</span> Software Tools
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              {software.map((tool, index) => (
+                <div
+                  key={index}
+                  className="bg-white/5 backdrop-blur-sm p-5 rounded-xl border border-white/10 hover:border-white/30 transition-all hover:scale-105 flex flex-col items-center justify-center gap-3 group"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  <div 
+                    className="w-16 h-16 rounded-lg flex items-center justify-center text-2xl font-bold transition-all group-hover:scale-110"
+                    style={{ 
+                      backgroundColor: `${tool.color}20`, 
+                      color: tool.color,
+                      border: `2px solid ${tool.color}40`
+                    }}
+                  >
+                    {tool.name === 'VS Code' ? 'VS' : 
+                     tool.name.substring(0, 2).toUpperCase()}
+                  </div>
+                  <span className="text-sm text-gray-300 text-center font-medium">{tool.name}</span>
                 </div>
               ))}
             </div>
@@ -619,22 +771,48 @@ export default function About() {
                       }`}
                     >
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
                       </svg>
                       Skills
                     </div>
                     <div
-                      onClick={() => setActiveSection('projects')}
+                      onClick={() => setActiveSection('languages')}
                       className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm cursor-pointer transition-all ${
-                        activeSection === 'projects'
+                        activeSection === 'languages'
                           ? 'bg-white/10 text-white'
                           : 'hover:bg-white/5 text-gray-400'
                       }`}
                     >
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
+                        <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
-                      Projects
+                      Languages
+                    </div>
+                    <div
+                      onClick={() => setActiveSection('libraries')}
+                      className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm cursor-pointer transition-all ${
+                        activeSection === 'libraries'
+                          ? 'bg-white/10 text-white'
+                          : 'hover:bg-white/5 text-gray-400'
+                      }`}
+                    >
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                      </svg>
+                      Libraries
+                    </div>
+                    <div
+                      onClick={() => setActiveSection('software')}
+                      className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm cursor-pointer transition-all ${
+                        activeSection === 'software'
+                          ? 'bg-white/10 text-white'
+                          : 'hover:bg-white/5 text-gray-400'
+                      }`}
+                    >
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+                      </svg>
+                      Software
                     </div>
                   </div>
                 </div>
@@ -708,7 +886,7 @@ export default function About() {
 
             {/* Quick Commands */}
             <div className="mt-6 flex flex-wrap gap-2 justify-center">
-              {Object.keys(commands).filter(cmd => cmd !== 'ls').map((cmd) => (
+              {Object.keys(commands).filter(cmd => cmd !== 'ls' && cmd !== 'guess').map((cmd) => (
                 <button
                   key={cmd}
                   onClick={() => {
