@@ -9,8 +9,8 @@ const azeretMono = Azeret_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nirav Thakur - Frontend Developer & UI/UX Designer",
-  description: "Portfolio of Nirav Thakur, a Frontend Developer & UI/UX Designer crafting beautiful web experiences with Next.js, TypeScript, Tailwind CSS & Figma.",
+  title: "Nirav Thakur | Portfolio",
+  description: "Portfolio of Nirav Thakur, a Frontend Developer & UI/UX Designer",
 };
 
 export default function RootLayout({

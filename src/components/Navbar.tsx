@@ -32,7 +32,7 @@ export default function Navbar() {
             onClick={() => scrollToSection('hero')}
             className="text-2xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent hover:from-gray-300 hover:to-white transition-all"
           >
-            Nirav.
+            Nirav. 
           </button>
 
           <div className="hidden md:flex items-center gap-8">

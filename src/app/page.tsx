@@ -25,7 +25,7 @@ export default function Home() {
           scanOpacity={0.4}
           enablePost
           bloomIntensity={0.6}
-          chromaticAberration={0.002}
+          chromaticAberration={0.000}
           noiseIntensity={0.01}
         />
       </div>
