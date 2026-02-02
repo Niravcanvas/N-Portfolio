@@ -33,51 +33,51 @@ export default function About() {
   ];
 
   const languages = [
-    { name: 'HTML', color: '#E34F26' },
-    { name: 'CSS', color: '#1572B6' },
-    { name: 'JavaScript', color: '#F7DF1E' },
-    { name: 'TypeScript', color: '#3178C6' },
-    { name: 'Python', color: '#3776AB' },
-    { name: 'Java', color: '#007396' },
-    { name: 'C', color: '#A8B9CC' },
-    { name: 'C++', color: '#00599C' },
-    { name: 'PHP', color: '#777BB4' },
-    { name: 'SQL', color: '#4479A1' },
+    { name: 'HTML', color: '#E34F26', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+    { name: 'CSS', color: '#1572B6', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+    { name: 'JavaScript', color: '#F7DF1E', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+    { name: 'TypeScript', color: '#3178C6', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+    { name: 'Python', color: '#3776AB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+    { name: 'Java', color: '#007396', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+    { name: 'C', color: '#A8B9CC', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg' },
+    { name: 'C++', color: '#00599C', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
+    { name: 'PHP', color: '#777BB4', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
+    { name: 'SQL', color: '#4479A1', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
   ];
 
   const libraries = [
-    { name: 'Next.js', color: '#af8080' },
-    { name: 'React', color: '#61DAFB' },
-    { name: 'Node.js', color: '#339933' },
-    { name: 'Flask', color: '#729e76' },
-    { name: 'Tailwind CSS', color: '#06B6D4' },
-    { name: 'MongoDB', color: '#47A248' },
-    { name: 'Docker', color: '#2496ED' },
-    { name: 'Git', color: '#F05032' },
-    { name: 'Nginx', color: '#009639' },
-    { name: 'Ngrok', color: '#4a4971' },
-    { name: 'Coolify', color: '#6B21A8' },
-    { name: 'Express.js', color: '#7e75c3' },
-    { name: 'Bootstrap', color: '#7952B3' },
-    { name: 'jQuery', color: '#0769AD' },
+    { name: 'Next.js', color: '#000000', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', darkLogo: true },
+    { name: 'React', color: '#61DAFB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', darkLogo: false },
+    { name: 'Node.js', color: '#339933', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', darkLogo: false },
+    { name: 'Flask', color: '#000000', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg', darkLogo: true },
+    { name: 'Tailwind CSS', color: '#06B6D4', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', darkLogo: false },
+    { name: 'MongoDB', color: '#47A248', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', darkLogo: false },
+    { name: 'Docker', color: '#2496ED', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', darkLogo: false },
+    { name: 'Git', color: '#F05032', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', darkLogo: false },
+    { name: 'Nginx', color: '#009639', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg', darkLogo: false },
+    { name: 'Ngrok', color: '#1F1E37', logo: 'https://simpleicons.org/icons/ngrok.svg', darkLogo: true },
+    { name: 'Coolify', color: '#6B21A8', logo: 'https://cdn.coollabs.io/assets/coolify/logo.png', darkLogo: false },
+    { name: 'Express.js', color: '#000000', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', darkLogo: true },
+    { name: 'Bootstrap', color: '#7952B3', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg', darkLogo: false },
+    { name: 'jQuery', color: '#0769AD', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg', darkLogo: false },
   ];
 
   const software = [
-    { name: 'Figma', color: '#F24E1E' },
-    { name: 'Illustrator', color: '#FF9A00' },
-    { name: 'Photoshop', color: '#31A8FF' },
-    { name: 'Lightroom', color: '#31A8FF' },
-    { name: 'After Effects', color: '#9999FF' },
-    { name: 'Blender', color: '#F5792A' },
-    { name: 'Affinity', color: '#1B72BE' },
-    { name: 'Inkscape', color: '#e7caca' },
-    { name: 'VS Code', color: '#007ACC' },
-    { name: 'Xcode', color: '#147EFB' },
+    { name: 'Figma', color: '#F24E1E', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg', darkLogo: false },
+    { name: 'Illustrator', color: '#FF9A00', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg', darkLogo: false },
+    { name: 'Photoshop', color: '#31A8FF', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg', darkLogo: false },
+    { name: 'Lightroom', color: '#31A8FF', logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b6/Adobe_Photoshop_Lightroom_CC_logo.svg', darkLogo: false },
+    { name: 'After Effects', color: '#9999FF', logo: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg', darkLogo: false },
+    { name: 'Blender', color: '#F5792A', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg', darkLogo: false },
+    { name: 'Affinity', color: '#1B72BE', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/48/Serif_Affinity_V2_icon.svg', darkLogo: false },
+    { name: 'Inkscape', color: '#000000', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/inkscape/inkscape-original.svg', darkLogo: true },
+    { name: 'VS Code', color: '#007ACC', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg', darkLogo: false },
+    { name: 'Xcode', color: '#147EFB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xcode/xcode-original.svg', darkLogo: false },
   ];
 
   const education = [
   {
-    degree: "Bachelor’s in Computer Science & Engineering",
+    degree: "Bachelor's in Computer Science & Engineering",
     institution: "CSMU (Autonomous)",
     period: "2024 – Present",
     description:
@@ -457,7 +457,7 @@ export default function About() {
                 <span className="text-3xl">▸</span> My Story
               </h3>
               <div className="space-y-4 text-gray-300 leading-relaxed">
-                <p>I’m a Frontend Developer & UI/UX Designer based in Mumbai, India, focused on building refined, high-performance web experiences using modern frontend technologies.</p>
+                <p>I'm a Frontend Developer & UI/UX Designer based in Mumbai, India, focused on building refined, high-performance web experiences using modern frontend technologies.</p>
                 <p>I work at the intersection of engineering, design, and visual creativity to deliver intuitive, scalable, and visually engaging interfaces. My approach blends clean architecture with thoughtful design to create digital products that support real business goals.</p>
                 <p>Nirav stays inspired by evolving design trends, explores photography as a creative outlet, and actively contributes to open-source projects on GitHub.</p>
               </div>
@@ -568,26 +568,30 @@ export default function About() {
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
               <span className="text-3xl">▸</span> Programming Languages
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {languages.map((lang, index) => (
                 <div
                   key={index}
-                  className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-white/30 transition-all hover:scale-105 flex flex-col items-center justify-center gap-3 group"
+                  className="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:border-white/30 transition-all hover:scale-105 flex flex-col items-center justify-center gap-2 group"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <div 
-                    className="w-16 h-16 rounded-lg flex items-center justify-center text-3xl font-bold transition-all group-hover:scale-110"
-                    style={{ 
-                      backgroundColor: `${lang.color}20`, 
-                      color: lang.color,
-                      border: `2px solid ${lang.color}40`
-                    }}
-                  >
-                    {lang.name === 'C++' ? 'C++' : 
-                     lang.name === 'C#' ? 'C#' : 
-                     lang.name.substring(0, 2).toUpperCase()}
+                  <div className="relative w-12 h-12 flex items-center justify-center transition-all group-hover:scale-110">
+                    <img 
+                      src={lang.logo} 
+                      alt={lang.name}
+                      className="w-full h-full object-contain"
+                      onError={(e) => {
+                        // Fallback to text if image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = `<div class="text-2xl font-bold" style="color: ${lang.color}">${lang.name.substring(0, 2).toUpperCase()}</div>`;
+                        }
+                      }}
+                    />
                   </div>
-                  <span className="text-sm text-gray-300 text-center font-medium">{lang.name}</span>
+                  <span className="text-xs text-gray-300 text-center font-medium">{lang.name}</span>
                 </div>
               ))}
             </div>
@@ -604,21 +608,30 @@ export default function About() {
               {libraries.map((lib, index) => (
                 <div
                   key={index}
-                  className="bg-white/5 backdrop-blur-sm p-5 rounded-xl border border-white/10 hover:border-white/30 transition-all hover:scale-105 flex flex-col items-center justify-center gap-3 group"
+                  className="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:border-white/30 transition-all hover:scale-105 flex flex-col items-center justify-center gap-2 group"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <div 
-                    className="w-16 h-16 rounded-lg flex items-center justify-center text-2xl font-bold transition-all group-hover:scale-110"
-                    style={{ 
-                      backgroundColor: `${lib.color}20`, 
-                      color: lib.color,
-                      border: `2px solid ${lib.color}40`
-                    }}
-                  >
-                    {lib.name.includes('.') ? lib.name.split('.')[0].substring(0, 2).toUpperCase() : 
-                     lib.name.substring(0, 2).toUpperCase()}
+                  <div className="relative w-12 h-12 flex items-center justify-center transition-all group-hover:scale-110">
+                    <img 
+                      src={lib.logo} 
+                      alt={lib.name}
+                      className="w-full h-full object-contain"
+                      style={{
+                        filter: lib.darkLogo ? 'invert(1)' : 'none',
+                      }}
+                      onError={(e) => {
+                        // Fallback to text if image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          const text = lib.name.includes('.') ? lib.name.split('.')[0].substring(0, 2).toUpperCase() : lib.name.substring(0, 2).toUpperCase();
+                          parent.innerHTML = `<div class="text-xl font-bold" style="color: ${lib.color}">${text}</div>`;
+                        }
+                      }}
+                    />
                   </div>
-                  <span className="text-sm text-gray-300 text-center font-medium">{lib.name}</span>
+                  <span className="text-xs text-gray-300 text-center font-medium">{lib.name}</span>
                 </div>
               ))}
             </div>
@@ -635,21 +648,30 @@ export default function About() {
               {software.map((tool, index) => (
                 <div
                   key={index}
-                  className="bg-white/5 backdrop-blur-sm p-5 rounded-xl border border-white/10 hover:border-white/30 transition-all hover:scale-105 flex flex-col items-center justify-center gap-3 group"
+                  className="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:border-white/30 transition-all hover:scale-105 flex flex-col items-center justify-center gap-2 group"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <div 
-                    className="w-16 h-16 rounded-lg flex items-center justify-center text-2xl font-bold transition-all group-hover:scale-110"
-                    style={{ 
-                      backgroundColor: `${tool.color}20`, 
-                      color: tool.color,
-                      border: `2px solid ${tool.color}40`
-                    }}
-                  >
-                    {tool.name === 'VS Code' ? 'VS' : 
-                     tool.name.substring(0, 2).toUpperCase()}
+                  <div className="relative w-12 h-12 flex items-center justify-center transition-all group-hover:scale-110">
+                    <img 
+                      src={tool.logo} 
+                      alt={tool.name}
+                      className="w-full h-full object-contain"
+                      style={{
+                        filter: tool.darkLogo ? 'invert(1)' : 'none',
+                      }}
+                      onError={(e) => {
+                        // Fallback to text if image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          const text = tool.name === 'VS Code' ? 'VS' : tool.name.substring(0, 2).toUpperCase();
+                          parent.innerHTML = `<div class="text-xl font-bold" style="color: ${tool.color}">${text}</div>`;
+                        }
+                      }}
+                    />
                   </div>
-                  <span className="text-sm text-gray-300 text-center font-medium">{tool.name}</span>
+                  <span className="text-xs text-gray-300 text-center font-medium">{tool.name}</span>
                 </div>
               ))}
             </div>
