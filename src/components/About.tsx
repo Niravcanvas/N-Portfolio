@@ -727,7 +727,7 @@ export default function About() {
                   </div>
                   <span className="text-sm text-gray-400">About Me</span>
                 </div>
-                <div className="text-xs text-gray-500">~/Developer/Portfolio</div>
+                <div className="text-xs text-gray-500">If you are a developer, you can switch to Terminal</div>
               </div>
 
               {/* Sidebar + Content */}
