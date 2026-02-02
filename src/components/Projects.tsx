@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FolderOpen, Star, Clock, Code, Palette, Settings, ExternalLink, FileText } from 'lucide-react';
+import { FolderOpen, Star, Clock, Code, Palette, Settings, ExternalLink, FileText, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 
 interface Project {
@@ -23,6 +23,7 @@ interface Project {
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<number>(1);
   const [activeFolder, setActiveFolder] = useState<'all' | 'development' | 'design' | 'favorites'>('all');
+  const [expandedMobile, setExpandedMobile] = useState<number | null>(null);
 
   const projects: Project[] = [
     {
@@ -157,6 +158,11 @@ export default function Projects() {
     { name: 'Favorites', id: 'favorites' as const, icon: <Star className="w-4 h-4" />, count: projects.filter(p => p.category === 'favorites').length },
   ];
 
+  const handleMobileProjectClick = (projectId: number) => {
+    setExpandedMobile(expandedMobile === projectId ? null : projectId);
+    setSelectedProject(projectId);
+  };
+
   return (
     <section id="projects" className="min-h-screen py-20 relative overflow-hidden px-4">
       {/* Floating orbs background */}
@@ -206,9 +212,9 @@ export default function Projects() {
             </div>
 
             {/* Three Column Layout */}
-            <div className="flex h-[600px]">
-              {/* Folders Sidebar */}
-              <div className="w-48 bg-white/5 border-r border-white/10 p-3">
+            <div className="flex md:h-[600px] h-auto max-h-[70vh] md:max-h-none">
+              {/* Folders Sidebar - Hidden on mobile */}
+              <div className="hidden md:block w-48 bg-white/5 border-r border-white/10 p-3">
                 <div className="text-xs text-gray-500 uppercase tracking-wider mb-3 px-2">Folders</div>
                 <div className="space-y-1">
                   {folders.map((folder) => (
@@ -231,49 +237,140 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* Notes List */}
-              <div className="w-64 bg-white/5 border-r border-white/10 overflow-y-auto">
+              {/* Notes List - Full width on mobile with expandable cards */}
+              <div className="w-full md:w-64 bg-white/5 border-r border-white/10 overflow-y-auto md:border-r-white/10 border-r-transparent">
                 <div className="p-3 border-b border-white/10">
                   <div className="text-sm font-medium text-white">{filteredProjects.length} Notes</div>
                 </div>
                 <div className="divide-y divide-white/10">
                   {filteredProjects.map((project) => (
-                    <button
-                      key={project.id}
-                      onClick={() => setSelectedProject(project.id)}
-                      className={`w-full p-4 text-left transition-all hover:bg-white/5 ${
-                        selectedProject === project.id ? 'bg-white/10' : ''
-                      }`}
-                    >
-                      <div className="flex items-start gap-3 mb-2">
-                        {project.imageType === 'emoji' ? (
-                          <span className="text-2xl">{project.image}</span>
-                        ) : (
-                          <div className="w-8 h-8 relative flex-shrink-0">
-                            <Image
-                              src={project.image}
-                              alt={project.title}
-                              fill
-                              className="object-contain"
-                            />
+                    <div key={project.id}>
+                      {/* Project Header - Always Visible */}
+                      <button
+                        onClick={() => {
+                          handleMobileProjectClick(project.id);
+                          setSelectedProject(project.id);
+                        }}
+                        className={`w-full p-4 text-left transition-all hover:bg-white/5 ${
+                          selectedProject === project.id ? 'bg-white/10' : ''
+                        }`}
+                      >
+                        <div className="flex items-start gap-3 mb-2">
+                          {project.imageType === 'emoji' ? (
+                            <span className="text-2xl">{project.image}</span>
+                          ) : (
+                            <div className="w-8 h-8 relative flex-shrink-0">
+                              <Image
+                                src={project.image}
+                                alt={project.title}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                          )}
+                          <div className="flex-1 min-w-0">
+                            <h4 className="text-sm font-medium text-white truncate mb-1">{project.title}</h4>
+                            <p className="text-xs text-gray-400 line-clamp-2">{project.description}</p>
                           </div>
-                        )}
-                        <div className="flex-1 min-w-0">
-                          <h4 className="text-sm font-medium text-white truncate mb-1">{project.title}</h4>
-                          <p className="text-xs text-gray-400 line-clamp-2">{project.description}</p>
+                          <ChevronDown 
+                            className={`w-4 h-4 text-gray-400 transition-transform md:hidden flex-shrink-0 ${
+                              expandedMobile === project.id ? 'rotate-180' : ''
+                            }`}
+                          />
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                          <Clock className="w-3 h-3" />
+                          <span>{project.date}</span>
+                        </div>
+                      </button>
+
+                      {/* Expandable Content - Mobile Only */}
+                      <div 
+                        className={`md:hidden overflow-hidden transition-all duration-300 ${
+                          expandedMobile === project.id ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+                        }`}
+                      >
+                        <div className="px-4 pb-4 space-y-4 border-t border-white/5 pt-4">
+                          {/* Tags */}
+                          <div className="flex flex-wrap gap-2">
+                            {project.tags.map((tag, i) => (
+                              <span
+                                key={i}
+                                className="px-2 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-xs text-gray-300"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+
+                          {/* Overview */}
+                          <div>
+                            <h4 className="text-xs font-semibold text-gray-300 mb-1">Overview</h4>
+                            <p className="text-xs text-gray-400 leading-relaxed">{project.description}</p>
+                          </div>
+
+                          {/* Details */}
+                          <div>
+                            <h4 className="text-xs font-semibold text-gray-300 mb-1">Details</h4>
+                            <p className="text-xs text-gray-400 leading-relaxed">{project.content}</p>
+                          </div>
+
+                          {/* Action Buttons */}
+                          <div className="grid grid-cols-2 gap-2">
+                            {project.link && project.link !== '#' && (
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-xs text-white text-center hover:bg-white/20 transition-all flex items-center justify-center gap-1.5"
+                              >
+                                <ExternalLink className="w-3 h-3" />
+                                Live Demo
+                              </a>
+                            )}
+                            {project.github && (
+                              <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-xs text-white text-center hover:bg-white/20 transition-all flex items-center justify-center gap-1.5"
+                              >
+                                <Code className="w-3 h-3" />
+                                GitHub
+                              </a>
+                            )}
+                            {project.figma && (
+                              <a
+                                href={project.figma}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-xs text-white text-center hover:bg-white/20 transition-all flex items-center justify-center gap-1.5"
+                              >
+                                <Palette className="w-3 h-3" />
+                                Figma
+                              </a>
+                            )}
+                            {project.pdf && (
+                              <a
+                                href={project.pdf}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-xs text-white text-center hover:bg-white/20 transition-all flex items-center justify-center gap-1.5"
+                              >
+                                <FileText className="w-3 h-3" />
+                                View PDF
+                              </a>
+                            )}
+                          </div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2 text-xs text-gray-500">
-                        <Clock className="w-3 h-3" />
-                        <span>{project.date}</span>
-                      </div>
-                    </button>
+                    </div>
                   ))}
                 </div>
               </div>
 
-              {/* Note Content */}
-              <div className="flex-1 overflow-y-auto">
+              {/* Note Content - Desktop Only */}
+              <div className="hidden md:block flex-1 overflow-y-auto">
                 {currentProject ? (
                   <div className="p-6">
                     {/* Note Header */}
