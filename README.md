@@ -8,7 +8,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-black?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-black?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-[**View Live**](https://niravthakur.dev) • [**GitHub Profile**](https://github.com/Niravcanvas)
+[**View Live**](https://niravthakur.in) • [**GitHub Profile**](https://github.com/Niravcanvas)
 
 ---
 
