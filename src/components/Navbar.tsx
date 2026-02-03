@@ -18,6 +18,11 @@ export default function Navbar() {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleResumeClick = () => {
+    // Open resume PDF in new tab
+    window.open('/Docs/N-Resume.pdf', '_blank');
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -48,7 +53,10 @@ export default function Navbar() {
             ))}
           </div>
 
-          <button className="px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-white/20 transition-all">
+          <button 
+            onClick={handleResumeClick}
+            className="px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-white/20 transition-all"
+          >
             Resume
           </button>
         </div>
