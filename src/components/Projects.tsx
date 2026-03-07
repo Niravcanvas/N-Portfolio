@@ -40,19 +40,6 @@ export default function Projects() {
       content: 'IndieAn website features a stable front-end build with responsive design across all devices. The platform integrates gamification elements to make music learning engaging and interactive, while maintaining professional standards aligned with Trinity College curriculum.'
     },
     {
-      id: 2,
-      title: 'Maharashtra Chemists Association',
-      description: 'The Maharashtra State Chemists and Druggists Association (MSCDA) is an apex body representing nearly 75,000 chemists & druggists across Maharashtra.',
-      tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Glassmorphism', 'MongoDB', 'Vercel'],
-      image: '/images/MSCDA.svg',
-      imageType: 'svg',
-      link: 'https://mscda.vercel.app',
-      github: '',
-      category: 'development',
-      date: 'November 10, 2025',
-      content: 'A comprehensive web solution featuring custom CMS integration, member portal, news & updates section, event management system, VPS deployment, and admin dashboard. Built with modern technologies to serve thousands of members efficiently.'
-    },
-    {
       id: 3,
       title: 'Seven Vinyl Store',
       description: 'Sample brand design concept for a music and lifestyle vinyl record store. Complete brand identity including logo, color palette, and visual guidelines.',
