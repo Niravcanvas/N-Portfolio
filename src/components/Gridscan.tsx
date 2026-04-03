@@ -1,7 +1,8 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { EffectComposer, RenderPass, EffectPass, BloomEffect, ChromaticAberrationEffect } from 'postprocessing';
 import * as THREE from 'three';
+
 
 type GridScanProps = {
   lineThickness?: number;
@@ -345,7 +346,7 @@ export const GridScan: React.FC<GridScanProps> = ({
   const MAX_SCANS = 8;
   const scanStartsRef = useRef<number[]>([]);
 
-  const pushScan = (t: number) => {
+  const pushScan = useCallback((t: number) => {
     const arr = scanStartsRef.current.slice();
     if (arr.length >= MAX_SCANS) arr.shift();
     arr.push(t);
@@ -357,7 +358,7 @@ export const GridScan: React.FC<GridScanProps> = ({
       u.uScanStarts.value = buf;
       u.uScanCount.value = arr.length;
     }
-  };
+  }, []);
 
   const s = THREE.MathUtils.clamp(sensitivity, 0, 1);
   const skewScale = THREE.MathUtils.lerp(0.06, 0.2, s);
@@ -387,12 +388,14 @@ export const GridScan: React.FC<GridScanProps> = ({
       if (
         enableGyro &&
         typeof window !== 'undefined' &&
-        (window as any).DeviceOrientationEvent &&
-        (DeviceOrientationEvent as any).requestPermission
+        'DeviceOrientationEvent' in window
       ) {
-        try {
-          await (DeviceOrientationEvent as any).requestPermission();
-        } catch {}
+        const DOE = DeviceOrientationEvent as unknown as { requestPermission?: () => Promise<string> };
+        if (DOE.requestPermission) {
+          try {
+            await DOE.requestPermission();
+          } catch { /* user denied */ }
+        }
       }
     };
     const onEnter = () => {
@@ -423,7 +426,7 @@ export const GridScan: React.FC<GridScanProps> = ({
       if (scanOnClick) el.removeEventListener('click', onClick);
       if (leaveTimer) clearTimeout(leaveTimer);
     };
-  }, [snapBackDelay, scanOnClick, enableGyro]);
+  }, [snapBackDelay, scanOnClick, enableGyro, pushScan]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -610,8 +613,9 @@ export const GridScan: React.FC<GridScanProps> = ({
     }
     if (bloomRef.current) {
       bloomRef.current.blendMode.opacity.value = Math.max(0, bloomIntensity);
-      (bloomRef.current as any).luminanceMaterial.threshold = bloomThreshold;
-      (bloomRef.current as any).luminanceMaterial.smoothing = bloomSmoothing;
+      const luminanceMat = (bloomRef.current as unknown as { luminanceMaterial: { threshold: number; smoothing: number } }).luminanceMaterial;
+      luminanceMat.threshold = bloomThreshold;
+      luminanceMat.smoothing = bloomSmoothing;
     }
     if (chromaRef.current) {
       chromaRef.current.offset.set(chromaticAberration, chromaticAberration);
@@ -712,11 +716,9 @@ function smoothDampFloat(
   const x = omega * deltaTime;
   const exp = 1 / (1 + x + 0.48 * x * x + 0.235 * x * x * x);
 
-  let change = current - target;
-  const originalTo = target;
-
   const maxChange = maxSpeed * smoothTime;
-  change = Math.sign(change) * Math.min(Math.abs(change), maxChange);
+  const change = Math.sign(current - target) * Math.min(Math.abs(current - target), maxChange);
+  const originalTo = target;
 
   target = current - change;
   const temp = (velRef.v + omega * change) * deltaTime;

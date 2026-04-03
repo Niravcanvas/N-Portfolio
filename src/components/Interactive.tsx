@@ -1,17 +1,16 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
-interface Node {
+interface NodeData {
   x: number;
   y: number;
   vx: number;
   vy: number;
   radius: number;
-  connections: number[];
 }
 
-interface Particle {
+interface ParticleData {
   x: number;
   y: number;
   vx: number;
@@ -22,36 +21,36 @@ interface Particle {
 
 export default function Interactive() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [nodes, setNodes] = useState<Node[]>([]);
-  const [particles, setParticles] = useState<Particle[]>([]);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const nodesRef = useRef<NodeData[]>([]);
+  const particlesRef = useRef<ParticleData[]>([]);
+  const mousePosRef = useRef({ x: 0, y: 0 });
   const animationFrameRef = useRef<number | null>(null);
+  const statsDisplayRef = useRef<HTMLDivElement>(null);
+  const statsParticleDisplayRef = useRef<HTMLDivElement>(null);
 
-  // Handle mouse move
-  const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const rect = canvas.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    setMousePos({ x, y });
+    mousePosRef.current = { x, y };
 
     // Spawn cursor particles
     if (Math.random() > 0.7) {
-      setParticles(prev => [...prev, {
+      particlesRef.current.push({
         x,
         y,
         vx: (Math.random() - 0.5) * 2,
         vy: (Math.random() - 0.5) * 2,
         life: 1,
-        maxLife: 60
-      }]);
+        maxLife: 60,
+      });
     }
-  };
+  }, []);
 
-  // Handle canvas click to spawn nodes
-  const handleCanvasClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const handleCanvasClick = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -59,40 +58,34 @@ export default function Interactive() {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const newNode: Node = {
+    const newNode: NodeData = {
       x,
       y,
       vx: (Math.random() - 0.5) * 2,
       vy: (Math.random() - 0.5) * 2,
       radius: 4 + Math.random() * 4,
-      connections: []
     };
 
-    setNodes(prev => {
-      if (prev.length >= 30) {
-        return [...prev.slice(1), newNode];
-      }
-      return [...prev, newNode];
-    });
+    if (nodesRef.current.length >= 30) {
+      nodesRef.current.shift();
+    }
+    nodesRef.current.push(newNode);
 
     // Spawn particle burst
     const burstCount = 15;
-    const newParticles: Particle[] = [];
     for (let i = 0; i < burstCount; i++) {
       const angle = (Math.PI * 2 * i) / burstCount;
-      newParticles.push({
+      particlesRef.current.push({
         x,
         y,
         vx: Math.cos(angle) * 3,
         vy: Math.sin(angle) * 3,
         life: 1,
-        maxLife: 40
+        maxLife: 40,
       });
     }
-    setParticles(prev => [...prev, ...newParticles]);
-  };
+  }, []);
 
-  // Animation loop
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -100,15 +93,24 @@ export default function Interactive() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size
     const resizeCanvas = () => {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     };
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+
+    let resizeTimer: ReturnType<typeof setTimeout> | null = null;
+    const debouncedResize = () => {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resizeCanvas, 150);
+    };
+    window.addEventListener('resize', debouncedResize, { passive: true });
 
     const animate = () => {
+      const nodes = nodesRef.current;
+      const particles = particlesRef.current;
+      const mousePos = mousePosRef.current;
+
       // Clear canvas
       ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -117,14 +119,14 @@ export default function Interactive() {
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
       ctx.lineWidth = 1;
       const gridSize = 50;
-      
+
       for (let x = 0; x < canvas.width; x += gridSize) {
         ctx.beginPath();
         ctx.moveTo(x, 0);
         ctx.lineTo(x, canvas.height);
         ctx.stroke();
       }
-      
+
       for (let y = 0; y < canvas.height; y += gridSize) {
         ctx.beginPath();
         ctx.moveTo(0, y);
@@ -133,129 +135,139 @@ export default function Interactive() {
       }
 
       // Update and draw nodes
-      setNodes(prevNodes => {
-        const updatedNodes = prevNodes.map(node => {
-          let newX = node.x + node.vx;
-          let newY = node.y + node.vy;
-          let newVx = node.vx;
-          let newVy = node.vy;
+      for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
 
-          // Bounce off edges
-          if (newX < 0 || newX > canvas.width) {
-            newVx = -newVx;
-            newX = Math.max(0, Math.min(canvas.width, newX));
-          }
-          if (newY < 0 || newY > canvas.height) {
-            newVy = -newVy;
-            newY = Math.max(0, Math.min(canvas.height, newY));
-          }
+        // Update position
+        node.x += node.vx;
+        node.y += node.vy;
 
-          return { ...node, x: newX, y: newY, vx: newVx, vy: newVy };
-        });
+        // Bounce off edges
+        if (node.x < 0 || node.x > canvas.width) {
+          node.vx = -node.vx;
+          node.x = Math.max(0, Math.min(canvas.width, node.x));
+        }
+        if (node.y < 0 || node.y > canvas.height) {
+          node.vy = -node.vy;
+          node.y = Math.max(0, Math.min(canvas.height, node.y));
+        }
 
         // Draw connections between nearby nodes
-        updatedNodes.forEach((node, i) => {
-          updatedNodes.forEach((otherNode, j) => {
-            if (i >= j) return;
-            
-            const dx = node.x - otherNode.x;
-            const dy = node.y - otherNode.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            if (distance < 150) {
-              const opacity = 1 - distance / 150;
-              ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.3})`;
-              ctx.lineWidth = 1;
-              ctx.beginPath();
-              ctx.moveTo(node.x, node.y);
-              ctx.lineTo(otherNode.x, otherNode.y);
-              ctx.stroke();
-            }
-          });
+        for (let j = i + 1; j < nodes.length; j++) {
+          const otherNode = nodes[j];
+          const dx = node.x - otherNode.x;
+          const dy = node.y - otherNode.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
 
-          // Draw connection to mouse if close
-          const dxMouse = node.x - mousePos.x;
-          const dyMouse = node.y - mousePos.y;
-          const distanceToMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
-          
-          if (distanceToMouse < 100) {
-            const opacity = 1 - distanceToMouse / 100;
-            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.5})`;
-            ctx.lineWidth = 2;
+          if (distance < 150) {
+            const opacity = 1 - distance / 150;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.3})`;
+            ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(node.x, node.y);
-            ctx.lineTo(mousePos.x, mousePos.y);
+            ctx.lineTo(otherNode.x, otherNode.y);
             ctx.stroke();
           }
+        }
 
-          // Draw node
+        // Draw connection to mouse if close
+        const dxMouse = node.x - mousePos.x;
+        const dyMouse = node.y - mousePos.y;
+        const distanceToMouse = Math.sqrt(
+          dxMouse * dxMouse + dyMouse * dyMouse
+        );
+
+        if (distanceToMouse < 100) {
+          const opacity = 1 - distanceToMouse / 100;
+          ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.5})`;
+          ctx.lineWidth = 2;
           ctx.beginPath();
-          ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-          ctx.fill();
-          ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
-          ctx.lineWidth = 1;
+          ctx.moveTo(node.x, node.y);
+          ctx.lineTo(mousePos.x, mousePos.y);
           ctx.stroke();
+        }
 
-          // Draw pulse ring
-          const pulseRadius = node.radius + (Math.sin(Date.now() / 500 + i) + 1) * 3;
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, pulseRadius, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${0.2 + Math.sin(Date.now() / 500 + i) * 0.1})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        });
-
-        return updatedNodes;
-      });
-
-      // Update and draw particles
-      setParticles(prevParticles => {
-        return prevParticles
-          .map(particle => ({
-            ...particle,
-            x: particle.x + particle.vx,
-            y: particle.y + particle.vy,
-            life: particle.life - 1 / particle.maxLife,
-            vx: particle.vx * 0.98,
-            vy: particle.vy * 0.98
-          }))
-          .filter(particle => particle.life > 0);
-      });
-
-      particles.forEach(particle => {
-        const size = 2 * particle.life;
+        // Draw node
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${particle.life * 0.6})`;
+        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
         ctx.fill();
-      });
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        // Draw pulse ring
+        const pulseRadius =
+          node.radius + (Math.sin(Date.now() / 500 + i) + 1) * 3;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, pulseRadius, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(255, 255, 255, ${0.2 + Math.sin(Date.now() / 500 + i) * 0.1})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+
+      // Update and draw particles (filter in-place)
+      let writeIdx = 0;
+      for (let i = 0; i < particles.length; i++) {
+        const particle = particles[i];
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+        particle.life -= 1 / particle.maxLife;
+        particle.vx *= 0.98;
+        particle.vy *= 0.98;
+
+        if (particle.life > 0) {
+          // Draw particle
+          const size = 2 * particle.life;
+          ctx.beginPath();
+          ctx.arc(particle.x, particle.y, size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${particle.life * 0.6})`;
+          ctx.fill();
+
+          particles[writeIdx] = particle;
+          writeIdx++;
+        }
+      }
+      particles.length = writeIdx;
 
       // Draw cursor glow
       const cursorGradient = ctx.createRadialGradient(
-        mousePos.x, mousePos.y, 0,
-        mousePos.x, mousePos.y, 50
+        mousePos.x,
+        mousePos.y,
+        0,
+        mousePos.x,
+        mousePos.y,
+        50
       );
       cursorGradient.addColorStop(0, 'rgba(255, 255, 255, 0.2)');
       cursorGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-      
+
       ctx.beginPath();
       ctx.arc(mousePos.x, mousePos.y, 50, 0, Math.PI * 2);
       ctx.fillStyle = cursorGradient;
       ctx.fill();
 
+      // Update stats DOM directly (no React re-render)
+      if (statsDisplayRef.current) {
+        statsDisplayRef.current.textContent = `${nodes.length}/30`;
+      }
+      if (statsParticleDisplayRef.current) {
+        statsParticleDisplayRef.current.textContent = `${particles.length}`;
+      }
+
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
-    animate();
+    animationFrameRef.current = requestAnimationFrame(animate);
 
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', debouncedResize);
+      if (resizeTimer) clearTimeout(resizeTimer);
     };
-  }, [nodes, particles, mousePos]);
+  }, []);
 
   return (
     <section id="interactive" className="h-[50vh] relative overflow-hidden bg-black">
@@ -265,6 +277,7 @@ export default function Interactive() {
         onMouseMove={handleMouseMove}
         onClick={handleCanvasClick}
         className="w-full h-full cursor-crosshair"
+        aria-label="Interactive node canvas — click to spawn nodes, move mouse to interact"
       />
 
       {/* Subtle instruction hint */}
@@ -281,20 +294,20 @@ export default function Interactive() {
         <div className="space-y-2 font-mono text-xs">
           <div className="px-3 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg">
             <span className="text-white/40">NODES:</span>{' '}
-            <span className="text-white">{nodes.length}/30</span>
+            <span ref={statsDisplayRef} className="text-white">0/30</span>
           </div>
           <div className="px-3 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg">
             <span className="text-white/40">PARTICLES:</span>{' '}
-            <span className="text-white">{particles.length}</span>
+            <span ref={statsParticleDisplayRef} className="text-white">0</span>
           </div>
         </div>
       </div>
 
       {/* Corner accents */}
-      <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-white/20"></div>
-      <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-white/20"></div>
-      <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-white/20"></div>
-      <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-white/20"></div>
+      <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-white/20" />
+      <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-white/20" />
+      <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-white/20" />
+      <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-white/20" />
     </section>
   );
 }
