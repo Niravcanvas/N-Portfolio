@@ -5,7 +5,6 @@ import Image from 'next/image';
 interface SkillGroup {
   category: string;
   items: string[];
-  icon: string;
 }
 
 interface TechItem {
@@ -31,17 +30,14 @@ const skills: SkillGroup[] = [
   {
     category: 'Technical Skills',
     items: ['Time Management', 'Critical Thinking', 'Hardware Hobbyist', 'Server Configuration'],
-    icon: '⚙',
   },
   {
     category: 'Creative Skills',
     items: ['Photography', 'Painting', 'Sketching', 'Modeling', 'Ramp'],
-    icon: '🎨',
   },
   {
     category: 'Soft Skills',
     items: ['Teamwork', 'Leadership', 'Communication', 'Problem Solving'],
-    icon: '🤝',
   },
 ];
 
@@ -93,49 +89,49 @@ const education: EducationItem[] = [
     degree: "Bachelor's in Computer Science & Engineering",
     institution: 'CSMU (Autonomous)',
     period: '2024 – Present',
-    description: 'Currently pursuing undergraduate studies with a focus on computer science fundamentals, software development, and modern computing practices.',
+    description: 'Computer-science fundamentals, software development, and modern computing.',
   },
   {
     degree: 'Diploma in Computer Engineering',
     institution: 'Pillai HOC College of Engineering & Technology',
     period: '2021 – 2024',
-    description: 'Completed a diploma program covering core computer engineering concepts, programming fundamentals, and practical application development.',
+    description: 'Core engineering concepts, programming fundamentals, and applied development.',
   },
   {
     degree: 'UI/UX Design Certification',
     institution: 'Google UX Design (Online)',
     period: '2023',
-    description: 'Hands-on training in user research, wireframing, prototyping, and designing user-centered digital experiences.',
+    description: 'User research, wireframing, prototyping, and user-centered design.',
   },
   {
     degree: 'Advanced Visual & Interaction Design',
     institution: 'Coursera / Online Learning',
     period: '2022',
-    description: 'Focused on visual hierarchy, interaction patterns, accessibility, and creating polished digital interfaces.',
+    description: 'Visual hierarchy, interaction patterns, accessibility, polished interfaces.',
   },
   {
     degree: 'Creative Design & Branding Program',
     institution: 'Udemy / Online Learning',
     period: '2022',
-    description: 'Explored design fundamentals, branding principles, layout systems, and creative problem-solving for digital products.',
+    description: 'Design fundamentals, branding, layout systems, creative problem-solving.',
   },
   {
     degree: 'Web Development Bootcamp',
     institution: 'Self-taught & Online Courses',
     period: '2019 – Present',
-    description: 'Continuous hands-on learning in frontend development, modern web workflows, and building real-world web applications.',
+    description: 'Ongoing hands-on frontend and real-world web app development.',
   },
   {
     degree: 'Secondary & Higher Secondary Education (State Board)',
     institution: 'St. Joseph High School',
     period: '2010 – 2021',
-    description: 'Completed schooling under the State Board curriculum, building a strong academic foundation.',
+    description: 'Strong academic foundation under the State Board curriculum.',
   },
   {
     degree: 'IELTS Academic',
     institution: 'British Council / IDP',
     period: '2024',
-    description: 'Achieved an overall band score of 7.1, demonstrating strong English language proficiency.',
+    description: 'Overall band score 7.1.',
   },
 ];
 
@@ -180,7 +176,7 @@ export default function About() {
           width={48}
           height={48}
           className="w-full h-full object-contain"
-          style={{ filter: item.darkLogo ? 'invert(1)' : 'none' }}
+          style={{ filter: 'none' }}
           onError={() => handleImgError(key)}
           unoptimized
         />
@@ -209,24 +205,24 @@ export default function About() {
       const commandMap: Record<string, (cmdArgs?: string[]) => React.ReactElement | string> = {
         help: () => (
           <div className="space-y-2">
-            <div className="text-green-400">Available commands:</div>
-            <div className="ml-4 space-y-1 text-gray-300">
-              <div><span className="text-blue-400">about</span> - Display about information</div>
-              <div><span className="text-blue-400">education</span> - Show educational background</div>
-              <div><span className="text-blue-400">skills</span> - List technical skills</div>
-              <div><span className="text-blue-400">languages</span> - View programming languages</div>
-              <div><span className="text-blue-400">libraries</span> - View frameworks and libraries</div>
-              <div><span className="text-blue-400">software</span> - View software tools</div>
-              <div><span className="text-blue-400">contact</span> - Get contact information</div>
-              <div><span className="text-blue-400">clear</span> - Clear terminal</div>
-              <div><span className="text-blue-400">ls</span> - List directory contents</div>
-              <div className="text-gray-500 text-xs mt-2">Hint: Try some hidden commands... 🎮</div>
+            <div className="text-black">Available commands:</div>
+            <div className="ml-4 space-y-1 text-gray-700">
+              <div><span className="text-gray-700">about</span> - Display about information</div>
+              <div><span className="text-gray-700">education</span> - Show educational background</div>
+              <div><span className="text-gray-700">skills</span> - List technical skills</div>
+              <div><span className="text-gray-700">languages</span> - View programming languages</div>
+              <div><span className="text-gray-700">libraries</span> - View frameworks and libraries</div>
+              <div><span className="text-gray-700">software</span> - View software tools</div>
+              <div><span className="text-gray-700">contact</span> - Get contact information</div>
+              <div><span className="text-gray-700">clear</span> - Clear terminal</div>
+              <div><span className="text-gray-700">ls</span> - List directory contents</div>
+              <div className="text-gray-500 text-xs mt-2">Hint: Try some hidden commands...</div>
             </div>
           </div>
         ),
         about: () => (
-          <div className="space-y-2 text-gray-300">
-            <div className="text-green-400 font-semibold">▸ About Me</div>
+          <div className="space-y-2 text-gray-700">
+            <div className="text-black font-semibold">▸ About Me</div>
             <div className="ml-4">
               <p>I&apos;m a passionate Frontend Developer & UI/UX Designer based in Mumbai, India.</p>
               <p className="mt-2">I specialize in creating beautiful web experiences with modern technologies like Next.js, TypeScript, and Tailwind CSS.</p>
@@ -235,13 +231,13 @@ export default function About() {
           </div>
         ),
         education: () => (
-          <div className="space-y-2 text-gray-300">
-            <div className="text-green-400 font-semibold">▸ Education</div>
+          <div className="space-y-2 text-gray-700">
+            <div className="text-black font-semibold">▸ Education</div>
             <div className="ml-4 space-y-3">
               {education.map((edu, index) => (
                 <div key={index}>
-                  <div className="text-blue-400">{edu.degree}</div>
-                  <div className="text-sm text-gray-400">{edu.institution} • {edu.period}</div>
+                  <div className="text-gray-700">{edu.degree}</div>
+                  <div className="text-sm text-gray-600">{edu.institution} • {edu.period}</div>
                   <div className="text-sm text-gray-500 mt-1">{edu.description}</div>
                 </div>
               ))}
@@ -249,12 +245,12 @@ export default function About() {
           </div>
         ),
         skills: () => (
-          <div className="space-y-2 text-gray-300">
-            <div className="text-green-400 font-semibold">▸ Skills & Technologies</div>
+          <div className="space-y-2 text-gray-700">
+            <div className="text-black font-semibold">▸ Skills & Technologies</div>
             <div className="ml-4 space-y-2">
               {skills.map((skillGroup, index) => (
                 <div key={index}>
-                  <div className="text-blue-400">{skillGroup.icon} {skillGroup.category}:</div>
+                  <div className="text-gray-700">{skillGroup.category}:</div>
                   <div className="ml-4 text-sm">{skillGroup.items.join(', ')}</div>
                 </div>
               ))}
@@ -262,26 +258,26 @@ export default function About() {
           </div>
         ),
         languages: () => (
-          <div className="space-y-2 text-gray-300">
-            <div className="text-green-400 font-semibold">▸ Programming Languages</div>
+          <div className="space-y-2 text-gray-700">
+            <div className="text-black font-semibold">▸ Programming Languages</div>
             <div className="ml-4 text-sm">{languages.map((lang) => lang.name).join(', ')}</div>
           </div>
         ),
         libraries: () => (
-          <div className="space-y-2 text-gray-300">
-            <div className="text-green-400 font-semibold">▸ Frameworks & Libraries</div>
+          <div className="space-y-2 text-gray-700">
+            <div className="text-black font-semibold">▸ Frameworks & Libraries</div>
             <div className="ml-4 text-sm">{libraries.map((lib) => lib.name).join(', ')}</div>
           </div>
         ),
         software: () => (
-          <div className="space-y-2 text-gray-300">
-            <div className="text-green-400 font-semibold">▸ Software Tools</div>
+          <div className="space-y-2 text-gray-700">
+            <div className="text-black font-semibold">▸ Software Tools</div>
             <div className="ml-4 text-sm">{software.map((s) => s.name).join(', ')}</div>
           </div>
         ),
         contact: () => (
-          <div className="space-y-2 text-gray-300">
-            <div className="text-green-400 font-semibold">▸ Contact Information</div>
+          <div className="space-y-2 text-gray-700">
+            <div className="text-black font-semibold">▸ Contact Information</div>
             <div className="ml-4 space-y-1">
               <div>▸ Location: Mumbai, India</div>
               <div>▸ GitHub: github.com/Niravcanvas</div>
@@ -290,24 +286,24 @@ export default function About() {
           </div>
         ),
         ls: () => (
-          <div className="space-y-1 text-gray-300">
-            <div className="text-blue-400">▸ about/</div>
-            <div className="text-blue-400">▸ education/</div>
-            <div className="text-blue-400">▸ skills/</div>
-            <div className="text-blue-400">▸ languages/</div>
-            <div className="text-blue-400">▸ libraries/</div>
-            <div className="text-blue-400">▸ software/</div>
-            <div className="text-green-400">▸ README.md</div>
+          <div className="space-y-1 text-gray-700">
+            <div className="text-gray-700">▸ about/</div>
+            <div className="text-gray-700">▸ education/</div>
+            <div className="text-gray-700">▸ skills/</div>
+            <div className="text-gray-700">▸ languages/</div>
+            <div className="text-gray-700">▸ libraries/</div>
+            <div className="text-gray-700">▸ software/</div>
+            <div className="text-black">▸ README.md</div>
             <div className="text-gray-500 text-xs mt-2">▸ .secret/</div>
           </div>
         ),
         secret: () => {
           setSecretsFound((prev) => (prev.includes('secret') ? prev : [...prev, 'secret']));
           return (
-            <div className="space-y-2 text-gray-300">
-              <div className="text-yellow-400">🎉 Secret Found!</div>
+            <div className="space-y-2 text-gray-700">
+              <div className="text-gray-700">Secret Found!</div>
               <div className="ml-4">
-                <p className="text-green-400">&quot;Code is like humor. When you have to explain it, it&apos;s bad.&quot; - Cory House</p>
+                <p className="text-black">&quot;Code is like humor. When you have to explain it, it&apos;s bad.&quot; - Cory House</p>
                 <p className="text-gray-500 text-sm mt-2">Try: matrix, coffee, joke, game</p>
               </div>
             </div>
@@ -316,36 +312,35 @@ export default function About() {
         matrix: () => {
           setSecretsFound((prev) => (prev.includes('matrix') ? prev : [...prev, 'matrix']));
           return (
-            <div className="text-green-400 font-mono">
-              <div className="animate-pulse">Wake up, Neo...</div>
+            <div className="text-black font-mono">
+              <div>Wake up, Neo...</div>
               <div className="mt-2">The Matrix has you...</div>
-              <div className="mt-2">Follow the white rabbit. 🐰</div>
+              <div className="mt-2">Follow the white rabbit.</div>
             </div>
           );
         },
         coffee: () => {
           setSecretsFound((prev) => (prev.includes('coffee') ? prev : [...prev, 'coffee']));
           return (
-            <div className="text-gray-300">
-              <div className="text-yellow-600">☕</div>
+            <div className="text-gray-700">
               <div className="mt-2">Brewing coffee...</div>
               <div className="mt-1">████████████ 100%</div>
-              <div className="mt-2 text-green-400">Coffee ready! Productivity +50%</div>
+              <div className="mt-2 text-black">Coffee ready! Productivity +50%</div>
             </div>
           );
         },
         joke: () => {
           setSecretsFound((prev) => (prev.includes('joke') ? prev : [...prev, 'joke']));
           const jokes = [
-            "Why do programmers prefer dark mode? Because light attracts bugs! 🐛",
-            "How many programmers does it take to change a light bulb? None. It's a hardware problem! 💡",
-            "Why did the developer go broke? Because he used up all his cache! 💰",
-            "What's a programmer's favorite hangout? The Foo Bar! 🍺",
+            "Why do programmers prefer dark mode? Because light attracts bugs!",
+            "How many programmers does it take to change a light bulb? None. It's a hardware problem!",
+            "Why did the developer go broke? Because he used up all his cache!",
+            "What's a programmer's favorite hangout? The Foo Bar!",
           ];
           const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
           return (
-            <div className="text-gray-300">
-              <div className="text-blue-400">😄 Random Developer Joke:</div>
+            <div className="text-gray-700">
+              <div className="text-gray-700">Random Developer Joke:</div>
               <div className="ml-4 mt-2">{randomJoke}</div>
             </div>
           );
@@ -353,11 +348,11 @@ export default function About() {
         game: () => {
           setSecretsFound((prev) => (prev.includes('game') ? prev : [...prev, 'game']));
           return (
-            <div className="text-gray-300">
-              <div className="text-green-400 font-semibold">🎮 Number Guessing Game</div>
+            <div className="text-gray-700">
+              <div className="text-black font-semibold">Number Guessing Game</div>
               <div className="ml-4 mt-2">
                 <p>I&apos;m thinking of a number between 1 and 100...</p>
-                <p className="mt-2 text-yellow-400">Try typing: guess 42</p>
+                <p className="mt-2 text-gray-700">Try typing: guess 42</p>
                 <p className="text-gray-500 text-sm mt-2">(Replace 42 with your guess)</p>
               </div>
             </div>
@@ -366,52 +361,52 @@ export default function About() {
         guess: (cmdArgs?: string[]) => {
           const secretNumber = 73;
           if (!cmdArgs || cmdArgs.length === 0) {
-            return <span className="text-red-400">Usage: guess [number]</span>;
+            return <span className="text-black">Usage: guess [number]</span>;
           }
           const guessNum = parseInt(cmdArgs[0]);
           if (isNaN(guessNum)) {
-            return <span className="text-red-400">Please enter a valid number!</span>;
+            return <span className="text-black">Please enter a valid number!</span>;
           }
           if (guessNum === secretNumber) {
             return (
-              <div className="text-green-400">
-                <div>🎉 Congratulations! You guessed it!</div>
+              <div className="text-black">
+                <div>Congratulations! You guessed it!</div>
                 <div className="mt-2">The number was {secretNumber}!</div>
-                <div className="text-gray-400 text-sm mt-2">(Fun fact: 73 is Sheldon Cooper&apos;s favorite number!)</div>
+                <div className="text-gray-600 text-sm mt-2">(Fun fact: 73 is Sheldon Cooper&apos;s favorite number!)</div>
               </div>
             );
           } else if (guessNum < secretNumber) {
-            return <span className="text-yellow-400">📈 Higher! Try a bigger number.</span>;
+            return <span className="text-gray-700">Higher! Try a bigger number.</span>;
           } else {
-            return <span className="text-yellow-400">📉 Lower! Try a smaller number.</span>;
+            return <span className="text-gray-700">Lower! Try a smaller number.</span>;
           }
         },
         sudo: () => (
-          <div className="text-red-400">
-            <div>Nice try! 😏</div>
+          <div className="text-black">
+            <div>Nice try!</div>
             <div className="mt-2">But you don&apos;t have sudo privileges here...</div>
             <div className="text-gray-500 text-sm mt-2">This incident will be reported. (Just kidding!)</div>
           </div>
         ),
         whoami: () => (
-          <div className="text-gray-300">
+          <div className="text-gray-700">
             <div>nirav@portfolio</div>
             <div className="text-gray-500 text-sm mt-2">A passionate developer exploring the digital world</div>
           </div>
         ),
-        date: () => <div className="text-gray-300">{new Date().toString()}</div>,
+        date: () => <div className="text-gray-700">{new Date().toString()}</div>,
         secrets: () => (
-          <div className="text-gray-300">
-            <div className="text-blue-400">🔍 Secrets Found: {secretsFound.length}/5</div>
+          <div className="text-gray-700">
+            <div className="text-gray-700">Secrets Found: {secretsFound.length}/5</div>
             <div className="ml-4 mt-2 space-y-1">
               {secretsFound.map((secret, index) => (
-                <div key={index} className="text-green-400">✓ {secret}</div>
+                <div key={index} className="text-black">✓ {secret}</div>
               ))}
               {secretsFound.length < 5 && (
-                <div className="text-gray-500 text-sm mt-2">Keep exploring to find all secrets! 🕵️</div>
+                <div className="text-gray-500 text-sm mt-2">Keep exploring to find all secrets!</div>
               )}
               {secretsFound.length === 5 && (
-                <div className="text-yellow-400 mt-2">🎊 Amazing! You found all the secrets! You&apos;re a true explorer! 🎊</div>
+                <div className="text-black mt-2">Amazing! You found all the secrets! You&apos;re a true explorer!</div>
               )}
             </div>
           </div>
@@ -423,7 +418,7 @@ export default function About() {
       } else if (commandMap[mainCmd]) {
         output = commandMap[mainCmd]();
       } else {
-        output = <span className="text-red-400">Command not found: {cmd}. Type &apos;help&apos; for available commands.</span>;
+        output = <span className="text-black">Command not found: {cmd}. Type &apos;help&apos; for available commands.</span>;
       }
 
       setTerminalHistory((prev) => [...prev, { command: cmd, output }]);
@@ -515,13 +510,13 @@ export default function About() {
             {/* Mobile photo — shown only on small screens, centered above text */}
             <div className="flex justify-center lg:hidden">
               <div className="relative w-32 h-40 sm:w-40 sm:h-52">
-                <div className="absolute inset-0 w-full h-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg overflow-hidden shadow-2xl transform rotate-[-3deg]" style={{ zIndex: 1 }}>
+                <div className="absolute inset-0 w-full h-full bg-white border border-black/10 rounded-lg overflow-hidden transform rotate-[-3deg]" style={{ zIndex: 1 }}>
                   <Image src="/images/N1.jpg" alt="Nirav Thakur portrait photo 1" fill className="object-cover" sizes="160px" />
                 </div>
-                <div className="absolute inset-0 w-full h-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg overflow-hidden shadow-2xl transform rotate-[2deg]" style={{ zIndex: 2 }}>
+                <div className="absolute inset-0 w-full h-full bg-white border border-black/10 rounded-lg overflow-hidden transform rotate-[2deg]" style={{ zIndex: 2 }}>
                   <Image src="/images/N2.jpg" alt="Nirav Thakur portrait photo 2" fill className="object-cover" sizes="160px" />
                 </div>
-                <div className="absolute inset-0 w-full h-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg overflow-hidden shadow-2xl transform rotate-[-1deg]" style={{ zIndex: 3 }}>
+                <div className="absolute inset-0 w-full h-full bg-white border border-black/10 rounded-lg overflow-hidden transform rotate-[-1deg]" style={{ zIndex: 3 }}>
                   <Image src="/images/N3.jpg" alt="Nirav Thakur portrait photo 3" fill className="object-cover" sizes="160px" />
                 </div>
               </div>
@@ -530,26 +525,26 @@ export default function About() {
             {/* Text + desktop photo side by side */}
             <div className="flex flex-col lg:flex-row gap-8 items-start">
               <div className="flex-1">
-                <h3 className="font-bold text-white mb-4 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
+                <h3 className="font-bold text-black mb-4 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
                   <span className="text-3xl">▸</span> My Story
                 </h3>
-                <div className="space-y-4 text-gray-300" style={{ fontSize: 'var(--text-body)', lineHeight: 'var(--leading-relaxed)' }}>
-                  <p>I&apos;m a Frontend Developer & UI/UX Designer based in Mumbai, India, focused on building refined, high-performance web experiences using modern frontend technologies.</p>
-                  <p>I work at the intersection of engineering, design, and visual creativity to deliver intuitive, scalable, and visually engaging interfaces. My approach blends clean architecture with thoughtful design to create digital products that support real business goals.</p>
-                  <p>Nirav stays inspired by evolving design trends, explores photography as a creative outlet, and actively contributes to open-source projects on GitHub.</p>
+                <div className="space-y-4 text-gray-700" style={{ fontSize: 'var(--text-body)', lineHeight: 'var(--leading-relaxed)' }}>
+                  <p>I&apos;m a frontend developer and UI/UX designer in Mumbai, building refined, high-performance web experiences with modern frontend tools.</p>
+                  <p>I work where engineering, design, and visual craft meet — turning ideas into intuitive, scalable interfaces that serve real goals.</p>
+                  <p>Off the clock: following design trends, shooting photography, and contributing to open source.</p>
                 </div>
               </div>
 
               {/* Desktop photo stack — hidden on mobile (shown above instead) */}
               <div className="hidden lg:block relative w-64 h-80 flex-shrink-0">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="absolute w-56 h-72 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg overflow-hidden shadow-2xl transform rotate-[-3deg] hover:rotate-0 transition-all duration-300 hover:scale-105 hover:z-30" style={{ zIndex: 1 }}>
+                  <div className="absolute w-56 h-72 bg-white border border-black/10 rounded-lg overflow-hidden transform rotate-[-3deg] hover:rotate-0 transition-all duration-300 hover:z-30" style={{ zIndex: 1 }}>
                     <Image src="/images/N1.jpg" alt="Nirav Thakur portrait photo 1" fill className="object-cover" sizes="224px" />
                   </div>
-                  <div className="absolute w-56 h-72 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg overflow-hidden shadow-2xl transform rotate-[2deg] hover:rotate-0 transition-all duration-300 hover:scale-105 hover:z-30" style={{ zIndex: 2 }}>
+                  <div className="absolute w-56 h-72 bg-white border border-black/10 rounded-lg overflow-hidden transform rotate-[2deg] hover:rotate-0 transition-all duration-300 hover:z-30" style={{ zIndex: 2 }}>
                     <Image src="/images/N2.jpg" alt="Nirav Thakur portrait photo 2" fill className="object-cover" sizes="224px" />
                   </div>
-                  <div className="absolute w-56 h-72 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg overflow-hidden shadow-2xl transform rotate-[-1deg] hover:rotate-0 transition-all duration-300 hover:scale-105 hover:z-30" style={{ zIndex: 3 }}>
+                  <div className="absolute w-56 h-72 bg-white border border-black/10 rounded-lg overflow-hidden transform rotate-[-1deg] hover:rotate-0 transition-all duration-300 hover:z-30" style={{ zIndex: 3 }}>
                     <Image src="/images/N3.jpg" alt="Nirav Thakur portrait photo 3" fill className="object-cover" sizes="224px" />
                   </div>
                 </div>
@@ -561,19 +556,19 @@ export default function About() {
       case 'education':
         return (
           <div>
-            <h3 className="font-bold text-white mb-4 sm:mb-6 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
+            <h3 className="font-bold text-black mb-4 sm:mb-6 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
               <span className="text-3xl">▸</span> Education
             </h3>
             <div className="space-y-4">
               {education.map((edu, index) => (
                 <div
                   key={index}
-                  className="bg-white/5 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-white/10 hover:border-white/30 transition-all"
+                  className="bg-white p-4 sm:p-6 rounded-xl border border-black/10 hover:border-black/30 transition-all"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <h4 className="font-semibold text-white mb-1 sm:mb-2 text-sm sm:text-base leading-snug" style={{ fontSize: 'var(--text-h4)' }}>{edu.degree}</h4>
-                  <div className="text-xs sm:text-sm text-gray-400 mb-2 sm:mb-3">{edu.institution} • {edu.period}</div>
-                  <p className="text-gray-300 text-sm" style={{ fontSize: 'var(--text-body)' }}>{edu.description}</p>
+                  <h4 className="font-semibold text-black mb-1 sm:mb-2 text-sm sm:text-base leading-snug" style={{ fontSize: 'var(--text-h4)' }}>{edu.degree}</h4>
+                  <div className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">{edu.institution} • {edu.period}</div>
+                  <p className="text-gray-700 text-sm" style={{ fontSize: 'var(--text-body)' }}>{edu.description}</p>
                 </div>
               ))}
             </div>
@@ -583,23 +578,22 @@ export default function About() {
       case 'skills':
         return (
           <div>
-            <h3 className="font-bold text-white mb-4 sm:mb-6 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
+            <h3 className="font-bold text-black mb-4 sm:mb-6 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
               <span className="text-3xl">▸</span> Skills & Technologies
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {skills.map((skillGroup, index) => (
                 <div
                   key={index}
-                  className="bg-white/5 backdrop-blur-sm p-4 sm:p-5 rounded-xl border border-white/10 hover:border-white/30 transition-all hover:scale-105"
+                  className="bg-white p-4 sm:p-5 rounded-xl border border-black/10 hover:border-black/30 transition-all"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <div className="text-2xl mb-2">{skillGroup.icon}</div>
-                  <h4 className="text-base font-semibold text-white mb-3">{skillGroup.category}</h4>
+                  <h4 className="text-base font-semibold text-black mb-3">{skillGroup.category}</h4>
                   <div className="flex flex-wrap gap-2">
                     {skillGroup.items.map((skill, i) => (
                       <span
                         key={i}
-                        className="text-xs px-2 py-1 bg-white/10 rounded-md text-gray-300 hover:bg-white/20 transition-colors"
+                        className="text-xs px-2 py-1 bg-gray-50 border border-black/10 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
                       >
                         {skill}
                       </span>
@@ -614,7 +608,7 @@ export default function About() {
       case 'languages':
         return (
           <div>
-            <h3 className="font-bold text-white mb-4 sm:mb-6 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
+            <h3 className="font-bold text-black mb-4 sm:mb-6 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
               <span className="text-3xl">▸</span> Programming Languages
             </h3>
             {/* 4 cols on mobile → 5 on sm → 5 on lg */}
@@ -622,13 +616,13 @@ export default function About() {
               {languages.map((lang, index) => (
                 <div
                   key={index}
-                  className="bg-white/5 backdrop-blur-sm p-3 rounded-xl border border-white/10 hover:border-white/30 transition-all hover:scale-105 flex flex-col items-center justify-center gap-2 group"
+                  className="bg-white p-3 rounded-xl border border-black/10 hover:border-black/30 transition-all flex flex-col items-center justify-center gap-2 group"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center transition-all group-hover:scale-110">
+                  <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
                     {renderTechIcon(lang, 'lang', index)}
                   </div>
-                  <span className="text-[10px] sm:text-xs text-gray-300 text-center font-medium leading-tight">{lang.name}</span>
+                  <span className="text-[10px] sm:text-xs text-gray-700 text-center font-medium leading-tight">{lang.name}</span>
                 </div>
               ))}
             </div>
@@ -638,7 +632,7 @@ export default function About() {
       case 'libraries':
         return (
           <div>
-            <h3 className="font-bold text-white mb-4 sm:mb-6 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
+            <h3 className="font-bold text-black mb-4 sm:mb-6 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
               <span className="text-3xl">▸</span> Frameworks & Libraries
             </h3>
             {/* 3 cols on mobile → 4 on md */}
@@ -646,13 +640,13 @@ export default function About() {
               {libraries.map((lib, index) => (
                 <div
                   key={index}
-                  className="bg-white/5 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-white/10 hover:border-white/30 transition-all hover:scale-105 flex flex-col items-center justify-center gap-2 group"
+                  className="bg-white p-3 sm:p-4 rounded-xl border border-black/10 hover:border-black/30 transition-all flex flex-col items-center justify-center gap-2 group"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center transition-all group-hover:scale-110">
+                  <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
                     {renderTechIcon(lib, 'lib', index)}
                   </div>
-                  <span className="text-[10px] sm:text-xs text-gray-300 text-center font-medium leading-tight">{lib.name}</span>
+                  <span className="text-[10px] sm:text-xs text-gray-700 text-center font-medium leading-tight">{lib.name}</span>
                 </div>
               ))}
             </div>
@@ -662,7 +656,7 @@ export default function About() {
       case 'software':
         return (
           <div>
-            <h3 className="font-bold text-white mb-4 sm:mb-6 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
+            <h3 className="font-bold text-black mb-4 sm:mb-6 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
               <span className="text-3xl">▸</span> Software Tools
             </h3>
             {/* 4 cols on mobile → 5 on sm */}
@@ -670,13 +664,13 @@ export default function About() {
               {software.map((tool, index) => (
                 <div
                   key={index}
-                  className="bg-white/5 backdrop-blur-sm p-3 rounded-xl border border-white/10 hover:border-white/30 transition-all hover:scale-105 flex flex-col items-center justify-center gap-2 group"
+                  className="bg-white p-3 rounded-xl border border-black/10 hover:border-black/30 transition-all flex flex-col items-center justify-center gap-2 group"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center transition-all group-hover:scale-110">
+                  <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
                     {renderTechIcon(tool, 'sw', index)}
                   </div>
-                  <span className="text-[10px] sm:text-xs text-gray-300 text-center font-medium leading-tight">{tool.name}</span>
+                  <span className="text-[10px] sm:text-xs text-gray-700 text-center font-medium leading-tight">{tool.name}</span>
                 </div>
               ))}
             </div>
@@ -691,28 +685,14 @@ export default function About() {
   const visibleCommandNames = ['help', 'about', 'education', 'skills', 'languages', 'libraries', 'software', 'contact', 'clear', 'secret', 'matrix', 'coffee', 'joke', 'game', 'sudo', 'whoami', 'date', 'secrets'];
 
   return (
-    <section id="about" className="min-h-screen bg-black py-12 md:py-20 lg:py-24 px-4 relative overflow-hidden">
-      {/* Floating orbs background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-white/[0.08] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s' }} />
-        <div className="absolute bottom-1/3 left-1/4 w-56 h-56 bg-white/[0.06] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
-      </div>
-
+    <section id="about" className="min-h-screen bg-white py-12 md:py-20 lg:py-24 px-4 relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <div className="mb-6 sm:mb-8 text-center space-y-2 animate-fade-in">
-          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500" />
-              <div className="w-3 h-3 rounded-full bg-green-500" />
-            </div>
-            <span className="text-sm text-gray-400 ml-2">About.app</span>
+          <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-black/10">
+            <span className="text-sm text-gray-500">About.app</span>
           </div>
-          <h2 className="font-bold text-white" style={{ fontSize: 'var(--text-h2)' }}>
+          <h2 className="font-bold text-black" style={{ fontSize: 'var(--text-h2)' }}>
             Get to know me
           </h2>
         </div>
@@ -723,8 +703,8 @@ export default function About() {
             onClick={() => setCurrentView('finder')}
             className={`px-5 py-2 rounded-xl font-medium transition-all min-h-[44px] text-sm sm:text-base ${
               currentView === 'finder'
-                ? 'bg-white text-black shadow-lg shadow-white/20'
-                : 'bg-white/5 backdrop-blur-sm text-gray-400 hover:bg-white/10 border border-white/10'
+                ? 'bg-black text-white'
+                : 'border border-black/15 text-gray-600 hover:text-black'
             }`}
           >
             ▸ Finder
@@ -733,8 +713,8 @@ export default function About() {
             onClick={() => setCurrentView('terminal')}
             className={`px-5 py-2 rounded-xl font-medium transition-all min-h-[44px] text-sm sm:text-base ${
               currentView === 'terminal'
-                ? 'bg-white text-black shadow-lg shadow-white/20'
-                : 'bg-white/5 backdrop-blur-sm text-gray-400 hover:bg-white/10 border border-white/10'
+                ? 'bg-black text-white'
+                : 'border border-black/15 text-gray-600 hover:text-black'
             }`}
           >
             ▸ Terminal
@@ -744,16 +724,11 @@ export default function About() {
         {/* Finder View */}
         {currentView === 'finder' && (
           <div className="animate-slide-up">
-            <div className="bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+            <div className="bg-white border border-black/10 rounded-xl overflow-hidden">
               {/* Window Header */}
-              <div className="bg-white/5 backdrop-blur-sm px-4 py-3 flex items-center justify-between border-b border-white/10">
+              <div className="bg-white px-4 py-3 flex items-center justify-between border-b border-black/10">
                 <div className="flex items-center gap-3">
-                  <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                    <div className="w-3 h-3 rounded-full bg-green-500" />
-                  </div>
-                  <span className="text-sm text-gray-400">About Me</span>
+                  <span className="text-sm text-gray-500">About Me</span>
                 </div>
                 <div className="text-xs text-gray-500 hidden sm:block">Switch to Terminal for the dev experience</div>
               </div>
@@ -761,7 +736,7 @@ export default function About() {
               <div className="flex flex-col md:flex-row">
                 {/* ── MOBILE: scrollable icon-only tab bar ── */}
                 <nav
-                  className="md:hidden flex gap-1 overflow-x-auto px-3 py-2 border-b border-white/10 scrollbar-none"
+                  className="md:hidden flex gap-1 overflow-x-auto px-3 py-2 border-b border-black/10 scrollbar-none"
                   aria-label="About sections"
                   style={{ scrollbarWidth: 'none' }}
                 >
@@ -771,8 +746,8 @@ export default function About() {
                       onClick={() => setActiveSection(item.id)}
                       className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium cursor-pointer transition-all whitespace-nowrap shrink-0 min-h-[40px] ${
                         activeSection === item.id
-                          ? 'bg-white/15 text-white'
-                          : 'text-gray-400 hover:bg-white/5 hover:text-gray-200'
+                          ? 'bg-black text-white'
+                          : 'text-gray-600 hover:bg-gray-50 hover:text-black'
                       }`}
                       aria-current={activeSection === item.id ? 'page' : undefined}
                     >
@@ -784,7 +759,7 @@ export default function About() {
 
                 {/* ── DESKTOP: vertical sidebar ── */}
                 <nav
-                  className="hidden md:flex md:flex-col w-48 bg-white/5 p-4 space-y-2 border-r border-white/10 shrink-0"
+                  className="hidden md:flex md:flex-col w-48 bg-white p-4 space-y-2 border-r border-black/10 shrink-0"
                   aria-label="About sections"
                 >
                   <div className="text-xs text-gray-500 uppercase tracking-wider mb-3">Favorites</div>
@@ -794,8 +769,8 @@ export default function About() {
                       onClick={() => setActiveSection(item.id)}
                       className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm cursor-pointer transition-all min-h-[44px] ${
                         activeSection === item.id
-                          ? 'bg-white/10 text-white'
-                          : 'hover:bg-white/5 text-gray-400'
+                          ? 'bg-black text-white'
+                          : 'text-gray-600 hover:bg-gray-50 hover:text-black'
                       }`}
                       aria-current={activeSection === item.id ? 'page' : undefined}
                     >
@@ -817,30 +792,25 @@ export default function About() {
         {/* Terminal View */}
         {currentView === 'terminal' && (
           <div className="animate-slide-up">
-            <div className="bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-2xl font-mono">
+            <div className="bg-white border border-black/10 rounded-xl overflow-hidden font-mono">
               {/* Terminal Header */}
-              <div className="bg-white/5 backdrop-blur-sm px-4 py-3 flex items-center border-b border-white/10">
-                <div className="flex gap-2 mr-3">
-                  <div className="w-3 h-3 rounded-full bg-red-500" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                  <div className="w-3 h-3 rounded-full bg-green-500" />
-                </div>
-                <span className="text-sm text-gray-400">Terminal — bash — 80x24</span>
+              <div className="bg-white px-4 py-3 flex items-center border-b border-black/10">
+                <span className="text-sm text-gray-500">Terminal — bash — 80x24</span>
               </div>
 
               {/* Terminal Content — fluid height on mobile, capped on desktop */}
-              <div className="p-4 sm:p-6 h-[55vh] sm:h-[500px] md:h-[600px] overflow-y-auto overflow-x-hidden">
-                <div className="mb-4 text-green-400">
+              <div className="p-4 sm:p-6 h-[55vh] sm:h-[500px] md:h-[600px] overflow-y-auto overflow-x-hidden bg-white text-black">
+                <div className="mb-4 text-black">
                   <div className="text-sm sm:text-base">Welcome to Portfolio Terminal v1.0.0</div>
-                  <div className="text-gray-400 text-sm">Type &apos;help&apos; to see available commands.</div>
+                  <div className="text-gray-600 text-sm">Type &apos;help&apos; to see available commands.</div>
                   <div className="text-gray-500 text-xs mt-2">Last login: {new Date().toLocaleString()}</div>
                 </div>
 
                 {terminalHistory.map((entry, index) => (
                   <div key={index} className="mb-4">
-                    <div className="flex items-center gap-2 text-blue-400 text-sm sm:text-base flex-wrap">
-                      <span className="text-green-400">➜</span>
-                      <span className="text-purple-400">~</span>
+                    <div className="flex items-center gap-2 text-black text-sm sm:text-base flex-wrap">
+                      <span className="text-gray-500">➜</span>
+                      <span className="text-gray-500">~</span>
                       <span className="break-all">{entry.command}</span>
                     </div>
                     <div className="mt-2 ml-4 text-sm">{entry.output}</div>
@@ -848,8 +818,8 @@ export default function About() {
                 ))}
 
                 <form onSubmit={handleSubmit} className="flex items-center gap-2">
-                  <span className="text-green-400 shrink-0">➜</span>
-                  <span className="text-purple-400 shrink-0">~</span>
+                  <span className="text-gray-500 shrink-0">➜</span>
+                  <span className="text-gray-500 shrink-0">~</span>
                   <label htmlFor="terminal-input" className="sr-only">Terminal command input</label>
                   <input
                     ref={inputRef}
@@ -858,14 +828,14 @@ export default function About() {
                     value={terminalInput}
                     onChange={(e) => setTerminalInput(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    className="flex-1 bg-transparent outline-none ring-0 border-0 focus:ring-0 focus:outline-none text-white caret-green-400 text-sm sm:text-base min-w-0"
+                    className="flex-1 bg-transparent outline-none ring-0 border-0 focus:ring-0 focus:outline-none text-black caret-black text-sm sm:text-base min-w-0"
                     autoFocus
                     spellCheck={false}
                     autoComplete="off"
                     autoCorrect="off"
                     autoCapitalize="off"
                   />
-                  <span className="animate-pulse text-green-400 shrink-0" aria-hidden="true">▊</span>
+                  <span className="text-black shrink-0" aria-hidden="true">▊</span>
                 </form>
 
                 <div ref={terminalEndRef} />
@@ -880,7 +850,7 @@ export default function About() {
                   <button
                     key={cmd}
                     onClick={() => handleCommand(cmd)}
-                    className="px-2 sm:px-3 py-2 text-xs bg-white/5 backdrop-blur-sm hover:bg-white/10 text-gray-300 rounded-lg border border-white/10 transition-all min-h-[40px] flex items-center justify-center truncate"
+                    className="px-2 sm:px-3 py-2 text-xs bg-white hover:bg-gray-50 text-gray-700 rounded-lg border border-black/10 hover:border-black/30 transition-all min-h-[40px] flex items-center justify-center truncate"
                   >
                     /{cmd}
                   </button>

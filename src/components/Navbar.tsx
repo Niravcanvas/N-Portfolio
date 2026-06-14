@@ -17,7 +17,7 @@ export default function Navbar() {
 
   // Active section highlighting via IntersectionObserver
   useEffect(() => {
-    const sections = ['hero', 'about', 'projects', 'contact'];
+    const sections = ['hero', 'about', 'gallery', 'projects', 'experience', 'contact'];
     const observers: IntersectionObserver[] = [];
 
     sections.forEach((sectionId) => {
@@ -75,15 +75,15 @@ export default function Navbar() {
     window.open('/Docs/N-Resume.pdf', '_blank');
   };
 
-  const navItems = ['About', 'Projects', 'Contact'];
+  const navItems = ['About', 'Projects', 'Gallery', 'Experience', 'Contact'];
 
   return (
     <nav
       role="navigation"
       aria-label="Main navigation"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
         isScrolled
-          ? 'bg-black/20 backdrop-blur-md -webkit-backdrop-blur-md border-b border-white/10'
+          ? 'bg-white border-b border-black/10'
           : 'bg-transparent'
       }`}
     >
@@ -91,7 +91,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <button
             onClick={() => scrollToSection('hero')}
-            className="text-2xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent hover:from-gray-300 hover:to-white transition-all"
+            className="text-2xl font-bold text-black hover:text-gray-600 transition-colors"
             aria-label="Go to top"
           >
             Nirav.
@@ -105,8 +105,8 @@ export default function Navbar() {
                 onClick={() => scrollToSection(item.toLowerCase())}
                 className={`transition-colors relative group min-h-[44px] flex items-center ${
                   activeSection === item.toLowerCase()
-                    ? 'text-white'
-                    : 'text-gray-300 hover:text-white'
+                    ? 'text-black'
+                    : 'text-gray-500 hover:text-black'
                 }`}
                 aria-current={
                   activeSection === item.toLowerCase() ? 'true' : undefined
@@ -114,7 +114,7 @@ export default function Navbar() {
               >
                 {item}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-white transition-all duration-300 ${
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-black transition-all duration-300 ${
                     activeSection === item.toLowerCase()
                       ? 'w-full'
                       : 'w-0 group-hover:w-full'
@@ -127,7 +127,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <button
               onClick={handleResumeClick}
-              className="px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-white/20 transition-all min-h-[44px]"
+              className="px-6 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors min-h-[44px]"
               aria-label="Open resume PDF"
             >
               Resume
@@ -136,24 +136,24 @@ export default function Navbar() {
             {/* Mobile hamburger button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden flex flex-col items-center justify-center w-11 h-11 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all"
+              className="md:hidden flex flex-col items-center justify-center w-11 h-11 rounded-lg bg-white border border-black/10 hover:border-black/30 transition-colors"
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMobileMenuOpen}
             >
               <span
-                className={`block w-5 h-0.5 bg-white transition-all duration-300 ${
+                className={`block w-5 h-0.5 bg-black transition-all duration-300 ${
                   isMobileMenuOpen
                     ? 'rotate-45 translate-y-[3px]'
                     : ''
                 }`}
               />
               <span
-                className={`block w-5 h-0.5 bg-white mt-1 transition-all duration-300 ${
+                className={`block w-5 h-0.5 bg-black mt-1 transition-all duration-300 ${
                   isMobileMenuOpen ? 'opacity-0' : ''
                 }`}
               />
               <span
-                className={`block w-5 h-0.5 bg-white mt-1 transition-all duration-300 ${
+                className={`block w-5 h-0.5 bg-black mt-1 transition-all duration-300 ${
                   isMobileMenuOpen
                     ? '-rotate-45 -translate-y-[5px]'
                     : ''
@@ -166,7 +166,7 @@ export default function Navbar() {
 
       {/* Mobile menu overlay */}
       <div
-        className={`md:hidden fixed inset-0 top-0 bg-black/95 backdrop-blur-xl transition-all duration-300 ${
+        className={`md:hidden fixed inset-0 top-0 bg-white transition-opacity duration-300 ${
           isMobileMenuOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
@@ -180,8 +180,8 @@ export default function Navbar() {
               onClick={() => scrollToSection(item.toLowerCase())}
               className={`text-2xl font-medium transition-colors min-h-[44px] px-6 py-2 ${
                 activeSection === item.toLowerCase()
-                  ? 'text-white'
-                  : 'text-gray-400 hover:text-white'
+                  ? 'text-black'
+                  : 'text-gray-500 hover:text-black'
               }`}
             >
               {item}
@@ -189,7 +189,7 @@ export default function Navbar() {
           ))}
           <button
             onClick={handleResumeClick}
-            className="mt-4 px-8 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-white/20 transition-all min-h-[44px]"
+            className="mt-4 px-8 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors min-h-[44px]"
             aria-label="Open resume PDF"
           >
             Resume

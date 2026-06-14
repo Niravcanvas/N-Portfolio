@@ -1,28 +1,52 @@
 'use client';
 
 import { useState } from 'react';
+import { ContactSchema } from '@/lib/validation/contact';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    company: '' // honeypot — stays empty for humans
   });
   const [status, setStatus] = useState('');
+  const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [activeMailbox, setActiveMailbox] = useState('compose');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
+    setStatus('');
+
+    const parsed = ContactSchema.safeParse(formData);
+    if (!parsed.success) {
+      setError(parsed.error.issues[0]?.message ?? 'Please check your inputs.');
+      return;
+    }
+
     setIsSubmitting(true);
-    // Simulate send
-    setTimeout(() => {
-      setStatus('Message sent! I\'ll get back to you soon.');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(parsed.data)
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setError(data.error ?? 'Something went wrong. Please try again.');
+        return;
+      }
+      setStatus("Message sent! I'll get back to you soon.");
+      setTimeout(() => setStatus(''), 4000);
+      setFormData({ name: '', email: '', subject: '', message: '', company: '' });
+    } catch {
+      setError('Network error. Please try again.');
+    } finally {
       setIsSubmitting(false);
-      setTimeout(() => setStatus(''), 3000);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 500);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -109,8 +133,8 @@ export default function Contact() {
     },
     {
       name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/niravcanvas',
-      username: 'niravcanvas',
+      url: 'https://www.linkedin.com/in/nirav-thakur-9b5892225/',
+      username: 'nirav-thakur',
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -160,120 +184,61 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center relative overflow-hidden py-16 md:py-20 lg:py-24 px-4">
-      {/* Floating orbs background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-white/[0.08] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s' }} />
-        <div className="absolute bottom-1/3 left-1/4 w-56 h-56 bg-white/[0.06] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
-      </div>
-
-      <div className="max-w-6xl mx-auto w-full relative z-10">
+    <section id="contact" className="min-h-screen flex items-center justify-center py-16 md:py-20 lg:py-24 px-4 bg-white">
+      <div className="max-w-6xl mx-auto w-full">
         {/* Header */}
-        <div className="mb-8 text-center space-y-2 animate-fade-in">
-          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500" />
-              <div className="w-3 h-3 rounded-full bg-green-500" />
-            </div>
-            <span className="text-sm text-gray-400 ml-2">Mail.app</span>
+        <div className="mb-8 text-center space-y-2">
+          <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-black/10">
+            <span className="text-sm text-gray-600">Mail.app</span>
           </div>
-          <h2 className="font-bold text-white" style={{ fontSize: 'var(--text-h2)' }}>
+          <h2 className="font-bold text-black" style={{ fontSize: 'var(--text-h2)' }}>
             Get in Touch
           </h2>
-          <p className="text-gray-400" style={{ fontSize: 'var(--text-body)' }}>
+          <p className="text-gray-600" style={{ fontSize: 'var(--text-body)' }}>
             Let&apos;s connect and discuss your next project
           </p>
         </div>
 
         {/* Mail Window */}
-        <div className="animate-slide-up">
-          <div className="bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+        <div>
+          <div className="bg-white border border-black/10 rounded-xl overflow-hidden">
             {/* Window Header */}
-            <div className="bg-white/5 backdrop-blur-sm px-4 py-3 flex items-center justify-between border-b border-white/10">
-              <div className="flex items-center gap-3">
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                  <div className="w-3 h-3 rounded-full bg-green-500" />
-                </div>
-                <span className="text-sm text-gray-400">New Message</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <button
-                  className="text-gray-400 hover:text-white transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
-                  aria-label="Delete draft"
-                >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            {/* Toolbar */}
-            <div className="bg-white/5 backdrop-blur-sm px-4 py-2 flex items-center justify-between border-b border-white/10">
-              <div className="flex items-center gap-2">
-                <button
-                  className="px-3 py-1.5 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors flex items-center gap-2 min-h-[44px]"
-                  aria-label="Send message"
-                >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
-                  Send
-                </button>
-                <button
-                  className="p-1.5 text-gray-400 hover:text-white transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
-                  aria-label="Attach file"
-                >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
-                  </svg>
-                </button>
-              </div>
-              <div className="text-xs text-gray-500">
-                Draft saved
-              </div>
+            <div className="bg-white px-4 py-3 flex items-center justify-between border-b border-black/10">
+              <span className="text-sm text-gray-600">New Message</span>
             </div>
 
             {/* Sidebar + Content */}
             <div className="flex flex-col md:flex-row">
               {/* Sidebar */}
-              <nav className="w-full md:w-56 bg-white/5 p-4 space-y-2 border-b md:border-b-0 md:border-r border-white/10" aria-label="Mailbox navigation">
-                <div className="text-xs text-gray-500 uppercase tracking-wider mb-3">Mailboxes</div>
+              <nav className="w-full md:w-56 bg-gray-50 p-4 space-y-2 border-b md:border-b-0 md:border-r border-black/10" aria-label="Mailbox navigation">
+                <div className="text-xs text-gray-600 uppercase tracking-wider mb-3">Mailboxes</div>
                 <div className="flex md:flex-col gap-1 overflow-x-auto md:overflow-x-visible">
                   {mailboxes.map((mailbox) => (
                     <button
                       key={mailbox.id}
                       onClick={() => setActiveMailbox(mailbox.id)}
-                      className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all whitespace-nowrap min-h-[44px] ${
+                      className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors whitespace-nowrap min-h-[44px] ${
                         activeMailbox === mailbox.id
-                          ? 'bg-white/10 text-white'
-                          : 'hover:bg-white/5 text-gray-400'
+                          ? 'bg-black text-white'
+                          : 'text-gray-600 hover:bg-gray-50'
                       }`}
                       aria-current={activeMailbox === mailbox.id ? 'page' : undefined}
                     >
-                      <span className={activeMailbox === mailbox.id ? 'text-white' : 'text-gray-400'}>
-                        {mailbox.icon}
-                      </span>
+                      <span>{mailbox.icon}</span>
                       <span>{mailbox.name}</span>
                     </button>
                   ))}
                 </div>
 
                 <div className="pt-6 hidden md:block">
-                  <div className="text-xs text-gray-500 uppercase tracking-wider mb-3">Quick Info</div>
-                  <div className="space-y-2 text-xs text-gray-400">
+                  <div className="text-xs text-gray-600 uppercase tracking-wider mb-3">Quick Info</div>
+                  <div className="space-y-2 text-xs text-gray-600">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-green-500" />
+                      <div className="w-2 h-2 rounded-full bg-black" />
                       <span>Available</span>
                     </div>
                     <div>Response time: 24h</div>
-                    <div>Mumbai, India 🇮🇳</div>
+                    <div>Mumbai, India</div>
                   </div>
                 </div>
               </nav>
@@ -282,21 +247,33 @@ export default function Contact() {
               <div className="flex-1 p-6">
                 {activeMailbox === 'compose' && (
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    {/* Honeypot — hidden from humans, catches bots */}
+                    <input
+                      type="text"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      className="hidden"
+                    />
+
                     {/* To Field */}
-                    <div className="flex items-center border-b border-white/10 pb-3">
-                      <label htmlFor="to-field" className="text-sm text-gray-400 w-16">To:</label>
+                    <div className="flex items-center border-b border-black/15 pb-3">
+                      <label htmlFor="to-field" className="text-sm text-gray-600 w-16">To:</label>
                       <input
                         type="text"
                         id="to-field"
                         value="Nirav Thakur"
                         disabled
-                        className="flex-1 bg-transparent text-white text-sm outline-none"
+                        className="flex-1 bg-transparent text-gray-600 text-sm outline-none"
                       />
                     </div>
 
                     {/* From Field */}
-                    <div className="flex items-center border-b border-white/10 pb-3">
-                      <label htmlFor="name" className="text-sm text-gray-400 w-16">From:</label>
+                    <div className="flex items-center pb-3">
+                      <label htmlFor="name" className="text-sm text-gray-600 w-16">From:</label>
                       <input
                         type="text"
                         id="name"
@@ -304,14 +281,14 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="flex-1 bg-transparent text-white text-sm outline-none placeholder-gray-600"
+                        className="flex-1 bg-transparent border-b border-black/15 text-black text-sm outline-none placeholder-gray-400 focus:border-black"
                         placeholder="Your Name"
                       />
                     </div>
 
                     {/* Email Field */}
-                    <div className="flex items-center border-b border-white/10 pb-3">
-                      <label htmlFor="email" className="text-sm text-gray-400 w-16">Email:</label>
+                    <div className="flex items-center pb-3">
+                      <label htmlFor="email" className="text-sm text-gray-600 w-16">Email:</label>
                       <input
                         type="email"
                         id="email"
@@ -319,14 +296,14 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="flex-1 bg-transparent text-white text-sm outline-none placeholder-gray-600"
+                        className="flex-1 bg-transparent border-b border-black/15 text-black text-sm outline-none placeholder-gray-400 focus:border-black"
                         placeholder="your.email@example.com"
                       />
                     </div>
 
                     {/* Subject Field */}
-                    <div className="flex items-center border-b border-white/10 pb-3">
-                      <label htmlFor="subject" className="text-sm text-gray-400 w-16">Subject:</label>
+                    <div className="flex items-center pb-3">
+                      <label htmlFor="subject" className="text-sm text-gray-600 w-16">Subject:</label>
                       <input
                         type="text"
                         id="subject"
@@ -334,7 +311,7 @@ export default function Contact() {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="flex-1 bg-transparent text-white text-sm outline-none placeholder-gray-600"
+                        className="flex-1 bg-transparent border-b border-black/15 text-black text-sm outline-none placeholder-gray-400 focus:border-black"
                         placeholder="What's this about?"
                       />
                     </div>
@@ -349,17 +326,17 @@ export default function Contact() {
                         onChange={handleChange}
                         required
                         rows={12}
-                        className="w-full bg-transparent text-white text-sm outline-none placeholder-gray-600 resize-none leading-relaxed"
+                        className="w-full bg-transparent border-b border-black/15 text-black text-sm outline-none placeholder-gray-400 focus:border-black resize-none leading-relaxed"
                         placeholder="Type your message here..."
                       />
                     </div>
 
                     {/* Send Button */}
-                    <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                    <div className="flex items-center justify-between pt-4 border-t border-black/10">
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="px-6 py-2.5 bg-blue-500 hover:bg-blue-600 disabled:bg-blue-500/50 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-all hover:scale-105 flex items-center gap-2 min-h-[44px]"
+                        className="px-6 py-2.5 bg-black text-white hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium rounded-lg transition-colors flex items-center gap-2 min-h-[44px]"
                         aria-label="Send message"
                       >
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -368,11 +345,16 @@ export default function Contact() {
                         {isSubmitting ? 'Sending...' : 'Send Message'}
                       </button>
                       {status && (
-                        <div className="text-sm text-green-400 flex items-center gap-2" role="status">
+                        <div className="text-sm text-black flex items-center gap-2" role="status">
                           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                           </svg>
                           {status}
+                        </div>
+                      )}
+                      {error && (
+                        <div className="text-sm text-black font-medium" role="alert">
+                          {error}
                         </div>
                       )}
                     </div>
@@ -381,7 +363,7 @@ export default function Contact() {
 
                 {activeMailbox === 'info' && (
                   <div className="space-y-4">
-                    <h3 className="font-semibold text-white mb-6 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
+                    <h3 className="font-semibold text-black mb-6 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
                       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
@@ -391,26 +373,26 @@ export default function Contact() {
                       {contactInfo.map((info, index) => (
                         <div
                           key={index}
-                          className="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:border-white/20 transition-all group"
+                          className="bg-white p-4 rounded-xl border border-black/10 hover:border-black/30 transition-colors"
                         >
                           {info.href ? (
                             <a href={info.href} className="flex items-center gap-4">
-                              <div className="p-3 rounded-lg bg-white/10 text-white group-hover:scale-110 transition-transform">
+                              <div className="p-3 rounded-lg bg-gray-50 text-black border border-black/10">
                                 {info.icon}
                               </div>
                               <div>
-                                <div className="text-sm text-gray-400">{info.label}</div>
-                                <div className="text-white font-medium">{info.value}</div>
+                                <div className="text-sm text-gray-600">{info.label}</div>
+                                <div className="text-black font-medium">{info.value}</div>
                               </div>
                             </a>
                           ) : (
                             <div className="flex items-center gap-4">
-                              <div className="p-3 rounded-lg bg-white/10 text-white">
+                              <div className="p-3 rounded-lg bg-gray-50 text-black border border-black/10">
                                 {info.icon}
                               </div>
                               <div>
-                                <div className="text-sm text-gray-400">{info.label}</div>
-                                <div className="text-white font-medium">{info.value}</div>
+                                <div className="text-sm text-gray-600">{info.label}</div>
+                                <div className="text-black font-medium">{info.value}</div>
                               </div>
                             </div>
                           )}
@@ -418,14 +400,14 @@ export default function Contact() {
                       ))}
                     </div>
 
-                    <div className="mt-8 p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                    <div className="mt-8 p-4 bg-gray-50 border border-black/10 rounded-xl">
                       <div className="flex items-start gap-3">
-                        <svg className="w-5 h-5 text-blue-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                        <svg className="w-5 h-5 text-black mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                           <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                         </svg>
                         <div>
-                          <div className="text-sm font-medium text-blue-400 mb-1">Response Time</div>
-                          <div className="text-sm text-gray-300">I typically respond within 24 hours. For urgent matters, feel free to call!</div>
+                          <div className="text-sm font-medium text-black mb-1">Response Time</div>
+                          <div className="text-sm text-gray-700">I typically respond within 24 hours. For urgent matters, feel free to call!</div>
                         </div>
                       </div>
                     </div>
@@ -434,7 +416,7 @@ export default function Contact() {
 
                 {activeMailbox === 'social' && (
                   <div className="space-y-4">
-                    <h3 className="font-semibold text-white mb-6 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
+                    <h3 className="font-semibold text-black mb-6 flex items-center gap-2" style={{ fontSize: 'var(--text-h3)' }}>
                       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                       </svg>
@@ -447,18 +429,18 @@ export default function Contact() {
                           href={social.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="bg-white/5 backdrop-blur-sm p-5 rounded-xl border border-white/10 hover:border-white/20 transition-all hover:scale-105 group"
+                          className="bg-white p-5 rounded-xl border border-black/10 hover:border-black/30 transition-colors group"
                           aria-label={`Visit ${social.name} profile: ${social.username}`}
                         >
                           <div className="flex items-center gap-4">
-                            <div className="text-white group-hover:scale-110 transition-transform">
+                            <div className="text-black">
                               {social.icon}
                             </div>
                             <div className="flex-1">
-                              <div className="text-white font-medium">{social.name}</div>
-                              <div className="text-xs text-gray-400 mt-1">{social.username}</div>
+                              <div className="text-black font-medium">{social.name}</div>
+                              <div className="text-xs text-gray-600 mt-1">{social.username}</div>
                             </div>
-                            <svg className="w-5 h-5 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <svg className="w-5 h-5 text-gray-600 group-hover:text-black transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
                           </div>

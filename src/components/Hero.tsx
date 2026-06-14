@@ -1,94 +1,17 @@
 'use client';
 
-import { useEffect, useRef, useCallback } from 'react';
-import { GridScan } from './Gridscan';
-
 export default function Hero() {
-  const mousePos = useRef({ x: 0, y: 0 });
-  const gridRef = useRef<HTMLDivElement>(null);
-  const rafId = useRef<number | null>(null);
-
-  useEffect(() => {
-    const gridEl = gridRef.current;
-    if (!gridEl) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      mousePos.current = {
-        x: (e.clientX / window.innerWidth) * 20,
-        y: (e.clientY / window.innerHeight) * 20,
-      };
-
-      // Use rAF to batch DOM updates instead of setState on every pixel
-      if (rafId.current) return;
-      rafId.current = requestAnimationFrame(() => {
-        if (gridEl) {
-          gridEl.style.transform = `translate(${mousePos.current.x}px, ${mousePos.current.y}px)`;
-        }
-        rafId.current = null;
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      if (rafId.current) cancelAnimationFrame(rafId.current);
-    };
-  }, []);
-
-  const scrollToSection = useCallback((id: string) => {
+  const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: 'smooth' });
-  }, []);
+  };
 
   return (
     <section
       id="hero"
-      className="flex items-center justify-center relative overflow-hidden min-h-screen"
+      className="flex items-center justify-center relative overflow-hidden min-h-screen bg-white"
       style={{ minHeight: '100dvh' }}
     >
-      {/* GridScan background */}
-      <div className="absolute inset-0 z-0">
-        <GridScan
-          sensitivity={0.55}
-          lineThickness={1}
-          linesColor="#333333"
-          gridScale={0.1}
-          scanColor="#838383"
-          scanOpacity={0.4}
-          enablePost
-          bloomIntensity={0.6}
-          chromaticAberration={0.002}
-          noiseIntensity={0.01}
-        />
-      </div>
-
-      {/* Animated grid background */}
-      <div className="absolute inset-0 overflow-hidden z-10">
-        <div
-          ref={gridRef}
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px',
-            transition: 'transform 0.3s ease-out',
-          }}
-        />
-
-        {/* Floating orbs */}
-        <div className="absolute top-1/4 -left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse" />
-        <div
-          className="absolute bottom-1/4 -right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: '1s' }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: '2s' }}
-        />
-      </div>
-
       <div className="max-w-5xl mx-auto px-6 py-20 relative z-20 w-full">
         {/* Centered content */}
         <div className="flex flex-col items-center text-center space-y-6">
@@ -102,19 +25,19 @@ export default function Hero() {
                 lineHeight: 'var(--leading-tight)',
               }}
             >
-              <span className="block bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+              <span className="block text-black">
                 CR<span className="italic">EA</span>TE
               </span>
             </h1>
 
             <div className="flex flex-wrap gap-2 justify-center">
-              <span className="px-4 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 text-sm">
+              <span className="px-4 py-2 rounded-lg border border-black/15 text-gray-700 text-sm">
                 Frontend Developer
               </span>
-              <span className="px-4 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 text-sm">
+              <span className="px-4 py-2 rounded-lg border border-black/15 text-gray-700 text-sm">
                 UI/UX Designer
               </span>
-              <span className="px-4 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 text-sm">
+              <span className="px-4 py-2 rounded-lg border border-black/15 text-gray-700 text-sm">
                 Photographer
               </span>
             </div>
@@ -122,24 +45,22 @@ export default function Hero() {
 
           {/* Description */}
           <p
-            className="text-gray-400 leading-relaxed max-w-2xl"
+            className="text-gray-600 leading-relaxed max-w-2xl"
             style={{ fontSize: 'var(--text-body)' }}
           >
-            I build scalable and delightful web experiences powered by
-            cutting-edge technology. Focused on{' '}
-            <span className="text-white font-medium">
-              Modern Stacks, Design
+            I build scalable, delightful web experiences with modern technology —
+            focused on{' '}
+            <span className="text-black font-medium">
+              clean engineering, thoughtful design, and UI/UX
             </span>
-            , and{' '}
-            <span className="text-white font-medium">UI/UX engineering</span>.
-            Operating from Mumbai, India.
+            . Based in Mumbai, India.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 pt-2 justify-center">
             <button
               onClick={() => scrollToSection('projects')}
-              className="group px-8 py-4 bg-white text-black rounded-xl font-medium hover:bg-gray-200 transition-all hover:scale-105 flex items-center gap-2 min-h-[44px]"
+              className="group px-8 py-4 bg-black text-white rounded-xl font-medium hover:bg-gray-800 transition-all flex items-center gap-2 min-h-[44px]"
             >
               View My Work
               <svg
@@ -159,7 +80,7 @@ export default function Hero() {
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/20 rounded-xl text-white hover:bg-white/10 transition-all hover:scale-105 min-h-[44px]"
+              className="px-8 py-4 border border-black/15 rounded-xl text-black hover:bg-black hover:text-white transition-all min-h-[44px]"
             >
               Get in Touch
             </button>
@@ -171,11 +92,11 @@ export default function Hero() {
               href="https://github.com/Niravcanvas"
               target="_blank"
               rel="noopener noreferrer"
-              className="group p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all hover:scale-110 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="group p-3 rounded-xl border border-black/10 text-gray-600 hover:text-black hover:border-black/30 transition-all min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="GitHub profile"
             >
               <svg
-                className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors"
+                className="w-5 h-5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -191,11 +112,11 @@ export default function Hero() {
               href="https://www.linkedin.com/in/nirav-thakur-9b5892225/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all hover:scale-110 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="group p-3 rounded-xl border border-black/10 text-gray-600 hover:text-black hover:border-black/30 transition-all min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="LinkedIn profile"
             >
               <svg
-                className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors"
+                className="w-5 h-5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -207,11 +128,11 @@ export default function Hero() {
               href="https://www.figma.com/@Niravcanvas"
               target="_blank"
               rel="noopener noreferrer"
-              className="group p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all hover:scale-110 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="group p-3 rounded-xl border border-black/10 text-gray-600 hover:text-black hover:border-black/30 transition-all min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Figma profile"
             >
               <svg
-                className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors"
+                className="w-5 h-5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -223,11 +144,11 @@ export default function Hero() {
               href="https://www.instagram.com/blurrredcanvas/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all hover:scale-110 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="group p-3 rounded-xl border border-black/10 text-gray-600 hover:text-black hover:border-black/30 transition-all min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Instagram profile"
             >
               <svg
-                className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors"
+                className="w-5 h-5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -239,11 +160,11 @@ export default function Hero() {
               href="https://in.pinterest.com/blurredoutframes/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all hover:scale-110 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="group p-3 rounded-xl border border-black/10 text-gray-600 hover:text-black hover:border-black/30 transition-all min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Pinterest profile"
             >
               <svg
-                className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors"
+                className="w-5 h-5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -255,11 +176,11 @@ export default function Hero() {
               href="https://www.behance.net/Niravcanvas"
               target="_blank"
               rel="noopener noreferrer"
-              className="group p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all hover:scale-110 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="group p-3 rounded-xl border border-black/10 text-gray-600 hover:text-black hover:border-black/30 transition-all min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Behance profile"
             >
               <svg
-                className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors"
+                className="w-5 h-5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -272,7 +193,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-20">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
         <div className="flex flex-col items-center gap-2">
           <span className="text-xs text-gray-500">Scroll</span>
           <svg

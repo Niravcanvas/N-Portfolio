@@ -7,7 +7,6 @@ import {
   Clock,
   Code,
   Palette,
-  Settings,
   ExternalLink,
   FileText,
   ChevronDown,
@@ -20,7 +19,7 @@ interface Project {
   description: string;
   tags: string[];
   image: string;
-  imageType: 'emoji' | 'svg' | 'png';
+  imageType: 'text' | 'svg' | 'png';
   link: string;
   github?: string;
   figma?: string;
@@ -42,7 +41,7 @@ export default function Projects() {
       id: 1,
       title: 'IndieAn',
       description:
-        'IndieAn is a modern, gamified music learning platform that combines AI-powered lessons with Trinity College curriculum standards.',
+        'A modern, gamified music-learning platform pairing AI-powered lessons with Trinity College curriculum standards. Stable, responsive front-end build with interactive gamification throughout.',
       tags: [
         'Next.js',
         'TypeScript',
@@ -64,7 +63,7 @@ export default function Projects() {
       id: 3,
       title: 'Seven Vinyl Store',
       description:
-        'Sample brand design concept for a music and lifestyle vinyl record store. Complete brand identity including logo, color palette, and visual guidelines.',
+        'Full brand identity for a music-and-lifestyle vinyl store — logo, palette, typography, and visual guidelines. Portfolio concept piece.',
       tags: ['Branding', 'Logo Design', 'Visual Identity', 'Music', 'Retail'],
       image: '/images/Sevenvinyl.svg',
       imageType: 'svg',
@@ -79,7 +78,7 @@ export default function Projects() {
       id: 4,
       title: 'SYNC Fitness App',
       description:
-        'Modern fitness tracking application with workout planning, progress monitoring, and personalized fitness goals.',
+        'UI/UX design for a fitness-tracking app: workout planning, progress and nutrition tracking, and social features, with a focus on engagement.',
       tags: ['Figma', 'UI/UX', 'Mobile Design', 'Fitness'],
       image: '/images/Sync.png',
       imageType: 'png',
@@ -94,7 +93,7 @@ export default function Projects() {
       id: 5,
       title: 'Anders Design Portfolio',
       description:
-        'Elegant interior design showcase featuring modern minimalist aesthetics and spatial planning.',
+        'An interior-design portfolio of residential and commercial work — clean layouts, mood boards, and detailed project presentations.',
       tags: ['Figma', 'UI/UX', 'Interior Design', 'Portfolio'],
       image: '/images/Anders.svg',
       imageType: 'svg',
@@ -109,7 +108,7 @@ export default function Projects() {
       id: 6,
       title: 'Form & Form',
       description:
-        'Sample Brand Design for a Design Agency specializing in modern, minimalist aesthetics and user-centric design solutions.',
+        'A complete design system: reusable components, type scale, color palettes, spacing, and design tokens for consistent output.',
       tags: ['Figma', 'Design System', 'UI Components', 'Branding'],
       image: '/images/F&F.svg',
       imageType: 'svg',
@@ -124,7 +123,7 @@ export default function Projects() {
       id: 7,
       title: 'HackOverflow 4.0',
       description:
-        'Official website for HackOverflow 4.0 - A national-level hackathon by PHCET.',
+        'Official site for HackOverflow 4.0, a national-level hackathon by PHCET — responsive layout, scroll animations, and integrated registration.',
       tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
       image: '/images/Hackoverflow.png',
       imageType: 'png',
@@ -139,7 +138,7 @@ export default function Projects() {
       id: 8,
       title: 'Cloud Kitchen POS',
       description:
-        'A comprehensive PHP-based Point of Sale (POS) and management system designed for cloud kitchens and restaurants. Built with a clean, professional architecture following industry best practices.',
+        'A PHP point-of-sale and management system for cloud kitchens: inventory, orders, tables, staff, and sales reporting.',
       tags: [
         'PHP',
         'MySQL',
@@ -147,8 +146,8 @@ export default function Projects() {
         'POS',
         'Restaurant Management',
       ],
-      image: '🍽️',
-      imageType: 'emoji',
+      image: 'CK',
+      imageType: 'text',
       link: 'https://github.com/Niravcanvas/Cloud-kitchen-POS',
       github: 'https://github.com/Niravcanvas/Cloud-kitchen-POS',
       category: 'development',
@@ -160,10 +159,10 @@ export default function Projects() {
       id: 9,
       title: 'AI MCQ Generator',
       description:
-        'An AI-powered tool to generate multiple-choice questions (MCQs) from text or documents. This project uses AI APIs to parse input content and produce MCQs in various formats including HTML, TXT, and more.',
+        'An AI tool that generates multiple-choice questions from text or documents, exporting to multiple formats with adjustable difficulty.',
       tags: ['Python', 'AI', 'NLP', 'Machine Learning', 'Education'],
-      image: '🤖',
-      imageType: 'emoji',
+      image: 'AI',
+      imageType: 'text',
       link: 'https://github.com/Niravcanvas/AI-mcq-Generator',
       github: 'https://github.com/Niravcanvas/AI-mcq-Generator',
       category: 'development',
@@ -214,48 +213,22 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="min-h-screen py-16 md:py-20 lg:py-24 relative overflow-hidden px-4"
+      className="min-h-screen py-16 md:py-20 lg:py-24 bg-white px-4"
     >
-      {/* Floating orbs background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse" />
-        <div
-          className="absolute bottom-1/4 -right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: '1s' }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: '2s' }}
-        />
-        <div
-          className="absolute top-1/3 right-1/4 w-48 h-48 bg-white/[0.08] rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: '3s' }}
-        />
-        <div
-          className="absolute bottom-1/3 left-1/4 w-56 h-56 bg-white/[0.06] rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: '1.5s' }}
-        />
-      </div>
-
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8 text-center space-y-2 animate-fade-in">
-          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500" />
-              <div className="w-3 h-3 rounded-full bg-green-500" />
-            </div>
-            <span className="text-sm text-gray-400 ml-2">Notes.app</span>
+          <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-black/10">
+            <span className="text-sm text-gray-600">Notes.app</span>
           </div>
           <h2
-            className="font-bold text-white"
+            className="font-bold text-black"
             style={{ fontSize: 'var(--text-h2)' }}
           >
             Featured Projects
           </h2>
           <p
-            className="text-gray-400"
+            className="text-gray-600"
             style={{ fontSize: 'var(--text-body)' }}
           >
             My work and creative projects
@@ -264,24 +237,11 @@ export default function Projects() {
 
         {/* Notes Window */}
         <div className="animate-slide-up">
-          <div className="bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+          <div className="bg-white border border-black/10 rounded-xl overflow-hidden">
             {/* Window Header */}
-            <div className="bg-white/5 backdrop-blur-sm px-4 py-3 flex items-center justify-between border-b border-white/10">
+            <div className="bg-gray-50 px-4 py-3 flex items-center justify-between border-b border-black/10">
               <div className="flex items-center gap-3">
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                  <div className="w-3 h-3 rounded-full bg-green-500" />
-                </div>
-                <span className="text-sm text-gray-400">Projects</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <button
-                  className="p-1.5 text-gray-400 hover:text-white transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
-                  aria-label="Settings"
-                >
-                  <Settings className="w-4 h-4" aria-hidden="true" />
-                </button>
+                <span className="text-sm text-gray-600">Projects</span>
               </div>
             </div>
 
@@ -289,7 +249,7 @@ export default function Projects() {
             <div className="flex md:h-[600px] h-auto max-h-[70vh] md:max-h-none">
               {/* Folders Sidebar - Hidden on mobile */}
               <nav
-                className="hidden md:block w-48 bg-white/5 border-r border-white/10 p-3"
+                className="hidden md:block w-48 bg-gray-50 border-r border-black/10 p-3"
                 aria-label="Project categories"
               >
                 <div className="text-xs text-gray-500 uppercase tracking-wider mb-3 px-2">
@@ -300,10 +260,10 @@ export default function Projects() {
                     <button
                       key={folder.id}
                       onClick={() => setActiveFolder(folder.id)}
-                      className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-all min-h-[44px] ${
+                      className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors min-h-[44px] ${
                         activeFolder === folder.id
-                          ? 'bg-white/10 text-white'
-                          : 'text-gray-400 hover:bg-white/5'
+                          ? 'bg-black text-white'
+                          : 'text-gray-600 hover:bg-gray-50'
                       }`}
                       aria-current={
                         activeFolder === folder.id ? 'true' : undefined
@@ -322,13 +282,13 @@ export default function Projects() {
               </nav>
 
               {/* Notes List */}
-              <div className="w-full md:w-64 bg-white/5 border-r border-white/10 overflow-y-auto">
-                <div className="p-3 border-b border-white/10">
-                  <div className="text-sm font-medium text-white">
+              <div className="w-full md:w-64 bg-white border-r border-black/10 overflow-y-auto">
+                <div className="p-3 border-b border-black/10">
+                  <div className="text-sm font-medium text-black">
                     {filteredProjects.length} Notes
                   </div>
                 </div>
-                <div className="divide-y divide-white/10">
+                <div className="divide-y divide-black/10">
                   {filteredProjects.map((project) => (
                     <div key={project.id}>
                       {/* Project Header - Always Visible */}
@@ -336,15 +296,13 @@ export default function Projects() {
                         onClick={() => {
                           handleMobileProjectClick(project.id);
                         }}
-                        className={`w-full p-4 text-left transition-all hover:bg-white/5 ${
-                          selectedProject === project.id ? 'bg-white/10' : ''
+                        className={`w-full p-4 text-left transition-colors hover:bg-gray-50 ${
+                          selectedProject === project.id ? 'bg-gray-100' : ''
                         }`}
                       >
                         <div className="flex items-start gap-3 mb-2">
-                          {project.imageType === 'emoji' ? (
-                            <span className="text-2xl" role="img" aria-label={project.title}>
-                              {project.image}
-                            </span>
+                          {project.imageType === 'text' ? (
+                            <div className="w-8 h-8 flex items-center justify-center border border-black/10 rounded-md text-xs font-bold text-black flex-shrink-0">{project.image}</div>
                           ) : (
                             <div className="w-8 h-8 relative flex-shrink-0">
                               <Image
@@ -357,15 +315,15 @@ export default function Projects() {
                             </div>
                           )}
                           <div className="flex-1 min-w-0">
-                            <h4 className="text-sm font-medium text-white truncate mb-1">
+                            <h4 className="text-sm font-medium text-black truncate mb-1">
                               {project.title}
                             </h4>
-                            <p className="text-xs text-gray-400 line-clamp-2">
+                            <p className="text-xs text-gray-600 line-clamp-2">
                               {project.description}
                             </p>
                           </div>
                           <ChevronDown
-                            className={`w-4 h-4 text-gray-400 transition-transform md:hidden flex-shrink-0 ${
+                            className={`w-4 h-4 text-gray-600 transition-transform md:hidden flex-shrink-0 ${
                               expandedMobile === project.id
                                 ? 'rotate-180'
                                 : ''
@@ -387,13 +345,13 @@ export default function Projects() {
                             : 'max-h-0 opacity-0'
                         }`}
                       >
-                        <div className="px-4 pb-4 space-y-4 border-t border-white/5 pt-4">
+                        <div className="px-4 pb-4 space-y-4 border-t border-black/10 pt-4">
                           {/* Tags */}
                           <div className="flex flex-wrap gap-2">
                             {project.tags.map((tag, i) => (
                               <span
                                 key={`${project.id}-tag-${i}`}
-                                className="px-2 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-xs text-gray-300"
+                                className="px-2 py-1 border border-black/10 rounded-full text-xs text-gray-600"
                               >
                                 {tag}
                               </span>
@@ -402,20 +360,20 @@ export default function Projects() {
 
                           {/* Overview */}
                           <div>
-                            <h4 className="text-xs font-semibold text-gray-300 mb-1">
+                            <h4 className="text-xs font-semibold text-black mb-1">
                               Overview
                             </h4>
-                            <p className="text-xs text-gray-400 leading-relaxed">
+                            <p className="text-xs text-gray-600 leading-relaxed">
                               {project.description}
                             </p>
                           </div>
 
                           {/* Details */}
                           <div>
-                            <h4 className="text-xs font-semibold text-gray-300 mb-1">
+                            <h4 className="text-xs font-semibold text-black mb-1">
                               Details
                             </h4>
-                            <p className="text-xs text-gray-400 leading-relaxed">
+                            <p className="text-xs text-gray-600 leading-relaxed">
                               {project.content}
                             </p>
                           </div>
@@ -427,7 +385,7 @@ export default function Projects() {
                                 href={project.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-xs text-white text-center hover:bg-white/20 transition-all flex items-center justify-center gap-1.5 min-h-[44px]"
+                                className="px-3 py-2 border border-black/15 rounded-lg text-xs text-black text-center hover:bg-black hover:text-white transition-colors flex items-center justify-center gap-1.5 min-h-[44px]"
                               >
                                 <ExternalLink className="w-3 h-3" aria-hidden="true" />
                                 Live Demo
@@ -438,7 +396,7 @@ export default function Projects() {
                                 href={project.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-xs text-white text-center hover:bg-white/20 transition-all flex items-center justify-center gap-1.5 min-h-[44px]"
+                                className="px-3 py-2 border border-black/15 rounded-lg text-xs text-black text-center hover:bg-black hover:text-white transition-colors flex items-center justify-center gap-1.5 min-h-[44px]"
                               >
                                 <Code className="w-3 h-3" aria-hidden="true" />
                                 GitHub
@@ -449,7 +407,7 @@ export default function Projects() {
                                 href={project.figma}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-xs text-white text-center hover:bg-white/20 transition-all flex items-center justify-center gap-1.5 min-h-[44px]"
+                                className="px-3 py-2 border border-black/15 rounded-lg text-xs text-black text-center hover:bg-black hover:text-white transition-colors flex items-center justify-center gap-1.5 min-h-[44px]"
                               >
                                 <Palette className="w-3 h-3" aria-hidden="true" />
                                 Figma
@@ -460,7 +418,7 @@ export default function Projects() {
                                 href={project.pdf}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-xs text-white text-center hover:bg-white/20 transition-all flex items-center justify-center gap-1.5 min-h-[44px]"
+                                className="px-3 py-2 border border-black/15 rounded-lg text-xs text-black text-center hover:bg-black hover:text-white transition-colors flex items-center justify-center gap-1.5 min-h-[44px]"
                               >
                                 <FileText className="w-3 h-3" aria-hidden="true" />
                                 View PDF
@@ -481,10 +439,8 @@ export default function Projects() {
                     {/* Note Header */}
                     <div className="mb-6">
                       <div className="flex items-start gap-4 mb-4">
-                        {currentProject.imageType === 'emoji' ? (
-                          <span className="text-5xl" role="img" aria-label={currentProject.title}>
-                            {currentProject.image}
-                          </span>
+                        {currentProject.imageType === 'text' ? (
+                          <div className="w-16 h-16 flex items-center justify-center border border-black/10 rounded-md text-xl font-bold text-black flex-shrink-0">{currentProject.image}</div>
                         ) : (
                           <div className="w-16 h-16 relative flex-shrink-0">
                             <Image
@@ -498,12 +454,12 @@ export default function Projects() {
                         )}
                         <div className="flex-1">
                           <h3
-                            className="font-bold text-white mb-2"
+                            className="font-bold text-black mb-2"
                             style={{ fontSize: 'var(--text-h3)' }}
                           >
                             {currentProject.title}
                           </h3>
-                          <div className="flex items-center gap-2 text-sm text-gray-400 mb-3">
+                          <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
                             <Clock className="w-4 h-4" aria-hidden="true" />
                             <span>{currentProject.date}</span>
                           </div>
@@ -515,7 +471,7 @@ export default function Projects() {
                         {currentProject.tags.map((tag, i) => (
                           <span
                             key={`detail-tag-${i}`}
-                            className="px-3 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-xs text-gray-300"
+                            className="px-3 py-1 border border-black/10 rounded-full text-xs text-gray-600"
                           >
                             {tag}
                           </span>
@@ -526,11 +482,11 @@ export default function Projects() {
                     {/* Note Body */}
                     <div className="space-y-4 mb-6">
                       <div>
-                        <h4 className="text-sm font-semibold text-gray-300 mb-2">
+                        <h4 className="text-sm font-semibold text-black mb-2">
                           Overview
                         </h4>
                         <p
-                          className="text-gray-400"
+                          className="text-gray-600"
                           style={{
                             lineHeight: 'var(--leading-relaxed)',
                             fontSize: 'var(--text-body)',
@@ -541,11 +497,11 @@ export default function Projects() {
                       </div>
 
                       <div>
-                        <h4 className="text-sm font-semibold text-gray-300 mb-2">
+                        <h4 className="text-sm font-semibold text-black mb-2">
                           Details
                         </h4>
                         <p
-                          className="text-gray-400"
+                          className="text-gray-600"
                           style={{
                             lineHeight: 'var(--leading-relaxed)',
                             fontSize: 'var(--text-body)',
@@ -557,14 +513,14 @@ export default function Projects() {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex gap-3 pt-4 border-t border-white/10">
+                    <div className="flex gap-3 pt-4 border-t border-black/10">
                       {currentProject.link &&
                         currentProject.link !== '#' && (
                           <a
                             href={currentProject.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 px-4 py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-sm text-white text-center hover:bg-white/20 transition-all flex items-center justify-center gap-2 min-h-[44px]"
+                            className="flex-1 px-4 py-2.5 border border-black/15 rounded-lg text-sm text-black text-center hover:bg-black hover:text-white transition-colors flex items-center justify-center gap-2 min-h-[44px]"
                           >
                             <ExternalLink className="w-4 h-4" aria-hidden="true" />
                             Live Demo
@@ -575,7 +531,7 @@ export default function Projects() {
                           href={currentProject.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 px-4 py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-sm text-white text-center hover:bg-white/20 transition-all flex items-center justify-center gap-2 min-h-[44px]"
+                          className="flex-1 px-4 py-2.5 border border-black/15 rounded-lg text-sm text-black text-center hover:bg-black hover:text-white transition-colors flex items-center justify-center gap-2 min-h-[44px]"
                         >
                           <Code className="w-4 h-4" aria-hidden="true" />
                           GitHub
@@ -586,7 +542,7 @@ export default function Projects() {
                           href={currentProject.figma}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 px-4 py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-sm text-white text-center hover:bg-white/20 transition-all flex items-center justify-center gap-2 min-h-[44px]"
+                          className="flex-1 px-4 py-2.5 border border-black/15 rounded-lg text-sm text-black text-center hover:bg-black hover:text-white transition-colors flex items-center justify-center gap-2 min-h-[44px]"
                         >
                           <Palette className="w-4 h-4" aria-hidden="true" />
                           Figma
@@ -597,7 +553,7 @@ export default function Projects() {
                           href={currentProject.pdf}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 px-4 py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-sm text-white text-center hover:bg-white/20 transition-all flex items-center justify-center gap-2 min-h-[44px]"
+                          className="flex-1 px-4 py-2.5 border border-black/15 rounded-lg text-sm text-black text-center hover:bg-black hover:text-white transition-colors flex items-center justify-center gap-2 min-h-[44px]"
                         >
                           <FileText className="w-4 h-4" aria-hidden="true" />
                           View PDF

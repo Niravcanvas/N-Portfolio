@@ -36,7 +36,7 @@ export default function Achievements() {
       period: '2023',
       type: 'Internship',
       description:
-        'Gained hands-on experience in hardware troubleshooting, network configuration, and system maintenance.',
+        'Hardware troubleshooting, network configuration, and system maintenance.',
       icon: (
         <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
           <path
@@ -54,7 +54,7 @@ export default function Achievements() {
       period: '2022',
       type: 'Virtual Internship',
       description:
-        'Designed dashboards and product interfaces for business use cases. Applied UX research principles and interaction design fundamentals. Delivered structured design solutions aligned with enterprise needs.',
+        'Designed dashboards and product interfaces; applied UX research and interaction-design fundamentals to enterprise use cases.',
       icon: (
         <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
           <path
@@ -72,7 +72,7 @@ export default function Achievements() {
       period: 'Present',
       type: 'Entrepreneurship',
       description:
-        'Leading creative direction and strategic vision for a design studio. Managing client projects, brand identities, and creative deliverables.',
+        'Creative direction and strategy; client projects, brand identities, and creative deliverables.',
       icon: (
         <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
           <path
@@ -90,7 +90,7 @@ export default function Achievements() {
       period: '2023-2024',
       type: 'Leadership',
       description:
-        'Led creative initiatives and managed design teams for college events and campaigns. Oversaw visual branding and promotional materials.',
+        'Led creative initiatives and design teams for college events and campaigns.',
       icon: (
         <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
           <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
@@ -107,7 +107,7 @@ export default function Achievements() {
       platform: 'ArtStation',
       year: '2023-2024',
       description:
-        'Participated in community-driven digital art challenges. Created concept illustrations and visual compositions. Focused on storytelling, lighting, and composition.',
+        'Concept illustrations and compositions focused on storytelling and lighting.',
       icon: (
         <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
           <path
@@ -125,7 +125,7 @@ export default function Achievements() {
       platform: 'DeviantArt',
       year: '2022-2023',
       description:
-        'Submitted original artwork for themed online contests. Explored creative concepts, abstract forms, and visual styles. Engaged with a global creative community.',
+        'Original artwork for themed contests; explored abstract forms and styles.',
       icon: (
         <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
           <path
@@ -143,7 +143,7 @@ export default function Achievements() {
       platform: 'Instagram / Online Community',
       year: 'Ongoing',
       description:
-        'Participated in online drawing challenges and daily sketch prompts. Shared creative work publicly and received peer feedback.',
+        'Daily sketch prompts shared publicly with peer feedback.',
       icon: (
         <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
           <path
@@ -172,49 +172,20 @@ export default function Achievements() {
 
   return (
     <section
-      id="achievements"
-      className="min-h-screen bg-black py-16 md:py-20 lg:py-24 px-4 relative overflow-hidden"
+      id="experience"
+      className="min-h-screen bg-white py-16 md:py-20 lg:py-24 px-4"
     >
-      {/* Floating orbs background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse" />
-        <div
-          className="absolute bottom-1/4 -right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: '1s' }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: '2s' }}
-        />
-        <div
-          className="absolute top-1/3 right-1/4 w-48 h-48 bg-white/[0.08] rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: '3s' }}
-        />
-        <div
-          className="absolute bottom-1/3 left-1/4 w-56 h-56 bg-white/[0.06] rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: '1.5s' }}
-        />
-      </div>
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Keynote-style Header */}
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
         <div className="mb-8 text-center space-y-2 animate-fade-in">
-          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500" />
-              <div className="w-3 h-3 rounded-full bg-green-500" />
-            </div>
-            <span className="text-sm text-gray-400 ml-2">Keynote.app</span>
-          </div>
           <h2
-            className="font-bold text-white"
+            className="font-bold text-black"
             style={{ fontSize: 'var(--text-h2)' }}
           >
             Experience & Achievements
           </h2>
           <p
-            className="text-gray-400"
+            className="text-gray-600"
             style={{ fontSize: 'var(--text-body)' }}
           >
             My professional journey and accomplishments
@@ -266,8 +237,8 @@ export default function Achievements() {
               onClick={() => setActiveTab(tab.id)}
               className={`px-6 py-3 rounded-xl font-medium transition-all min-h-[44px] ${
                 activeTab === tab.id
-                  ? 'bg-gradient-to-r from-gray-600 to-gray-500 text-white shadow-lg shadow-gray-500/30'
-                  : 'bg-white/5 backdrop-blur-sm text-gray-400 hover:bg-white/10 border border-white/10'
+                  ? 'bg-black text-white'
+                  : 'border border-black/15 text-gray-600 hover:text-black'
               }`}
             >
               <div className="flex items-center gap-2">
@@ -283,30 +254,16 @@ export default function Achievements() {
           {/* Timeline View */}
           {activeTab === 'timeline' && (
             <div className="relative">
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gray-400 via-gray-500 to-gray-600 hidden md:block" />
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-black/15 hidden md:block" />
 
               <div className="space-y-8">
                 {allItems.map((item, index) => (
                   <div key={index} className="relative pl-0 md:pl-20">
-                    <div
-                      className="hidden md:block absolute left-6 top-6 w-5 h-5 rounded-full border-4 border-black"
-                      style={{ backgroundColor: item.color }}
-                    />
+                    <div className="hidden md:block absolute left-6 top-6 w-5 h-5 rounded-full bg-black border-4 border-white" />
 
-                    <div
-                      className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all hover:scale-[1.02] shadow-xl"
-                      style={{ animationDelay: `${index * 100}ms` }}
-                    >
+                    <div className="bg-white border border-black/10 hover:border-black/30 p-6 rounded-2xl transition-all">
                       <div className="flex flex-col sm:flex-row items-start gap-4">
-                        <div
-                          className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg"
-                          style={{
-                            backgroundColor: `${item.color}30`,
-                            border: `2px solid ${item.color}60`,
-                            boxShadow: `0 0 20px ${item.color}30`,
-                            color: item.color,
-                          }}
-                        >
+                        <div className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 bg-gray-50 border border-black/15 text-black">
                           {item.icon}
                         </div>
 
@@ -314,20 +271,20 @@ export default function Achievements() {
                           <div className="flex flex-col sm:flex-row items-start justify-between mb-3 gap-2">
                             <div>
                               <h4
-                                className="font-bold text-white"
+                                className="font-bold text-black"
                                 style={{ fontSize: 'var(--text-h4)' }}
                               >
                                 {item.category === 'experience'
                                   ? item.role
                                   : item.title}
                               </h4>
-                              <div className="text-sm text-gray-300 mt-1">
+                              <div className="text-sm text-gray-700 mt-1">
                                 {item.category === 'experience'
                                   ? item.organization
                                   : item.event}
                               </div>
                               {item.platform && (
-                                <div className="text-xs text-gray-400 mt-1 flex items-center gap-1">
+                                <div className="text-xs text-gray-600 mt-1 flex items-center gap-1">
                                   <svg
                                     className="w-3 h-3"
                                     fill="currentColor"
@@ -345,12 +302,12 @@ export default function Achievements() {
                               )}
                             </div>
                             <div className="flex flex-row sm:flex-col items-start sm:items-end gap-2">
-                              <span className="text-sm text-gray-400">
+                              <span className="text-sm text-gray-600">
                                 {item.category === 'experience'
                                   ? item.period
                                   : item.year}
                               </span>
-                              <span className="text-xs px-3 py-1 rounded-full font-medium bg-white/10 text-gray-300">
+                              <span className="text-xs px-3 py-1 rounded-full font-medium bg-white border border-black/10 text-gray-700">
                                 {item.category === 'experience'
                                   ? item.type
                                   : 'Achievement'}
@@ -358,7 +315,7 @@ export default function Achievements() {
                             </div>
                           </div>
                           <p
-                            className="text-gray-300"
+                            className="text-gray-700"
                             style={{
                               lineHeight: 'var(--leading-relaxed)',
                               fontSize: 'var(--text-body)',
@@ -381,19 +338,10 @@ export default function Achievements() {
               {experiences.map((exp, index) => (
                 <div
                   key={index}
-                  className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all hover:scale-[1.02] shadow-xl"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className="bg-white border border-black/10 hover:border-black/30 p-6 rounded-2xl transition-all"
                 >
                   <div className="flex flex-col sm:flex-row items-start gap-4">
-                    <div
-                      className="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg"
-                      style={{
-                        backgroundColor: `${exp.color}30`,
-                        border: `2px solid ${exp.color}60`,
-                        boxShadow: `0 0 20px ${exp.color}30`,
-                        color: exp.color,
-                      }}
-                    >
+                    <div className="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 bg-gray-50 border border-black/15 text-black">
                       {exp.icon}
                     </div>
 
@@ -401,26 +349,26 @@ export default function Achievements() {
                       <div className="flex flex-col sm:flex-row items-start justify-between mb-3 gap-2">
                         <div>
                           <h4
-                            className="font-bold text-white"
+                            className="font-bold text-black"
                             style={{ fontSize: 'var(--text-h4)' }}
                           >
                             {exp.role}
                           </h4>
-                          <div className="text-sm text-gray-300 mt-1">
+                          <div className="text-sm text-gray-700 mt-1">
                             {exp.organization}
                           </div>
                         </div>
                         <div className="flex flex-row sm:flex-col items-start sm:items-end gap-2">
-                          <span className="text-sm text-gray-400">
+                          <span className="text-sm text-gray-600">
                             {exp.period}
                           </span>
-                          <span className="text-xs px-3 py-1 rounded-full font-medium bg-white/10 text-gray-300">
+                          <span className="text-xs px-3 py-1 rounded-full font-medium bg-white border border-black/10 text-gray-700">
                             {exp.type}
                           </span>
                         </div>
                       </div>
                       <p
-                        className="text-gray-300"
+                        className="text-gray-700"
                         style={{
                           lineHeight: 'var(--leading-relaxed)',
                           fontSize: 'var(--text-body)',
@@ -441,33 +389,24 @@ export default function Achievements() {
               {achievements.map((achievement, index) => (
                 <div
                   key={index}
-                  className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all hover:scale-[1.02] shadow-xl"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className="bg-white border border-black/10 hover:border-black/30 p-6 rounded-2xl transition-all"
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div
-                      className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg"
-                      style={{
-                        backgroundColor: `${achievement.color}30`,
-                        border: `2px solid ${achievement.color}60`,
-                        boxShadow: `0 0 20px ${achievement.color}30`,
-                        color: achievement.color,
-                      }}
-                    >
+                    <div className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 bg-gray-50 border border-black/15 text-black">
                       {achievement.icon}
                     </div>
                     <div className="flex-1">
                       <h4
-                        className="font-bold text-white"
+                        className="font-bold text-black"
                         style={{ fontSize: 'var(--text-h4)' }}
                       >
                         {achievement.title}
                       </h4>
-                      <div className="text-sm text-gray-300 mt-1">
+                      <div className="text-sm text-gray-700 mt-1">
                         {achievement.event}
                       </div>
                       {achievement.platform && (
-                        <div className="text-xs text-gray-400 mt-1 flex items-center gap-1">
+                        <div className="text-xs text-gray-600 mt-1 flex items-center gap-1">
                           <svg
                             className="w-3 h-3"
                             fill="currentColor"
@@ -484,12 +423,12 @@ export default function Achievements() {
                         </div>
                       )}
                     </div>
-                    <span className="text-xs px-3 py-1 rounded-full font-medium flex-shrink-0 bg-white/10 text-gray-300">
+                    <span className="text-xs px-3 py-1 rounded-full font-medium flex-shrink-0 bg-white border border-black/10 text-gray-700">
                       {achievement.year}
                     </span>
                   </div>
                   <p
-                    className="text-gray-300"
+                    className="text-gray-700"
                     style={{
                       lineHeight: 'var(--leading-relaxed)',
                       fontSize: 'var(--text-body)',
