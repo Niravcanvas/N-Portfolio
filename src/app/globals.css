@@ -1,32 +1,37 @@
 @import "tailwindcss";
 
+/* Expose the self-hosted Helvetica Neue (next/font) as the `font-sans` family. */
+@theme inline {
+  --font-sans: var(--font-sans);
+}
+
 /* ========================================
-   Design Tokens
+   Design Tokens — flat monochrome (light)
    ======================================== */
 :root {
   /* Colors */
-  --color-bg: #000000;
-  --color-text: #ffffff;
-  --color-text-muted: #9ca3af;
-  --color-text-subtle: #6b7280;
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-border-hover: rgba(255, 255, 255, 0.3);
-  --color-surface: rgba(255, 255, 255, 0.05);
-  --color-surface-hover: rgba(255, 255, 255, 0.1);
-  --color-accent: #3b82f6;
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --color-text-muted: #525252; /* gray-600 */
+  --color-text-subtle: #737373; /* gray-500 */
+  --color-border: rgba(0, 0, 0, 0.12);
+  --color-border-hover: rgba(0, 0, 0, 0.3);
+  --color-surface: rgba(0, 0, 0, 0.03);
+  --color-surface-hover: rgba(0, 0, 0, 0.06);
+  --color-accent: #000000;
 
   /* Spacing scale (multiples of 4px) */
-  --space-1: 0.25rem;  /* 4px */
-  --space-2: 0.5rem;   /* 8px */
-  --space-3: 0.75rem;  /* 12px */
-  --space-4: 1rem;     /* 16px */
-  --space-5: 1.25rem;  /* 20px */
-  --space-6: 1.5rem;   /* 24px */
-  --space-8: 2rem;     /* 32px */
-  --space-10: 2.5rem;  /* 40px */
-  --space-12: 3rem;    /* 48px */
-  --space-16: 4rem;    /* 64px */
-  --space-20: 5rem;    /* 80px */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
 
   /* Border Radius */
   --radius-sm: 0.375rem;
@@ -101,7 +106,6 @@ button {
   cursor: pointer;
 }
 
-/* Prevent text overflow */
 p,
 h1,
 h2,
@@ -116,7 +120,7 @@ h6 {
    Focus Styles (Accessibility)
    ======================================== */
 :focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline: 2px solid #000000;
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
@@ -140,32 +144,28 @@ h6 {
 }
 
 /* ========================================
-   Custom Scrollbar (with feature detection)
+   Custom Scrollbar
    ======================================== */
 @supports selector(::-webkit-scrollbar) {
   ::-webkit-scrollbar {
     width: 10px;
   }
-
   ::-webkit-scrollbar-track {
     background-color: var(--color-bg);
   }
-
   ::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
     border-radius: var(--radius-full);
   }
-
   ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.35);
   }
 }
 
-/* Firefox scrollbar */
 @supports not selector(::-webkit-scrollbar) {
   * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.2) var(--color-bg);
+    scrollbar-color: rgba(0, 0, 0, 0.2) var(--color-bg);
   }
 }
 
@@ -173,27 +173,16 @@ h6 {
    Selection Styling
    ======================================== */
 ::selection {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
 /* ========================================
-   Shared Keyframe Animations
-   (migrated from <style jsx> blocks)
+   Entrance Animations (subtle)
    ======================================== */
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;
@@ -204,7 +193,7 @@ h6 {
 @keyframes slide-up {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -212,25 +201,17 @@ h6 {
   }
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
 .animate-fade-in {
-  animation: fade-in 0.6s ease-out;
+  animation: fade-in 0.5s ease-out;
 }
 
 .animate-slide-up {
-  animation: slide-up 0.5s ease-out;
+  animation: slide-up 0.45s ease-out;
 }
 
-/* ========================================
-   Backdrop Filter Fallback
-   ======================================== */
-@supports not (backdrop-filter: blur(1px)) {
-  .backdrop-blur-sm,
-  .backdrop-blur-md,
-  .backdrop-blur-xl {
-    background-color: rgba(0, 0, 0, 0.85) !important;
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-slide-up {
+    animation: none;
   }
 }
