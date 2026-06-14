@@ -1,0 +1,262 @@
+================================================================================
+NIRAV THAKUR — PORTFOLIO COPY DECK
+Final website copy. Minimal · precise · theme-agnostic.
+(No UI-skin / window-chrome labels — App.app, Library, Finder, Mailboxes, traffic
+lights, "bash 80x24", "Draft saved", etc. are presentation, not copy, so they are
+intentionally omitted here.)
+Updated: 2026-06-14
+================================================================================
+
+
+GLOBAL / SEO STRINGS
+--------------------------------------------------------------------------------
+Name:        Nirav Thakur
+Title tag:   Nirav Thakur — Frontend Developer & UI/UX Designer
+Meta desc:   Frontend developer and UI/UX designer in Mumbai, India, building
+             fast, modern web experiences with Next.js, React, and TypeScript.
+OG title:    Nirav Thakur — Frontend Developer & UI/UX Designer
+OG desc:     Scalable, delightful web experiences. Engineering + design + UI/UX.
+Keywords:    Nirav Thakur, Frontend Developer, UI/UX Designer, Next.js, React,
+             TypeScript, Portfolio, Mumbai
+Skip link:   Skip to content
+
+
+NAV
+--------------------------------------------------------------------------------
+Brand:   Nirav.
+Links:   About · Projects · Gallery · Experience · Contact
+Action:  Resume
+
+
+HERO
+--------------------------------------------------------------------------------
+Headline:    CREATE
+Badges:      Frontend Developer · UI/UX Designer · Photographer
+Description: I build scalable, delightful web experiences with modern technology —
+             focused on clean engineering, thoughtful design, and UI/UX. Based in
+             Mumbai, India.
+Buttons:     View My Work · Get in Touch
+Socials:     GitHub · LinkedIn · Figma · Instagram · Pinterest · Behance
+
+
+ABOUT
+--------------------------------------------------------------------------------
+Section title: Get to know me
+
+My Story
+  I'm a frontend developer and UI/UX designer in Mumbai, building refined,
+  high-performance web experiences with modern frontend tools.
+
+  I work where engineering, design, and visual craft meet — turning ideas into
+  intuitive, scalable interfaces that serve real goals.
+
+  Off the clock: following design trends, shooting photography, and contributing
+  to open source.
+
+Education
+  • Bachelor's in Computer Science & Engineering — CSMU (Autonomous), 2024–Present
+    Computer-science fundamentals, software development, and modern computing.
+  • Diploma in Computer Engineering — Pillai HOC College of Engineering &
+    Technology, 2021–2024
+    Core engineering concepts, programming fundamentals, and applied development.
+  • UI/UX Design Certification — Google UX Design (Online), 2023
+    User research, wireframing, prototyping, and user-centered design.
+  • Advanced Visual & Interaction Design — Coursera, 2022
+    Visual hierarchy, interaction patterns, accessibility, polished interfaces.
+  • Creative Design & Branding Program — Udemy, 2022
+    Design fundamentals, branding, layout systems, creative problem-solving.
+  • Web Development Bootcamp — Self-taught & online, 2019–Present
+    Ongoing hands-on frontend and real-world web app development.
+  • Secondary & Higher Secondary (State Board) — St. Joseph High School, 2010–2021
+    Strong academic foundation under the State Board curriculum.
+  • IELTS Academic — British Council / IDP, 2024
+    Overall band score 7.1.
+
+Skills
+  • Technical: Time Management, Critical Thinking, Hardware Hobbyist,
+    Server Configuration
+  • Creative:  Photography, Painting, Sketching, Modeling, Ramp
+  • Soft:      Teamwork, Leadership, Communication, Problem Solving
+
+Languages
+  HTML · CSS · JavaScript · TypeScript · Python · Java · C · C++ · PHP · SQL
+
+Frameworks & Libraries
+  Next.js · React · Node.js · Flask · Tailwind CSS · MongoDB · Docker · Git ·
+  Nginx · Ngrok · Coolify · Express.js · Bootstrap · jQuery
+
+Software
+  Figma · Illustrator · Photoshop · Lightroom · After Effects · Blender ·
+  Affinity · Inkscape · VS Code · Xcode
+
+Interactive terminal (optional easter-egg feature — copy, condensed)
+  Welcome: "Welcome to Portfolio Terminal v1.0.0 — type 'help' to start."
+  Commands: help, about, education, skills, languages, libraries, software,
+            contact, ls, clear
+  Hidden:   secret, matrix, coffee, joke, game, guess <n> (answer 73), sudo,
+            whoami, date, secrets (find 5: secret/matrix/coffee/joke/game)
+
+
+GALLERY
+--------------------------------------------------------------------------------
+Section title: Gallery
+Subtitle:      Browse my creative collection
+Filters:       All · Portfolio · Photography · Design · Art
+
+Entries (title — subtitle — year):
+  Portfolio:    Project Alpha* — Web Design — 2024
+                Project Beta*  — UI/UX Design — 2024
+                Project Gamma* — Full Stack Dev — 2024
+                Project Delta* — Mobile App — 2024
+  Photography:  Urban Landscapes — Photography Series — 2024
+                Portraits — Photography Series — 2023
+                Nature — Photography — 2024
+  Design:       Brand Identity — Visual Design — 2023
+                Poster Design — Print Design — 2024
+                Logo Design — Branding — 2023
+  Art:          Digital Art — Illustration — 2024
+                Abstract Work — Digital Art — 2023
+                Concept Art — Illustration — 2024
+
+  * = placeholder name — replace with the real project/photo title.
+  ACTION: add the 3 missing image files (see map) or remove those 3 entries so
+  every tile resolves. No broken tiles in final copy.
+
+
+PROJECTS
+--------------------------------------------------------------------------------
+Section title: Featured Projects
+Subtitle:      My work and creative projects
+Filters:       All · Development · Design · Favorites
+
+IndieAn — Development — Dec 2025
+  Tags: Next.js, TypeScript, Tailwind CSS, Framer Motion, Responsive Design
+  A modern, gamified music-learning platform pairing AI-powered lessons with
+  Trinity College curriculum standards. Stable, responsive front-end build with
+  interactive gamification throughout.
+  Link: Live Demo → https://www.indiean.com/
+
+Seven Vinyl Store — Favorites — Jan 2026
+  Tags: Branding, Logo Design, Visual Identity, Music, Retail
+  Full brand identity for a music-and-lifestyle vinyl store — logo, palette,
+  typography, and visual guidelines. Portfolio concept piece.
+  Link: View PDF → /Docs/Seven Vinyl.pdf
+  Footnote: © 2025 Seven Hours. All rights reserved.
+
+SYNC Fitness App — Design — Jan 2026
+  Tags: Figma, UI/UX, Mobile Design, Fitness
+  UI/UX design for a fitness-tracking app: workout planning, progress and
+  nutrition tracking, and social features, with a focus on engagement.
+  Link: Figma → https://www.figma.com/design/PoIDqRCf8VTB9tpuYuqSa7/SYNC--Fitness-
+
+Anders Design Portfolio — Design — Dec 2025
+  Tags: Figma, UI/UX, Interior Design, Portfolio
+  An interior-design portfolio of residential and commercial work — clean
+  layouts, mood boards, and detailed project presentations.
+  Link: Figma → https://www.figma.com/design/Hd0ugG6oLaIax2aqwsCZGr/Interior
+
+Form & Form — Design — Nov 2025
+  Tags: Figma, Design System, UI Components, Branding
+  A complete design system: reusable components, type scale, color palettes,
+  spacing, and design tokens for consistent output.
+  Link: Figma → https://www.figma.com/design/mH4P37A5Z39BxvwC9EAJys/F-F
+
+HackOverflow 4.0 — Development — Jan 2026
+  Tags: Next.js, TypeScript, Tailwind CSS, Framer Motion
+  Official site for HackOverflow 4.0, a national-level hackathon by PHCET —
+  responsive layout, scroll animations, and integrated registration.
+  Links: Live Demo → https://hackoverflow4.tech ·
+         GitHub → https://github.com/Niravcanvas/Hackoverflow
+
+Cloud Kitchen POS — Development — Dec 2025
+  Tags: PHP, MySQL, Bootstrap, POS, Restaurant Management
+  A PHP point-of-sale and management system for cloud kitchens: inventory,
+  orders, tables, staff, and sales reporting.
+  Link: GitHub → https://github.com/Niravcanvas/Cloud-kitchen-POS
+
+AI MCQ Generator — Development — Nov 2025
+  Tags: Python, AI, NLP, Machine Learning, Education
+  An AI tool that generates multiple-choice questions from text or documents,
+  exporting to multiple formats with adjustable difficulty.
+  Link: GitHub → https://github.com/Niravcanvas/AI-mcq-Generator
+
+
+EXPERIENCE & ACHIEVEMENTS
+--------------------------------------------------------------------------------
+Section title: Experience & Achievements
+Subtitle:      My professional journey and accomplishments
+Views:         Timeline · Experience · Achievements
+
+Experience
+  • Hardware & Networking Intern — Quasco, 2023
+    Hardware troubleshooting, network configuration, and system maintenance.
+  • UI/UX Design Intern — IBM SkillsBuild, 2022 (Virtual)
+    Designed dashboards and product interfaces; applied UX research and
+    interaction-design fundamentals to enterprise use cases.
+  • Co-Founder & Creative Director — Seven Hours Design Studio, Present
+    Creative direction and strategy; client projects, brand identities, and
+    creative deliverables.
+  • Core Creative Head — Euforia, 2023–2024
+    Led creative initiatives and design teams for college events and campaigns.
+
+Achievements
+  • ArtStation Community Challenges — 2023–2024
+    Concept illustrations and compositions focused on storytelling and lighting.
+  • DeviantArt Online Art Contests — 2022–2023
+    Original artwork for themed contests; explored abstract forms and styles.
+  • Daily Drawing Challenges — Ongoing
+    Daily sketch prompts shared publicly with peer feedback.
+
+
+CONTACT
+--------------------------------------------------------------------------------
+Section title: Get in Touch
+Subtitle:      Let's connect and discuss your next project
+Status:        Available · responds within 24h · Mumbai, India
+
+Form
+  Fields:       Name · Email · Subject · Message
+  Placeholders: "Your Name" · "your.email@example.com" · "What's this about?" ·
+                "Type your message here..."
+  Button:       Send Message  (sending state: "Sending...")
+  Success:      Message sent! I'll get back to you soon.
+  ACTION: wire to a real handler (see map) — no fake/no-op submit in final build.
+
+Contact info
+  Email:    niravthakur@icloud.com
+  Phone:    +91 9653472213
+  Location: Mumbai, India
+  Note:     I typically respond within 24 hours. For urgent matters, call.
+
+Social
+  GitHub    — Niravcanvas        — https://github.com/Niravcanvas
+  LinkedIn  — nirav-thakur        — https://www.linkedin.com/in/nirav-thakur-9b5892225/
+  Figma     — @Niravcanvas        — https://www.figma.com/@Niravcanvas
+  Instagram — @blurrredcanvas     — https://www.instagram.com/blurrredcanvas/
+  Pinterest — @blurredoutframes   — https://in.pinterest.com/blurredoutframes/
+  Behance   — Niravcanvas         — https://www.behance.net/Niravcanvas
+
+
+FOOTER
+--------------------------------------------------------------------------------
+Brand:      Nirav.
+Tagline:    Crafting beautiful web experiences with modern technologies.
+Navigation: Home · About · Projects · Gallery · Experience · Contact
+Social:     GitHub · LinkedIn · Figma · Instagram · Pinterest · Behance
+Contact:    niravthakur@icloud.com · +91 9653472213 · Mumbai, India
+Bottom:     © {year} Nirav. Crafted with passion. · Mumbai, India · Frontend Developer
+
+
+================================================================================
+SINGLE SOURCE — keep these identical everywhere
+================================================================================
+Name:      Nirav Thakur
+Role:      Frontend Developer & UI/UX Designer (also Photographer)
+Location:  Mumbai, India
+Email:     niravthakur@icloud.com
+Phone:     +91 9653472213
+Site:      https://niravthakur.in
+LinkedIn:  https://www.linkedin.com/in/nirav-thakur-9b5892225/   (use ONE everywhere)
+Socials:   GitHub · LinkedIn · Figma · Instagram · Pinterest · Behance — all 6, in
+           this order, in every social row.
+================================================================================

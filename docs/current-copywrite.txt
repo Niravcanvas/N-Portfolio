@@ -1,0 +1,471 @@
+================================================================================
+NIRAV THAKUR — PORTFOLIO : CURRENT COPY (all written content, verbatim)
+Captured: 2026-06-14  |  Source of truth: src/
+This file collects every piece of human-readable text on the site so it can be
+reviewed/edited in one place. Organized in the order sections appear on the page.
+================================================================================
+
+
+--------------------------------------------------------------------------------
+0. PAGE METADATA  (src/app/layout.tsx)
+--------------------------------------------------------------------------------
+Title:        Nirav Thakur | Portfolio
+Description:  Portfolio of Nirav Thakur — Frontend Developer & UI/UX Designer
+              based in Mumbai, India. Specializing in Next.js, TypeScript, and
+              modern web experiences.
+Keywords:     Nirav Thakur, Frontend Developer, UI/UX Designer, Portfolio,
+              Next.js, React
+Skip link:    Skip to content
+
+
+--------------------------------------------------------------------------------
+1. NAVBAR  (src/components/Navbar.tsx)
+--------------------------------------------------------------------------------
+Logo:         Nirav.
+Nav links:    About   Projects   Contact
+Button:       Resume   (opens /Docs/N-Resume.pdf in a new tab)
+
+
+--------------------------------------------------------------------------------
+2. HERO  (src/components/Hero.tsx)
+--------------------------------------------------------------------------------
+Headline:     CREATE        (rendered as CR-EA-TE, the "EA" in italic)
+
+Role badges:  Frontend Developer
+              UI/UX Designer
+              Photographer
+
+Description:  I build scalable and delightful web experiences powered by
+              cutting-edge technology. Focused on Modern Stacks, Design, and
+              UI/UX engineering. Operating from Mumbai, India.
+
+CTA buttons:  View My Work        (scrolls to Projects)
+              Get in Touch        (scrolls to Contact)
+
+Social icons: GitHub · LinkedIn · Figma · Instagram · Pinterest · Behance
+
+Scroll hint:  Scroll
+
+
+--------------------------------------------------------------------------------
+3. ABOUT  (src/components/About.tsx)
+--------------------------------------------------------------------------------
+Window chrome:  About.app
+Section title:  Get to know me
+View switch:    ▸ Finder      ▸ Terminal
+Window label:   About Me
+Window hint:    Switch to Terminal for the dev experience
+
+----- FINDER › ABOUT TAB -----
+Heading: ▸ My Story
+  I'm a Frontend Developer & UI/UX Designer based in Mumbai, India, focused on
+  building refined, high-performance web experiences using modern frontend
+  technologies.
+
+  I work at the intersection of engineering, design, and visual creativity to
+  deliver intuitive, scalable, and visually engaging interfaces. My approach
+  blends clean architecture with thoughtful design to create digital products
+  that support real business goals.
+
+  Nirav stays inspired by evolving design trends, explores photography as a
+  creative outlet, and actively contributes to open-source projects on GitHub.
+
+----- FINDER › EDUCATION TAB -----  (heading: ▸ Education)
+
+1) Bachelor's in Computer Science & Engineering
+   CSMU (Autonomous) • 2024 – Present
+   Currently pursuing undergraduate studies with a focus on computer science
+   fundamentals, software development, and modern computing practices.
+
+2) Diploma in Computer Engineering
+   Pillai HOC College of Engineering & Technology • 2021 – 2024
+   Completed a diploma program covering core computer engineering concepts,
+   programming fundamentals, and practical application development.
+
+3) UI/UX Design Certification
+   Google UX Design (Online) • 2023
+   Hands-on training in user research, wireframing, prototyping, and designing
+   user-centered digital experiences.
+
+4) Advanced Visual & Interaction Design
+   Coursera / Online Learning • 2022
+   Focused on visual hierarchy, interaction patterns, accessibility, and
+   creating polished digital interfaces.
+
+5) Creative Design & Branding Program
+   Udemy / Online Learning • 2022
+   Explored design fundamentals, branding principles, layout systems, and
+   creative problem-solving for digital products.
+
+6) Web Development Bootcamp
+   Self-taught & Online Courses • 2019 – Present
+   Continuous hands-on learning in frontend development, modern web workflows,
+   and building real-world web applications.
+
+7) Secondary & Higher Secondary Education (State Board)
+   St. Joseph High School • 2010 – 2021
+   Completed schooling under the State Board curriculum, building a strong
+   academic foundation.
+
+8) IELTS Academic
+   British Council / IDP • 2024
+   Achieved an overall band score of 7.1, demonstrating strong English language
+   proficiency.
+
+----- FINDER › SKILLS TAB -----  (heading: ▸ Skills & Technologies)
+⚙ Technical Skills:  Time Management, Critical Thinking, Hardware Hobbyist,
+                     Server Configuration
+🎨 Creative Skills:  Photography, Painting, Sketching, Modeling, Ramp
+🤝 Soft Skills:      Teamwork, Leadership, Communication, Problem Solving
+
+----- FINDER › LANGUAGES TAB -----  (heading: ▸ Programming Languages)
+HTML, CSS, JavaScript, TypeScript, Python, Java, C, C++, PHP, SQL
+
+----- FINDER › LIBRARIES TAB -----  (heading: ▸ Frameworks & Libraries)
+Next.js, React, Node.js, Flask, Tailwind CSS, MongoDB, Docker, Git, Nginx,
+Ngrok, Coolify, Express.js, Bootstrap, jQuery
+
+----- FINDER › SOFTWARE TAB -----  (heading: ▸ Software Tools)
+Figma, Illustrator, Photoshop, Lightroom, After Effects, Blender, Affinity,
+Inkscape, VS Code, Xcode
+
+----- TERMINAL VIEW -----
+Window chrome: Terminal — bash — 80x24
+Welcome:       Welcome to Portfolio Terminal v1.0.0
+               Type 'help' to see available commands.
+               Last login: {current date/time}
+Quick commands label: Quick commands
+
+  help text:
+    Available commands:
+      about     - Display about information
+      education - Show educational background
+      skills    - List technical skills
+      languages - View programming languages
+      libraries - View frameworks and libraries
+      software  - View software tools
+      contact   - Get contact information
+      clear     - Clear terminal
+      ls        - List directory contents
+      Hint: Try some hidden commands... 🎮
+
+  about (terminal):
+    ▸ About Me
+    I'm a passionate Frontend Developer & UI/UX Designer based in Mumbai, India.
+    I specialize in creating beautiful web experiences with modern technologies
+    like Next.js, TypeScript, and Tailwind CSS.
+    My journey combines web development, design, and photography to craft
+    stunning user interfaces.
+
+  contact (terminal):
+    ▸ Contact Information
+    ▸ Location: Mumbai, India
+    ▸ GitHub: github.com/Niravcanvas
+    ▸ Email: niravthakur@icloud.com
+
+  ls:
+    ▸ about/  ▸ education/  ▸ skills/  ▸ languages/  ▸ libraries/  ▸ software/
+    ▸ README.md   ▸ .secret/
+
+  HIDDEN / EASTER-EGG COMMANDS (copy):
+    secret → 🎉 Secret Found!
+             "Code is like humor. When you have to explain it, it's bad."
+              - Cory House
+             Try: matrix, coffee, joke, game
+
+    matrix → Wake up, Neo...
+             The Matrix has you...
+             Follow the white rabbit. 🐰
+
+    coffee → ☕ Brewing coffee...  ████████████ 100%
+             Coffee ready! Productivity +50%
+
+    joke   → 😄 Random Developer Joke: (one of)
+             • Why do programmers prefer dark mode? Because light attracts bugs! 🐛
+             • How many programmers does it take to change a light bulb? None.
+               It's a hardware problem! 💡
+             • Why did the developer go broke? Because he used up all his cache! 💰
+             • What's a programmer's favorite hangout? The Foo Bar! 🍺
+
+    game   → 🎮 Number Guessing Game
+             I'm thinking of a number between 1 and 100...
+             Try typing: guess 42   (Replace 42 with your guess)
+
+    guess  → Usage: guess [number]; correct answer is 73.
+             🎉 Congratulations! You guessed it! The number was 73!
+             (Fun fact: 73 is Sheldon Cooper's favorite number!)
+             📈 Higher! Try a bigger number.  /  📉 Lower! Try a smaller number.
+
+    sudo   → Nice try! 😏
+             But you don't have sudo privileges here...
+             This incident will be reported. (Just kidding!)
+
+    whoami → nirav@portfolio
+             A passionate developer exploring the digital world
+
+    date   → {current date/time}
+
+    secrets→ 🔍 Secrets Found: {n}/5
+             Keep exploring to find all secrets! 🕵️
+             🎊 Amazing! You found all the secrets! You're a true explorer! 🎊
+
+    (not found) → Command not found: {cmd}. Type 'help' for available commands.
+
+
+--------------------------------------------------------------------------------
+4. GALLERY  (src/components/Images.tsx — labeled "Music.app")
+--------------------------------------------------------------------------------
+Window chrome:  Music.app
+Section title:  Gallery
+Subtitle:       Browse my creative collection
+Window label:   Library
+Filter tabs:    All Works · Portfolio · Photography · Design · Art
+Featured head:  Featured Works  (changes to "Featured {category}" when filtered)
+
+Image entries (title — subtitle — year):
+   1. Project Alpha — Web Design — 2024
+   2. Urban Landscapes — Photography Series — 2024
+   3. Brand Identity — Visual Design — 2023
+   4. Digital Art — Illustration — 2024
+   5. Project Beta — UI/UX Design — 2024
+   6. Portraits — Photography Series — 2023
+   7. Poster Design — Print Design — 2024
+   8. Abstract Work — Digital Art — 2023
+   9. Project Gamma — Full Stack Dev — 2024
+  10. Nature — Photography — 2024
+  11. Logo Design — Branding — 2023
+  12. Concept Art — Illustration — 2024
+  13. Project Delta — Mobile App — 2024
+
+Lightbox ("Now Playing"): top bar shows "Library"; shows the current image's
+title + subtitle. (Player controls are decorative.)
+
+NOTE: entries 3, 4, 5 point at /images/3.jpg, 4.jpg, 5.jpg which are missing.
+These titles/subtitles read as placeholder copy and likely need real project names.
+
+
+--------------------------------------------------------------------------------
+5. PROJECTS  (src/components/Projects.tsx — labeled "Notes.app")
+--------------------------------------------------------------------------------
+Window chrome:  Notes.app
+Section title:  Featured Projects
+Subtitle:       My work and creative projects
+Window label:   Projects
+Folders:        All Projects · Development · Design · Favorites
+List counter:   {n} Notes
+Empty state:    Select a note to view
+Field headings: Overview · Details
+Action buttons: Live Demo · GitHub · Figma · View PDF
+
+----- PROJECT 1 — IndieAn -----
+Date: Dec 20, 2025  |  Category: Development
+Tags: Next.js, TypeScript, Tailwind CSS, Framer Motion, Animations, Responsive Design
+Overview:
+  IndieAn is a modern, gamified music learning platform that combines AI-powered
+  lessons with Trinity College curriculum standards.
+Details:
+  IndieAn website features a stable front-end build with responsive design across
+  all devices. The platform integrates gamification elements to make music
+  learning engaging and interactive, while maintaining professional standards
+  aligned with Trinity College curriculum.
+
+----- PROJECT 3 — Seven Vinyl Store -----
+Date: Jan 20, 2026  |  Category: Favorites
+Tags: Branding, Logo Design, Visual Identity, Music, Retail
+Overview:
+  Sample brand design concept for a music and lifestyle vinyl record store.
+  Complete brand identity including logo, color palette, and visual guidelines.
+Details:
+  Complete brand identity design for Seven Vinyl Store, a music and lifestyle
+  brand. This showcase project demonstrates expertise in brand strategy, logo
+  design, typography, color theory, and visual identity systems. Created
+  exclusively for portfolio purposes. © 2025 Seven Hours. All rights reserved.
+
+----- PROJECT 4 — SYNC Fitness App -----
+Date: Jan 8, 2026  |  Category: Design
+Tags: Figma, UI/UX, Mobile Design, Fitness
+Overview:
+  Modern fitness tracking application with workout planning, progress monitoring,
+  and personalized fitness goals.
+Details:
+  Complete UI/UX design for a fitness tracking application featuring workout
+  planning, progress tracking, nutrition monitoring, and social features.
+  Designed with a focus on user engagement and accessibility.
+
+----- PROJECT 5 — Anders Design Portfolio -----
+Date: Dec 15, 2025  |  Category: Design
+Tags: Figma, UI/UX, Interior Design, Portfolio
+Overview:
+  Elegant interior design showcase featuring modern minimalist aesthetics and
+  spatial planning.
+Details:
+  A sophisticated interior design portfolio showcasing various residential and
+  commercial projects. Features clean layouts, mood boards, and detailed project
+  presentations with emphasis on modern design principles.
+
+----- PROJECT 6 — Form & Form -----
+Date: Nov 30, 2025  |  Category: Design
+Tags: Figma, Design System, UI Components, Branding
+Overview:
+  Sample Brand Design for a Design Agency specializing in modern, minimalist
+  aesthetics and user-centric design solutions.
+Details:
+  A complete design system featuring reusable components, typography scales,
+  color palettes, spacing systems, and design tokens. Built to ensure
+  consistency across all design projects.
+
+----- PROJECT 7 — HackOverflow 4.0 -----
+Date: Jan 15, 2026  |  Category: Development
+Tags: Next.js, TypeScript, Tailwind CSS, Framer Motion
+Overview:
+  Official website for HackOverflow 4.0 - A national-level hackathon by PHCET.
+Details:
+  Built with stunning animations and modern design. The website features a fully
+  responsive layout, smooth scroll animations, dynamic content sections, and an
+  integrated registration system. Implemented using Next.js 14 with TypeScript
+  for type safety and Framer Motion for fluid animations.
+
+----- PROJECT 8 — Cloud Kitchen POS -----
+Date: Dec 28, 2025  |  Category: Development  |  Icon: 🍽️
+Tags: PHP, MySQL, Bootstrap, POS, Restaurant Management
+Overview:
+  A comprehensive PHP-based Point of Sale (POS) and management system designed
+  for cloud kitchens and restaurants. Built with a clean, professional
+  architecture following industry best practices.
+Details:
+  Full-featured POS system with inventory management, order tracking, table
+  management, staff management, sales reporting, and customer management.
+  Designed specifically for cloud kitchens with a focus on efficiency and ease
+  of use.
+
+----- PROJECT 9 — AI MCQ Generator -----
+Date: Nov 18, 2025  |  Category: Development  |  Icon: 🤖
+Tags: Python, AI, NLP, Machine Learning, Education
+Overview:
+  An AI-powered tool to generate multiple-choice questions (MCQs) from text or
+  documents. This project uses AI APIs to parse input content and produce MCQs in
+  various formats including HTML, TXT, and more.
+Details:
+  Leverages advanced AI algorithms to automatically generate high-quality
+  multiple-choice questions from any text input. Perfect for educators, trainers,
+  and content creators. Supports multiple export formats and customizable
+  difficulty levels.
+
+
+--------------------------------------------------------------------------------
+6. EXPERIENCE & ACHIEVEMENTS  (src/components/Achivements.tsx — "Keynote.app")
+--------------------------------------------------------------------------------
+Window chrome:  Keynote.app
+Section title:  Experience & Achievements
+Subtitle:       My professional journey and accomplishments
+Tabs:           Timeline · Experience · Achievements
+
+----- EXPERIENCE -----
+1) Hardware and Networking Intern — Quasco — 2023 — Internship
+   Gained hands-on experience in hardware troubleshooting, network configuration,
+   and system maintenance.
+
+2) UI/UX Design Intern — IBM SkillsBuild — 2022 — Virtual Internship
+   Designed dashboards and product interfaces for business use cases. Applied UX
+   research principles and interaction design fundamentals. Delivered structured
+   design solutions aligned with enterprise needs.
+
+3) Co-Founder & Creative Director — Seven Hours Design Studio — Present —
+   Entrepreneurship
+   Leading creative direction and strategic vision for a design studio. Managing
+   client projects, brand identities, and creative deliverables.
+
+4) Core Creative Head — Euforia — 2023-2024 — Leadership
+   Led creative initiatives and managed design teams for college events and
+   campaigns. Oversaw visual branding and promotional materials.
+
+----- ACHIEVEMENTS -----
+1) ArtStation Community Challenges — Digital Art / Illustration — ArtStation —
+   2023-2024
+   Participated in community-driven digital art challenges. Created concept
+   illustrations and visual compositions. Focused on storytelling, lighting, and
+   composition.
+
+2) DeviantArt Online Art Contests — Illustration & Concept Art — DeviantArt —
+   2022-2023
+   Submitted original artwork for themed online contests. Explored creative
+   concepts, abstract forms, and visual styles. Engaged with a global creative
+   community.
+
+3) Daily Drawing Challenges — Freehand & Digital Drawing —
+   Instagram / Online Community — Ongoing
+   Participated in online drawing challenges and daily sketch prompts. Shared
+   creative work publicly and received peer feedback.
+
+
+--------------------------------------------------------------------------------
+7. CONTACT  (src/components/Contact.tsx — labeled "Mail.app")
+--------------------------------------------------------------------------------
+Window chrome:  Mail.app
+Section title:  Get in Touch
+Subtitle:       Let's connect and discuss your next project
+Window label:   New Message
+Toolbar:        Send   |   Draft saved
+Sidebar header: Mailboxes
+Mailboxes:      Compose · Contact Info · Social Links
+Quick Info:     Available · Response time: 24h · Mumbai, India 🇮🇳
+
+----- COMPOSE (form) -----
+To:        Nirav Thakur   (locked field)
+From:      placeholder "Your Name"
+Email:     placeholder "your.email@example.com"
+Subject:   placeholder "What's this about?"
+Message:   placeholder "Type your message here..."
+Button:    Send Message  (while sending: "Sending...")
+Success:   Message sent! I'll get back to you soon.
+           (NOTE: form is simulated — it does not actually send anywhere.)
+
+----- CONTACT INFO -----
+Heading:   Contact Information
+Email:     niravthakur@icloud.com
+Phone:     +91 9653472213
+Location:  Mumbai, India
+Callout:   Response Time —
+           I typically respond within 24 hours. For urgent matters, feel free to
+           call!
+
+----- SOCIAL LINKS -----
+Heading:   Connect With Me
+GitHub     — Niravcanvas         — https://github.com/Niravcanvas
+LinkedIn   — niravcanvas         — https://www.linkedin.com/in/niravcanvas
+Figma      — @Niravcanvas        — https://www.figma.com/@Niravcanvas
+Instagram  — @blurrredcanvas     — https://www.instagram.com/blurrredcanvas/
+Pinterest  — @blurredoutframes   — https://in.pinterest.com/blurredoutframes/
+Behance    — Niravcanvas         — https://www.behance.net/Niravcanvas
+
+
+--------------------------------------------------------------------------------
+8. FOOTER  (src/components/Footer.tsx)
+--------------------------------------------------------------------------------
+Brand:        Nirav.
+Tagline:      Crafting beautiful web experiences with modern technologies.
+Col heading:  Navigation  →  Home · About · Projects · Contact
+Col heading:  Social      →  GitHub · LinkedIn · Figma · Instagram · Pinterest
+Col heading:  Contact     →  niravthakur@icloud.com · +91 9653472213 · Mumbai, India
+Bottom bar:   © {year} Nirav. Crafted with passion.
+              Mumbai, India  •  Frontend Developer
+
+
+================================================================================
+9. UNUSED COMPONENT COPY  (Interactive.tsx — NOT currently shown on the site)
+================================================================================
+Hint:       CLICK TO SPAWN NODES • MOVE TO INTERACT
+Stats:      NODES: 0/30      PARTICLES: 0
+(Included for completeness; this component is not imported into the page.)
+
+
+================================================================================
+RECURRING CONTACT DETAILS (single source to keep consistent)
+================================================================================
+Name:      Nirav Thakur
+Role:      Frontend Developer & UI/UX Designer (also: Photographer)
+Location:  Mumbai, India
+Email:     niravthakur@icloud.com
+Phone:     +91 9653472213
+GitHub:    github.com/Niravcanvas
+================================================================================
