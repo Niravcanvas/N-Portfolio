@@ -78,11 +78,11 @@ public/fonts/HelveticaNeue/*.woff2
 | Order | Section | id | In nav |
 |---|---|---|---|
 | 1 | Hero | `#hero` | logo |
-| 2 | About | `#about` | ✅ |
-| 3 | Gallery | `#gallery` | ✅ |
-| 4 | Projects | `#projects` | ✅ |
-| 5 | Experience & Achievements | `#experience` | ✅ |
-| 6 | Contact | `#contact` | ✅ |
+| 2 | About | `#about` | Yes |
+| 3 | Gallery | `#gallery` | Yes |
+| 4 | Projects | `#projects` | Yes |
+| 5 | Experience & Achievements | `#experience` | Yes |
+| 6 | Contact | `#contact` | Yes |
 
 - **Navbar**: About · Projects · Gallery · Experience · Contact + Resume (opens `/Docs/N-Resume.pdf`). Active-link observer watches all six ids.
 - **Footer**: Home/About/Projects/Gallery/Experience/Contact + the full social set + contact details.
