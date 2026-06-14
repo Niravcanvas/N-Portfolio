@@ -1,6 +1,6 @@
 <div align="center">
 
-### **Personal Portfolio - 2026**
+### **Personal Portfolio — 2026**
 
 *Frontend Developer & UI/UX Designer*
 
@@ -14,24 +14,13 @@
 
 </div>
 
-## 📋 Table of Contents
+## Overview
 
-```
-├── Overview
-├── Features
-├── Tech Stack
-├── Getting Started
-├── Project Structure
-├── Design Philosophy
-├── Performance
-└── Contact
-```
-
----
-
-## 🎯 Overview
-
-A modern, minimalist portfolio showcasing my work as a Frontend Developer and UI/UX Designer. Built with cutting-edge web technologies and designed with a monochrome glassmorphism aesthetic.
+A single-page portfolio for Nirav Thakur — Frontend Developer & UI/UX Designer in
+Mumbai, India. Built with Next.js (App Router) and a flat, Swiss-minimal
+**monochrome** aesthetic: white background, black text, Helvetica Neue, hairline
+borders, and no decorative clutter. Backed by a real contact pipeline
+(MongoDB + Redis + Resend) and Cloudflare R2 for image storage.
 
 ```typescript
 const portfolio = {
@@ -39,285 +28,187 @@ const portfolio = {
   role: ["Frontend Developer", "UI/UX Designer", "Photographer"],
   location: "Mumbai, India",
   status: "Available for work",
-  focus: ["Next.js", "TypeScript", "Tailwind CSS", "Figma"]
+  focus: ["Next.js", "TypeScript", "Tailwind CSS", "Figma"],
 };
 ```
 
 ---
 
-## ✨ Features
+## Features
 
-<table>
-<tr>
-<td width="50%">
+**Design**
+- Flat monochrome / Swiss-minimal UI (white background, black text)
+- Self-hosted Helvetica Neue, generous whitespace, hairline borders
+- Smooth in-page scroll navigation with active-section tracking
+- Fully responsive, accessible (skip link, ARIA, single `<h1>`)
 
-### Design
-```
-▸ Monochrome glassmorphism UI
-▸ Interactive grid background
-▸ Mouse-following animations
-▸ Smooth scroll navigation
-▸ Responsive design
-▸ Custom scrollbar
-```
-
-</td>
-<td width="50%">
-
-### Technical
-```
-▸ Next.js 16 with App Router
-▸ TypeScript for type safety
-▸ Tailwind CSS v4
-▸ Optimized performance
-▸ SEO friendly
-▸ Dark mode native
-```
-
-</td>
-</tr>
-</table>
+**Technical**
+- Next.js 16 App Router, React 19, TypeScript (strict)
+- Tailwind CSS v4 (token-based, no JS config)
+- Real contact form: Zod-validated, honeypot, Redis rate-limited, persisted to
+  Mongo and emailed via Resend
+- SEO: centralized metadata, Person + WebSite JSON-LD, `robots.txt`, `sitemap.xml`,
+  generated OpenGraph image
+- Security headers + Content-Security-Policy; `output: standalone` for VPS deploy
 
 ---
 
-## 🛠️ Tech Stack
-
-<div align="center">
+## Tech Stack
 
 | Category | Technologies |
 |----------|-------------|
-| **Framework** | `Next.js 16.1.5` `React 19.2.3` |
+| **Framework** | `Next.js 16` `React 19` |
 | **Language** | `TypeScript 5.x` |
-| **Styling** | `Tailwind CSS 4.0` `PostCSS` |
-| **Font** | `Azeret Mono` |
-| **Deployment** | `Vercel` |
-
-</div>
+| **Styling** | `Tailwind CSS 4` `PostCSS` |
+| **Font** | `Helvetica Neue` (self-hosted, `next/font/local`) |
+| **Validation** | `Zod` |
+| **Database** | `MongoDB` / `Mongoose` |
+| **Cache / rate-limit** | `Redis` / `ioredis` |
+| **Storage** | `Cloudflare R2` (S3-compatible) |
+| **Email** | `Resend` |
+| **Deployment** | `VPS` (standalone) |
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
 ```bash
-node >= 18.0.0
+node >= 20.0.0
 npm >= 9.0.0
 ```
 
 ### Installation
 
 ```bash
-# Clone the repository
 git clone https://github.com/Niravcanvas/Portfolio.git
-
-# Navigate to project directory
 cd Portfolio
-
-# Install dependencies
 npm install
 
-# Run development server
-npm run dev
+# configure environment
+cp .env.example .env.local   # then fill in the values
+
+npm run dev                  # http://localhost:3000
 ```
 
-### Build for Production
+All backend variables are optional in dev — if unset, those services no-op and the
+site still runs.
+
+### Production
 
 ```bash
-# Create optimized production build
 npm run build
-
-# Start production server
 npm start
 ```
 
-The application will be available at `http://localhost:3000`
+---
+
+## Environment Variables
+
+See [`.env.example`](.env.example) for the full list. Summary:
+
+| Variable | Purpose |
+|----------|---------|
+| `NEXT_PUBLIC_SITE_URL` | Canonical origin for SEO / OG / sitemap |
+| `NEXT_PUBLIC_CDN_URL` | Public Cloudflare R2 host for images |
+| `MONGODB_URI` | MongoDB connection string |
+| `REDIS_URL` | Redis (rate limiting) |
+| `RESEND_API_KEY` / `CONTACT_FROM_EMAIL` / `CONTACT_TO_EMAIL` | Contact email |
+| `R2_ACCOUNT_ID` / `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` / `R2_BUCKET` | R2 storage |
+| `IP_HASH_SALT` | Salt for hashing client IPs (min 16 chars) |
+| `LOG_LEVEL` | `debug` \| `info` \| `warn` \| `error` |
+
+> Only `NEXT_PUBLIC_*` variables reach the browser. Never commit real secrets.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Portfolio/
-│
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx          # Root layout with Azeret Mono font
-│   │   ├── page.tsx             # Main page component
-│   │   └── globals.css          # Global styles & animations
-│   │
-│   └── components/
-│       ├── Navbar.tsx           # Navigation bar
-│       ├── Hero.tsx             # Hero section with stats
-│       ├── About.tsx            # About me section
-│       ├── Projects.tsx         # Featured projects
-│       ├── Contact.tsx          # Contact form
-│       └── Footer.tsx           # Footer section
-│
-├── public/                      # Static assets
-├── package.json                 # Dependencies
-└── README.md                    # You are here
+│   │   ├── layout.tsx              # root layout (Helvetica + metadata)
+│   │   ├── page.tsx                # composes sections + JSON-LD
+│   │   ├── globals.css             # Tailwind + monochrome tokens
+│   │   ├── fonts.ts                # Helvetica Neue (next/font/local)
+│   │   ├── error / not-found / loading / global-error
+│   │   ├── robots.ts / sitemap.ts / opengraph-image.tsx
+│   │   ├── instrumentation.ts      # validates env at boot
+│   │   └── api/contact/route.ts    # contact endpoint
+│   ├── components/                 # Navbar, Hero, About, Gallery, Projects,
+│   │   │                           # Experience, Contact, Footer + seo/ ui/
+│   ├── lib/                        # env, seo, cn, logger, validation, data
+│   ├── server/                     # db, redis, email (Resend), storage (R2)
+│   └── types/
+├── public/
+│   ├── fonts/HelveticaNeue/*.woff2
+│   ├── images/                     # gallery + portraits
+│   └── Docs/                       # resume + project PDFs
+├── docs/                           # map.md (architecture) + copywrite.txt
+└── next.config.ts                  # standalone, security headers, CSP, image hosts
 ```
 
 ---
 
-## 🎨 Design Philosophy
+## Design Philosophy
 
-<table>
-<tr>
-<td width="33%">
+| Minimalism | Monochrome | Typography |
+|------------|------------|------------|
+| Clean layouts | Black & white only | Helvetica Neue |
+| Ample whitespace | Grayscale accents | Bold, structural headings |
+| Focus on content | High contrast | Generous tracking |
+| No clutter | Timeless, flat | Swiss / International style |
 
-### Minimalism
-```
-Clean layouts
-Ample whitespace
-Focus on content
-No visual clutter
-```
-
-</td>
-<td width="33%">
-
-### Glassmorphism
-```
-Frosted glass effects
-Subtle transparency
-Layered depth
-Soft shadows
-```
-
-</td>
-<td width="33%">
-
-### Monochrome
-```
-Black & white palette
-Gray gradients
-High contrast
-Timeless aesthetic
-```
-
-</td>
-</tr>
-</table>
-
-### Color Palette
+### Color tokens
 
 ```css
---background: #000000;
---foreground: #ffffff;
---glass-bg: rgba(255, 255, 255, 0.05);
---glass-border: rgba(255, 255, 255, 0.1);
---text-primary: #ffffff;
---text-secondary: #a1a1a1;
---text-muted: #737373;
+--color-bg: #ffffff;
+--color-text: #000000;
+--color-text-muted: #525252;   /* gray-600 */
+--color-text-subtle: #737373;  /* gray-500 */
+--color-border: rgba(0, 0, 0, 0.12);
 ```
 
 ---
 
-## ⚡ Performance
+## Sections
 
-<div align="center">
+`Hero` · `About` (Finder + interactive terminal) · `Gallery` · `Projects` ·
+`Experience & Achievements` · `Contact` · `Footer`
 
-| Metric | Score |
-|--------|-------|
-| **Performance** | `95+` |
-| **Accessibility** | `100` |
-| **Best Practices** | `100` |
-| **SEO** | `100` |
-
-*Lighthouse scores for production build*
-
-</div>
-
-### Optimizations
-
-- ✓ Image optimization with Next.js Image component
-- ✓ Font optimization with next/font
-- ✓ Code splitting and lazy loading
-- ✓ Minimal JavaScript bundle
-- ✓ CSS optimization with Tailwind
-- ✓ Static page generation where possible
+Featured projects include **IndieAn**, **HackOverflow 4.0**, **Cloud Kitchen POS**,
+**AI MCQ Generator**, **SYNC Fitness App**, and design work for **Anders** and
+**Form & Form**.
 
 ---
 
-## 📂 Featured Projects
-
-<table>
-<tr>
-<td width="50%">
-
-### HackOverflow 4.0
-National-level hackathon website
-
-**Stack:** Next.js, TypeScript, Tailwind CSS
-
-[View Project →](https://github.com/Niravcanvas/Hackoverflow)
-
-</td>
-<td width="50%">
-
-### Fintech Expense Tracker
-Premium expense tracking app
-
-**Stack:** Next.js, TypeScript, Glassmorphism UI
-
-[View Project →](https://github.com/Niravcanvas/Fintech)
-
-</td>
-</tr>
-</table>
-
----
-
-## 📬 Contact
-
-<div align="center">
+## Contact
 
 ```
-┌─────────────────────────────────────┐
-│  📧  nirav@example.com              │
-│  📍  Mumbai, India                  │
-│  💼  Available for freelance work   │
-└─────────────────────────────────────┘
+Email     niravthakur@icloud.com
+Phone     +91 9653472213
+Location  Mumbai, India
+Status    Available for freelance work
 ```
-
-### Connect with me
 
 [![GitHub](https://img.shields.io/badge/GitHub-Niravcanvas-black?style=for-the-badge&logo=github)](https://github.com/Niravcanvas)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-black?style=for-the-badge&logo=linkedin)](https://linkedin.com)
-[![Twitter](https://img.shields.io/badge/Twitter-Follow-black?style=for-the-badge&logo=x)](https://twitter.com)
-
-</div>
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-black?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/nirav-thakur-9b5892225/)
+[![Behance](https://img.shields.io/badge/Behance-Niravcanvas-black?style=for-the-badge&logo=behance)](https://www.behance.net/Niravcanvas)
 
 ---
 
-## 📄 License
+## License
 
-```
-MIT License
-
-Copyright (c) 2026 Nirav Thakur
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-```
+MIT License — Copyright (c) 2026 Nirav Thakur
 
 ---
 
 <div align="center">
-
-### ⭐ Star this repo if you like it!
 
 **Built by Nirav Thakur**
 
-*Last Updated: January 2026*
+*Last Updated: June 2026*
 
 </div>
